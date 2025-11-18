@@ -6,9 +6,6 @@ import Features from "@/components/features";
 import HowItWorks from "@/components/how-it-works";
 import Perks from "@/components/perks";
 import PlatformMetrics from "@/components/platform-metrics";
-import Pricing from "@/components/pricing";
-import Testimonials from "@/components/testimonials";
-import Signout from "@/components/signout";
 import Faq from "@/components/faq";
 
 export default function HomePage() {
@@ -21,8 +18,6 @@ export default function HomePage() {
       <HowItWorks />
       <Perks />
       <PlatformMetrics />
-      <Pricing />
-      <Testimonials />
       <Faq />
     </main>
   );
