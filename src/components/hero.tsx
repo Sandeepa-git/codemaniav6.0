@@ -61,7 +61,7 @@ const Countdown = () => {
           {/* days */}
           <div className="flex flex-col items-center">
             <span>{format(timeLeft.days)}</span>
-            <span className="text-[9px] sm:text-sm text-muted-foreground uppercase mt-1">
+            <span className="text-[9px] sm:text-sm text-gray-400 uppercase mt-1">
               days
             </span>
           </div>
@@ -71,7 +71,7 @@ const Countdown = () => {
           {/* hours */}
           <div className="flex flex-col items-center">
             <span>{format(timeLeft.hours)}</span>
-            <span className="text-[9px] sm:text-sm text-muted-foreground uppercase mt-1">
+            <span className="text-[9px] sm:text-sm text-gray-400 uppercase mt-1">
               hours
             </span>
           </div>
@@ -81,7 +81,7 @@ const Countdown = () => {
           {/* minutes */}
           <div className="flex flex-col items-center">
             <span>{format(timeLeft.minutes)}</span>
-            <span className="text-[9px] sm:text-sm text-muted-foreground uppercase mt-1">
+            <span className="text-[9px] sm:text-sm text-gray-400 uppercase mt-1">
               mins
             </span>
           </div>
@@ -91,15 +91,13 @@ const Countdown = () => {
           {/* seconds */}
           <div className="flex flex-col items-center">
             <span>{format(timeLeft.seconds)}</span>
-            <span className="text-[9px] sm:text-sm text-muted-foreground uppercase mt-1">
+            <span className="text-[9px] sm:text-sm text-gray-400 uppercase mt-1">
               secs
             </span>
           </div>
         </>
       ) : (
-        <div className="text-2xl md:text-5xl text-muted-foreground">
-          Hackathon Started!
-        </div>
+        <div className="text-2xl md:text-5xl">Hackathon Started!</div>
       )}
     </div>
   );
@@ -119,7 +117,7 @@ const Hero = () => {
   ];
 
   return (
-    <Wrapper className="pt-20 lg:pt-32 relative min-h-screen w-full flex-1 overflow-hidden" style={{ backgroundColor: "#404040" }}>
+    <Wrapper className="pt-20 lg:pt-32 relative min-h-screen w-full flex-1 overflow-hidden bg-[#101010]">
       <div className="flex flex-col lg:flex-row w-full h-full lg:gap-16 px-4 sm:px-6 lg:px-0">
         <div className="flex flex-col items-start justify-center gap-8 sm:gap-10 py-10 lg:py-16 w-full max-w-4xl mx-auto lg:mx-0">
           
@@ -128,13 +126,13 @@ const Hero = () => {
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.4}>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-foreground">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
               Welcome to <br className="hidden sm:block" /> Hackathon 2025
             </h1>
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.6}>
-            <p className="text-base sm:text-lg text-foreground max-w-lg leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-300 max-w-lg leading-relaxed">
               Join the brightest minds to innovate, build, and revolutionize
               tech. Don’t miss out on the most exciting hackathon of the year.
             </p>
@@ -144,9 +142,8 @@ const Hero = () => {
             <Countdown />
           </AnimationContainer>
 
-          {/* LOGO MARQUEE */}
           <AnimationContainer animation="fadeUp" delay={1}>
-            <p className="text-sm md:text-base text-muted-foreground mb-4">
+            <p className="text-sm md:text-base text-gray-400 mb-4">
               Trusted by Industry Leaders
             </p>
 
@@ -163,8 +160,8 @@ const Hero = () => {
               </Marquee>
 
               {/* EDGE GRADIENTS */}
-              <div className="pointer-events-none absolute inset-y-0 -right-1 w-1/4 bg-gradient-to-l from-[#404040]"></div>
-              <div className="pointer-events-none absolute inset-y-0 -left-1 w-1/4 bg-gradient-to-r from-[#404040]"></div>
+              <div className="pointer-events-none absolute inset-y-0 -right-1 w-1/4 bg-gradient-to-l from-[#101010]"></div>
+              <div className="pointer-events-none absolute inset-y-0 -left-1 w-1/4 bg-gradient-to-r from-[#101010]"></div>
             </div>
           </AnimationContainer>
         </div>
