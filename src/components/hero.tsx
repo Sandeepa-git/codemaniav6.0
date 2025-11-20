@@ -118,8 +118,7 @@ const Hero = () => {
 
   return (
     <Wrapper
-      style={{ backgroundColor: "rgba(92, 92, 92, 0.47)" }}
-      className="pt-20 lg:pt-32 relative min-h-screen w-full flex-1 overflow-hidden"
+      className="pt-20 lg:pt-32 relative min-h-screen w-full flex-1 overflow-hidden bg-[rgba(92,92,92,0.47)]"
     >
       <div className="flex flex-col lg:flex-row w-full h-full lg:gap-16 px-4 sm:px-6 lg:px-0">
         <div className="flex flex-col items-start justify-center gap-8 sm:gap-10 py-10 lg:py-16 w-full max-w-4xl mx-auto lg:mx-0">
