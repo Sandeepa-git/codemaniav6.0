@@ -1,12 +1,12 @@
 // src/app/page.tsx
 import Navbar from "@/components/navbar";
 import Hero from "@/components/hero";
-import Cta from "@/components/cta";
-import Features from "@/components/features";
-import HowItWorks from "@/components/how-it-works";
-import Perks from "@/components/perks";
-import PlatformMetrics from "@/components/platform-metrics";
-import Faq from "@/components/faq";
+import ABOUT from "@/components/about";
+import TIMELINE from "@/components/timeline";
+import RULES from "@/components/rules";
+import SHOP from "@/components/shop";
+import Footer from "@/components/footer";
+
 
 export const metadata = {
   title: "Codemania - Home",
@@ -17,13 +17,30 @@ export default function HomePage() {
   return (
     <main className="w-full min-h-screen bg-[#101010] text-white overflow-x-hidden">
       <Navbar />
-      <Hero />
-      <Cta />
-      <Features />
-      <HowItWorks />
-      <Perks />
-      <PlatformMetrics />
-      <Faq />
+
+      <section id="hero">
+        <Hero />
+      </section>
+
+      <section id="about">
+        <ABOUT />
+      </section>
+
+      <section id="timeline">
+        <TIMELINE />
+      </section>
+
+      <section id="rules">
+        <RULES />
+      </section>
+
+      <section id="shop">
+        <SHOP />
+      </section>
+
+      <section id="footer">
+        <Footer />
+      </section>
     </main>
   );
 }

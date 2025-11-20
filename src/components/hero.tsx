@@ -18,11 +18,8 @@ interface TimeLeft {
 }
 
 const Countdown = () => {
-  const [targetDate] = useState(() => {
-    const date = new Date();
-    date.setDate(date.getDate() + 60);
-    return date;
-  });
+  // Fixed target date: February 2, 2026 (month is zero-indexed)
+  const [targetDate] = useState(() => new Date(2026, 1, 2));
 
   const calculateTimeLeft = (): TimeLeft => {
     const now = new Date();
@@ -120,7 +117,7 @@ const Hero = () => {
     <Wrapper className="pt-20 lg:pt-32 relative min-h-screen w-full flex-1 overflow-hidden bg-[#101010]">
       <div className="flex flex-col lg:flex-row w-full h-full lg:gap-16 px-4 sm:px-6 lg:px-0">
         <div className="flex flex-col items-start justify-center gap-8 sm:gap-10 py-10 lg:py-16 w-full max-w-4xl mx-auto lg:mx-0">
-          
+
           <AnimationContainer animation="fadeUp" delay={0.2}>
             <SectionBadge title="THINK TWICE, CODE ONCE" />
           </AnimationContainer>

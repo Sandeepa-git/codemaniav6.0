@@ -4,25 +4,12 @@ import Link from 'next/link';
 import AnimationContainer from './global/animation-container';
 import Wrapper from "./global/wrapper";
 
-const PRODUCT_LINKS = [
-    { label: "Property Search", href: "#" },
-    { label: "Management Tools", href: "#" },
-    { label: "Virtual Tours", href: "#" },
-    { label: "Market Analytics", href: "#" },
-];
-
-const RESOURCES_LINKS = [
-    { label: "Knowledge Base", href: "#" },
-    { label: "Market Reports", href: "#" },
-    { label: "Property Guides", href: "#" },
-    { label: "Success Stories", href: "#" },
-];
-
-const COMPANY_LINKS = [
+const QUICK_LINKS = [
     { label: "About Us", href: "#" },
-    { label: "Contact", href: "#" },
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Roadmap", href: "#" },
+    { label: "Merchandise", href: "#" },
+    { label: "Contact Us", href: "#" },
+    { label: "Follow Us", href: "#" },
 ];
 
 const SOCIAL_LINKS = [
@@ -36,7 +23,7 @@ const SOCIAL_LINKS = [
 const Footer = () => {
     return (
         <footer className="relative border-t border-border pt-16 pb-8 md:pb-0 w-full overflow-hidden">
-            <Wrapper className="">
+            <Wrapper>
                 <AnimationContainer animation="scaleUp" delay={0.2}>
                     <div className="absolute -top-1/8 lg:-top-1/2 inset-x-0 mx-auto bg-primary/50 lg:bg-primary/70 rounded-full w-1/2 h-1/4 blur-[6rem] lg:blur-[12rem]"></div>
                 </AnimationContainer>
@@ -51,29 +38,28 @@ const Footer = () => {
                             <div className="flex items-center gap-2">
                                 <Image
                                     src="/icons/icon.svg"
-                                    alt="PropEase"
+                                    alt="CloudSpace"
                                     width={32}
                                     height={32}
                                 />
                                 <span className="text-lg lg:text-xl font-medium">
-                                    PropEase
+                                    CloudSpace
                                 </span>
                             </div>
                             <p className="text-muted-foreground mt-4 text-sm">
-                                123 Pine Avenue, Suite 500
+                                Sri Lanka Technology Campus
                                 <br />
-                                New York, NY 10001
+                                Colombo, Sri Lanka
                             </p>
                             <div className="mt-4 text-sm text-muted-foreground">
-                                <p>support@propease.com</p>
-                                <p>+1 (123) 456-7890</p>
+                                <p>codemania@gmail.com</p>
                             </div>
                             <div className="flex items-center gap-4 mt-6">
                                 {SOCIAL_LINKS.map((social, index) => (
                                     <AnimationContainer
                                         key={index}
                                         animation="fadeUp"
-                                        delay={0.6 + (index * 0.1)}
+                                        delay={0.6 + index * 0.1}
                                     >
                                         <Link
                                             href={social.href}
@@ -88,65 +74,15 @@ const Footer = () => {
                     </AnimationContainer>
 
                     <div className="grid grid-cols-2 gap-8 xl:col-span-2">
-                        <div className="md:grid md:grid-cols-2 md:gap-8">
-                            <AnimationContainer animation="fadeUp" delay={0.5}>
-                                <div>
-                                    <h3 className="text-base font-medium">Product</h3>
-                                    <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                                        {PRODUCT_LINKS.map((link, index) => (
-                                            <AnimationContainer
-                                                key={index}
-                                                animation="fadeLeft"
-                                                delay={0.6 + (index * 0.1)}
-                                            >
-                                                <li>
-                                                    <Link
-                                                        href={link.href}
-                                                        className="hover:text-foreground transition-colors"
-                                                    >
-                                                        {link.label}
-                                                    </Link>
-                                                </li>
-                                            </AnimationContainer>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </AnimationContainer>
-
-                            <AnimationContainer animation="fadeUp" delay={0.5}>
-                                <div className="mt-10 md:mt-0">
-                                    <h3 className="text-base font-medium">Resources</h3>
-                                    <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                                        {RESOURCES_LINKS.map((link, index) => (
-                                            <AnimationContainer
-                                                key={index}
-                                                animation="fadeLeft"
-                                                delay={0.7 + (index * 0.1)}
-                                            >
-                                                <li>
-                                                    <Link
-                                                        href={link.href}
-                                                        className="hover:text-foreground transition-colors"
-                                                    >
-                                                        {link.label}
-                                                    </Link>
-                                                </li>
-                                            </AnimationContainer>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </AnimationContainer>
-                        </div>
-
                         <AnimationContainer animation="fadeUp" delay={0.5}>
                             <div>
-                                <h3 className="text-base font-medium">Company</h3>
+                                <h3 className="text-base font-medium">Quick Links</h3>
                                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                                    {COMPANY_LINKS.map((link, index) => (
+                                    {QUICK_LINKS.map((link, index) => (
                                         <AnimationContainer
                                             key={index}
                                             animation="fadeLeft"
-                                            delay={0.8 + (index * 0.1)}
+                                            delay={0.6 + index * 0.1}
                                         >
                                             <li>
                                                 <Link
@@ -167,7 +103,7 @@ const Footer = () => {
                 <AnimationContainer animation="fadeUp" delay={1}>
                     <div className="mt-16 border-t border-border/40 py-8 flex flex-col md:flex-row items-center justify-center">
                         <p className="text-sm text-muted-foreground">
-                            © {new Date().getFullYear()} PropEase. All rights reserved.
+                            © 2026 Codemania. All rights reserved.
                         </p>
                     </div>
                 </AnimationContainer>
