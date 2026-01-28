@@ -4,7 +4,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Wrapper from "@/components/global/wrapper";
 import AnimationContainer from "@/components/global/animation-container";
-import SectionBadge from "@/components/ui/section-badge";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, CheckCircle2, User } from "lucide-react";

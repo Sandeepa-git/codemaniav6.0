@@ -4,7 +4,7 @@ import AnimationContainer from './global/animation-container';
 import Wrapper from "./global/wrapper";
 import SectionBadge from './ui/section-badge';
 import { cn } from "@/lib";
-import { motion, AnimatePresence } from "framer-motion";
+
 
 const TIMELINE = () => {
     const timelineData = [

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, UseFormReturn } from "react-hook-form";
 import * as z from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import {
     ArrowLeft,
-    CheckCircle2,
     User,
     Users,
     ShieldCheck,
@@ -44,6 +43,7 @@ import Footer from "@/components/footer";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
+// Schemas
 const memberSchema = z.object({
     fullName: z.string().min(2, "Full name is required"),
     nicPassport: z.string().min(5, "NIC/Passport is required"),
@@ -64,6 +64,9 @@ const formSchema = z.object({
     agree: z.boolean().refine(val => val === true, "You must agree to the declaration"),
 });
 
+type FormValues = z.infer<typeof formSchema>;
+
+// Constants
 const UNIVERSITIES = [
     // UGC Public Universities
     "University of Colombo",
@@ -108,7 +111,13 @@ const UNIVERSITIES = [
 const ACADEMIC_YEARS = ["Year 1", "Year 2", "Year 3", "Year 4 / Final"];
 
 // Extracted MemberForm component
-const MemberForm = ({ title, prefix, form }: { title: string, prefix: "member1" | "member2" | "member3", form: any }) => {
+interface MemberFormProps {
+    title: string;
+    prefix: "member1" | "member2" | "member3";
+    form: UseFormReturn<FormValues>;
+}
+
+const MemberForm = ({ title, prefix, form }: MemberFormProps) => {
     return (
         <div className="space-y-6">
             <div className="flex items-center gap-3 mb-6">
@@ -230,7 +239,7 @@ export default function RegisterPage() {
     const totalSteps = 5;
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const form = useForm<z.infer<typeof formSchema>>({
+    const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             teamName: "",
@@ -267,7 +276,7 @@ export default function RegisterPage() {
         },
     });
 
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const onSubmit = async (values: FormValues) => {
         setIsSubmitting(true);
         try {
             // Prepare Final Data
@@ -295,13 +304,13 @@ export default function RegisterPage() {
     };
 
     const nextStep = async () => {
-        let fieldsToValidate: any[] = [];
+        let fieldsToValidate: (keyof FormValues)[] = [];
         if (step === 1) fieldsToValidate = ["teamName", "university", "otherUniversity"];
         if (step === 2) fieldsToValidate = ["member1"];
         if (step === 3) fieldsToValidate = ["member2"];
         if (step === 4) fieldsToValidate = ["member3"];
 
-        const isValid = await form.trigger(fieldsToValidate as any);
+        const isValid = await form.trigger(fieldsToValidate);
         if (isValid) {
             setStep(s => Math.min(s + 1, totalSteps));
             window.scrollTo({ top: 0, behavior: "smooth" });

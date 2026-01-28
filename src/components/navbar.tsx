@@ -5,7 +5,7 @@ import { cn } from "@/lib";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { MenuIcon, XIcon } from "lucide-react";
 import Link from "next/link";
-import { RefObject, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Wrapper from "./global/wrapper";
 import Image from "next/image";
 

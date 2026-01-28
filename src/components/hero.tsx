@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import AnimationContainer from "./global/animation-container";
 import Images from "./global/images";
 import Wrapper from "./global/wrapper";
 import Marquee from "./ui/marquee";
 import Link from "next/link";
+import Image from "next/image";
 import SectionBadge from "./ui/section-badge";
 
 import NumberFlow from "@number-flow/react";
@@ -39,7 +40,7 @@ const CountdownUnit = ({ value, label }: { value: number | undefined; label: str
 const Countdown = () => {
   const [targetDate] = useState(() => new Date(2026, 1, 28)); // Feb 28, 2026
 
-  const calculateTimeLeft = (): TimeLeft => {
+  const calculateTimeLeft = useCallback((): TimeLeft => {
     const now = new Date();
     const difference = targetDate.getTime() - now.getTime();
     if (difference <= 0) return {};
@@ -49,7 +50,7 @@ const Countdown = () => {
       minutes: Math.floor((difference / 1000 / 60) % 60),
       seconds: Math.floor((difference / 1000) % 60),
     };
-  };
+  }, [targetDate]);
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
   const [mounted, setMounted] = useState(false);
@@ -60,7 +61,7 @@ const Countdown = () => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [calculateTimeLeft]);
 
   if (!mounted) return null;
 
@@ -157,10 +158,12 @@ const Hero = () => {
           <AnimationContainer animation="fadeUp" delay={0.5} className="w-full h-full relative">
             <div className="absolute inset-0 bg-gradient-to-r from-[#101010] via-transparent to-transparent z-20 w-1/3 hidden lg:block"></div>
             <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#101010] to-transparent z-20"></div>
-            <img
+            <Image
               src="/images/owl.png"
               alt="Owl"
-              className="w-full h-full object-cover rounded-3xl opacity-30 sm:opacity-50 mix-blend-screen"
+              fill
+              priority
+              className="object-cover rounded-3xl opacity-30 sm:opacity-50 mix-blend-screen"
             />
             {/* Glowing effect following owl eyes theme */}
             <div className="absolute top-[40%] right-[30%] w-32 h-32 bg-orange-600/20 blur-[80px] rounded-full animate-pulse"></div>

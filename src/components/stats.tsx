@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useInView } from "framer-motion";
 import AnimationContainer from "./global/animation-container";
 import Wrapper from "./global/wrapper";
@@ -50,14 +50,7 @@ const StatItem = ({ stat, index }: { stat: { label: string, value: string }, ind
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.5 });
 
-    const [count, setCount] = useState(0);
     const numericValue = parseInt(stat.value);
-
-    useEffect(() => {
-        if (isInView) {
-            setCount(numericValue);
-        }
-    }, [isInView, numericValue]);
 
     return (
         <AnimationContainer animation="fadeUp" delay={0.4 + index * 0.1}>
