@@ -122,7 +122,7 @@ const Hero = () => {
       <div className="flex flex-col lg:flex-row w-full h-full px-4 sm:px-6 lg:px-0 items-center justify-between">
 
         {/* Left Content */}
-        <div className="flex flex-col items-start justify-center text-left gap-6 sm:gap-8 py-10 lg:py-16 w-full lg:w-3/5 z-10">
+        <div className="flex flex-col items-center lg:items-start justify-center text-center lg:text-left gap-6 sm:gap-8 py-10 lg:py-16 w-full lg:w-3/5 z-10">
           <AnimationContainer animation="fadeUp" delay={0.2}>
             <SectionBadge title="Codemania v6.0" />
           </AnimationContainer>
