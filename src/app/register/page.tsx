@@ -329,36 +329,36 @@ export default function RegisterPage() {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[120px] -z-10" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] -z-10" />
 
-            <Wrapper className="pt-32 pb-20 flex-1">
+            <Wrapper className="pt-24 md:pt-32 pb-10 md:pb-20 flex-1">
                 <div className="max-w-4xl mx-auto">
-                    <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-500 transition-colors mb-8 group px-2">
+                    <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-500 transition-colors mb-6 md:mb-8 group px-2 text-sm md:text-base">
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Back to Home
                     </Link>
 
-                    <header className="mb-10 px-2 text-center md:text-left">
-                        <h1 className="text-4xl md:text-6xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-100 to-orange-500 leading-tight tracking-tighter">
+                    <header className="mb-8 md:mb-10 px-2 text-center md:text-left">
+                        <h1 className="text-3xl md:text-6xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-100 to-orange-500 leading-tight tracking-tighter">
                             Registrations
                         </h1>
-                        <p className="text-orange-500 text-xl font-bold mb-6">
+                        <p className="text-orange-500 text-lg md:text-xl font-bold mb-4 md:mb-6">
                             Join the Datathon. Push Your Limits. Analyze. Solve. Conquer.
                         </p>
-                        <p className="text-gray-400 text-lg max-w-3xl leading-relaxed">
+                        <p className="text-gray-400 text-base md:text-lg max-w-3xl leading-relaxed">
                             Get ready to be part of Codemania v6.0! Teams from state and non-state universities across Sri Lanka can register to participate in our island-wide datathon. This is your first step toward competing, learning, and gaining exposure.
                         </p>
 
-                        <div className="mt-10 p-6 rounded-2xl bg-orange-600/10 border border-orange-500/20 inline-block text-left">
+                        <div className="mt-8 md:mt-10 p-4 md:p-6 rounded-2xl bg-orange-600/10 border border-orange-500/20 inline-block text-left w-full md:w-auto">
                             <h4 className="text-orange-500 font-bold uppercase text-xs tracking-widest mb-1">Registration Status</h4>
-                            <p className="text-white text-lg font-bold">Open / January 30 – February 10</p>
+                            <p className="text-white text-base md:text-lg font-bold">Open / January 30 – February 10</p>
                         </div>
                     </header>
 
                     {/* Stepper */}
-                    <div className="flex items-center justify-between mb-12 relative px-2 max-w-2xl mx-auto">
+                    <div className="flex items-center justify-between mb-8 md:mb-12 relative px-2 max-w-2xl mx-auto">
                         <div className="absolute top-1/2 left-0 w-full h-0.5 bg-neutral-800 -translate-y-1/2 -z-10" />
                         {[1, 2, 3, 4, 5].map((s) => (
                             <div key={s} className="flex flex-col items-center gap-2 relative">
-                                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm border-2 transition-all duration-300 ${step >= s ? "bg-orange-600 border-orange-600 text-white shadow-[0_0_15px_rgba(234,88,12,0.4)]" : "bg-[#101010] border-neutral-800 text-gray-500"
+                                <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-xs md:text-sm border-2 transition-all duration-300 ${step >= s ? "bg-orange-600 border-orange-600 text-white shadow-[0_0_15px_rgba(234,88,12,0.4)]" : "bg-[#101010] border-neutral-800 text-gray-500"
                                     }`}>
                                     {s}
                                 </div>
@@ -374,9 +374,9 @@ export default function RegisterPage() {
                     </div>
 
                     <Card className="bg-neutral-900/40 border-neutral-800 backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden mt-8 border">
-                        <CardContent className="p-6 md:p-10">
+                        <CardContent className="p-4 md:p-10">
                             <Form {...form}>
-                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 md:space-y-8">
                                     <AnimatePresence mode="wait">
                                         {step === 1 && (
                                             <motion.div
@@ -388,9 +388,9 @@ export default function RegisterPage() {
                                             >
                                                 <div className="flex items-center gap-3 mb-6">
                                                     <div className="p-2 bg-orange-500/20 rounded-lg">
-                                                        <Users className="w-6 h-6 text-orange-500" />
+                                                        <Users className="w-5 h-5 md:w-6 md:h-6 text-orange-500" />
                                                     </div>
-                                                    <h3 className="text-xl font-bold text-white">Team Information</h3>
+                                                    <h3 className="text-lg md:text-xl font-bold text-white">Team Information</h3>
                                                 </div>
 
                                                 <FormField
@@ -400,7 +400,7 @@ export default function RegisterPage() {
                                                         <FormItem>
                                                             <FormLabel>Team Name</FormLabel>
                                                             <FormControl>
-                                                                <Input placeholder="Enter your team name" {...field} className="bg-neutral-950 border-neutral-800 h-12 rounded-xl focus:border-orange-500" />
+                                                                <Input placeholder="Enter your team name" {...field} className="bg-neutral-950 border-neutral-800 h-11 md:h-12 rounded-xl focus:border-orange-500" />
                                                             </FormControl>
                                                             <FormMessage />
                                                         </FormItem>
@@ -415,7 +415,7 @@ export default function RegisterPage() {
                                                             <FormLabel>University / Institute</FormLabel>
                                                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                                 <FormControl>
-                                                                    <SelectTrigger className="bg-neutral-950 border-neutral-800 h-12 rounded-xl">
+                                                                    <SelectTrigger className="bg-neutral-950 border-neutral-800 h-11 md:h-12 rounded-xl">
                                                                         <SelectValue placeholder="Select your university" />
                                                                     </SelectTrigger>
                                                                 </FormControl>
@@ -438,7 +438,7 @@ export default function RegisterPage() {
                                                             <FormItem>
                                                                 <FormLabel>Please specify your university</FormLabel>
                                                                 <FormControl>
-                                                                    <Input placeholder="Enter university name" {...field} className="bg-neutral-950 border-neutral-800 h-12 rounded-xl focus:border-orange-500" />
+                                                                    <Input placeholder="Enter university name" {...field} className="bg-neutral-950 border-neutral-800 h-11 md:h-12 rounded-xl focus:border-orange-500" />
                                                                 </FormControl>
                                                                 <FormMessage />
                                                             </FormItem>
@@ -476,12 +476,12 @@ export default function RegisterPage() {
                                             >
                                                 <div className="flex items-center gap-3 mb-6">
                                                     <div className="p-2 bg-orange-500/20 rounded-lg">
-                                                        <ShieldCheck className="w-6 h-6 text-orange-500" />
+                                                        <ShieldCheck className="w-5 h-5 md:w-6 md:h-6 text-orange-500" />
                                                     </div>
-                                                    <h3 className="text-xl font-bold text-white">Declaration & Consent</h3>
+                                                    <h3 className="text-lg md:text-xl font-bold text-white">Declaration & Consent</h3>
                                                 </div>
 
-                                                <div className="bg-neutral-950/50 p-6 rounded-2xl border border-neutral-800 text-gray-300 text-sm leading-relaxed space-y-4 shadow-inner">
+                                                <div className="bg-neutral-950/50 p-4 md:p-6 rounded-2xl border border-neutral-800 text-gray-300 text-xs md:text-sm leading-relaxed space-y-4 shadow-inner">
                                                     <p><strong>Registration Process:</strong> Teams of 2–3 members register through the official portal. All participants must provide valid information and agree to event rules.</p>
                                                     <p><strong>Eligibility Criteria:</strong> Open to all undergraduate students from Sri Lankan universities. One student cannot be part of more than one team.</p>
                                                     <p><strong>Registration Timeline:</strong> Opens January 30 and closes February 10. Late or incomplete entries will not be accepted.</p>
@@ -511,26 +511,26 @@ export default function RegisterPage() {
                                                 />
 
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                                                    <div className="bg-neutral-950/50 p-5 rounded-2xl border border-neutral-800 border-l-orange-500 border-l-4 shadow-lg">
+                                                    <div className="bg-neutral-950/50 p-4 md:p-5 rounded-2xl border border-neutral-800 border-l-orange-500 border-l-4 shadow-lg">
                                                         <p className="text-xs text-gray-500 uppercase tracking-wider mb-1 font-medium">Team Name</p>
-                                                        <p className="text-white font-bold text-xl">{form.getValues("teamName")}</p>
+                                                        <p className="text-white font-bold text-lg md:text-xl break-words">{form.getValues("teamName")}</p>
                                                     </div>
-                                                    <div className="bg-neutral-950/50 p-5 rounded-2xl border border-neutral-800 border-l-blue-500 border-l-4 shadow-lg">
+                                                    <div className="bg-neutral-950/50 p-4 md:p-5 rounded-2xl border border-neutral-800 border-l-blue-500 border-l-4 shadow-lg">
                                                         <p className="text-xs text-gray-500 uppercase tracking-wider mb-1 font-medium">University</p>
-                                                        <p className="text-white font-bold text-xl">{form.getValues("university") === "Other" ? form.getValues("otherUniversity") : form.getValues("university")}</p>
+                                                        <p className="text-white font-bold text-lg md:text-xl break-words">{form.getValues("university") === "Other" ? form.getValues("otherUniversity") : form.getValues("university")}</p>
                                                     </div>
                                                 </div>
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
 
-                                    <div className="flex justify-between items-center pt-8 border-t border-neutral-800/50">
+                                    <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-3 pt-6 md:pt-8 border-t border-neutral-800/50">
                                         <Button
                                             type="button"
                                             variant="ghost"
                                             onClick={prevStep}
                                             disabled={step === 1 || isSubmitting}
-                                            className="text-gray-400 hover:text-white transition-colors"
+                                            className="text-gray-400 hover:text-white transition-colors w-full sm:w-auto h-11 md:h-12"
                                         >
                                             Previous
                                         </Button>
@@ -539,7 +539,7 @@ export default function RegisterPage() {
                                             <Button
                                                 type="button"
                                                 onClick={nextStep}
-                                                className="bg-orange-600 hover:bg-orange-700 px-8 rounded-xl h-12 font-semibold shadow-lg transition-all"
+                                                className="bg-orange-600 hover:bg-orange-700 w-full sm:w-auto px-8 rounded-xl h-11 md:h-12 font-semibold shadow-lg transition-all"
                                             >
                                                 Next Step
                                             </Button>
@@ -547,10 +547,10 @@ export default function RegisterPage() {
                                             <Button
                                                 type="submit"
                                                 disabled={isSubmitting}
-                                                className="bg-gradient-to-r from-orange-600 to-orange-400 hover:from-orange-700 hover:to-orange-500 px-10 shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-all duration-300 rounded-xl h-12 min-w-[200px] font-bold"
+                                                className="bg-gradient-to-r from-orange-600 to-orange-400 hover:from-orange-700 hover:to-orange-500 w-full sm:w-auto px-10 shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-all duration-300 rounded-xl h-11 md:h-12 min-w-[200px] font-bold"
                                             >
                                                 {isSubmitting ? (
-                                                    <span className="flex items-center gap-2">
+                                                    <span className="flex items-center gap-2 justify-center">
                                                         <Loader2 className="w-5 h-5 animate-spin" />
                                                         Registering...
                                                     </span>

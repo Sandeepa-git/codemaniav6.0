@@ -43,7 +43,7 @@ const Partners = () => {
                     </div>
                 </AnimationContainer>
 
-                <div className="mt-32 max-w-3xl w-full p-10 rounded-[3rem] bg-gradient-to-br from-neutral-900 to-black border border-white/5 relative overflow-hidden">
+                <div className="mt-32 max-w-3xl w-full p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-gradient-to-br from-neutral-900 to-black border border-white/5 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-orange-600/10 blur-[100px] -z-10"></div>
 
                     <AnimationContainer animation="fadeUp" delay={0.5}>

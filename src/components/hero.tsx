@@ -143,14 +143,14 @@ const Hero = () => {
             <Countdown />
           </AnimationContainer>
 
-          <AnimationContainer animation="fadeUp" delay={0.9}>
+          {/* <AnimationContainer animation="fadeUp" delay={0.9}>
             <Link
               href="/register"
               className="mt-2 px-10 py-4 bg-gradient-to-r from-orange-600 to-orange-400 text-white font-bold rounded-full shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)] hover:scale-105 transition-all duration-300 inline-block text-base"
             >
               Register Now
             </Link>
-          </AnimationContainer>
+          </AnimationContainer> */}
         </div>
 
         {/* Right Design (Image) */}
