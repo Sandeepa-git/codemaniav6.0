@@ -247,33 +247,19 @@ export default function RegisterPage() {
     const formRef = useRef<HTMLDivElement>(null);
 
     // Registration Lock Logic
-    const [timeRemaining, setTimeRemaining] = useState<{ days: number, hours: number, minutes: number, seconds: number } | null>(null);
     const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
 
     useEffect(() => {
-        // Target Date: January 30, 2026 at 7:00 PM
-        // Target Date: January 1, 2024 at 7:00 PM (Unlocked)
-        const targetDate = new Date("2024-01-01T19:00:00");
+        // Target Date: January 30, 2026 at 5:00 PM
+        const targetDate = new Date("2026-01-30T17:00:00");
 
-        const updateTimer = () => {
+        const checkRegistrationStatus = () => {
             const now = new Date();
-            const diff = targetDate.getTime() - now.getTime();
-
-            if (diff <= 0) {
-                setIsRegistrationOpen(true);
-                setTimeRemaining(null);
-            } else {
-                setIsRegistrationOpen(false);
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                setTimeRemaining({ days, hours, minutes, seconds });
-            }
+            setIsRegistrationOpen(now >= targetDate);
         };
 
-        const timerId = setInterval(updateTimer, 1000);
-        updateTimer(); // Initial call
+        const timerId = setInterval(checkRegistrationStatus, 60000); // Check every minute
+        checkRegistrationStatus(); // Initial call
 
         return () => clearInterval(timerId);
     }, []);
@@ -452,21 +438,7 @@ export default function RegisterPage() {
                                     </div>
                                     <h4 className="text-orange-500 font-bold uppercase text-xs tracking-widest mb-1">Registration Status</h4>
                                     <p className="text-white text-2xl font-black mb-1">{isRegistrationOpen ? "OPEN" : "LOCKED"}</p>
-                                    <p className="text-gray-400 font-medium text-xs mb-4">Jan 30 – Feb 10</p>
-
-                                    {!isRegistrationOpen && timeRemaining && (
-                                        <div className="flex gap-2 text-center">
-                                            {['d', 'h', 'm', 's'].map((unit, i) => {
-                                                const values = [timeRemaining.days, timeRemaining.hours, timeRemaining.minutes, timeRemaining.seconds];
-                                                return (
-                                                    <div key={unit} className="flex-1 bg-neutral-950 rounded p-1 border border-white/5">
-                                                        <div className="text-white font-bold text-sm">{values[i]}</div>
-                                                        <div className="text-[8px] text-gray-500 uppercase">{unit}</div>
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
-                                    )}
+                                    <p className="text-gray-400 font-medium text-xs">Jan 30 – Feb 10</p>
                                 </div>
 
 
@@ -507,28 +479,10 @@ export default function RegisterPage() {
                                 <Lock className="size-8 text-orange-500 relative z-10" />
                                 <div className="absolute inset-0 bg-orange-500/20 blur-xl rounded-full" />
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Registration Locked</h2>
-                            <p className="text-gray-400 max-w-lg mb-8">
-                                Registration for Codemania v6.0 opens on <span className="text-orange-500 font-bold">January 30th at 7:00 PM</span>. Get your team ready!
+                            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Registration Coming Soon</h2>
+                            <p className="text-gray-400 max-w-lg">
+                                Registration for Codemania v6.0 will open soon. Stay tuned!
                             </p>
-
-                            {timeRemaining && (
-                                <div className="grid grid-cols-4 gap-4 md:gap-8">
-                                    {[
-                                        { label: "DAYS", value: timeRemaining.days },
-                                        { label: "HOURS", value: timeRemaining.hours },
-                                        { label: "MINUTES", value: timeRemaining.minutes },
-                                        { label: "SECONDS", value: timeRemaining.seconds }
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex flex-col items-center">
-                                            <div className="text-3xl md:text-5xl font-black text-white bg-neutral-800/50 rounded-xl p-4 min-w-[80px] md:min-w-[100px] border border-white/10 shadow-2xl">
-                                                {String(item.value).padStart(2, '0')}
-                                            </div>
-                                            <span className="text-[10px] md:text-xs font-bold text-gray-500 mt-3 tracking-widest">{item.label}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
                         </div>
                     ) : (
                         <Card ref={formRef} className="bg-neutral-900/40 border-neutral-800 backdrop-blur-xl shadow-2xl rounded-2xl md:rounded-3xl overflow-hidden mt-8 md:mt-12 border">
