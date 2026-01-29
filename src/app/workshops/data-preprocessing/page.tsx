@@ -26,6 +26,7 @@ export default function Workshop01Page() {
                     description: "Prepare datasets for predictive modeling and analytical workflows."
                 }
             ]}
+            showContacts={false}
         />
     );
 }

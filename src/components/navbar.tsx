@@ -109,14 +109,14 @@ const Navbar = () => {
           </div>
 
           {/* Register Button - Hidden */}
-          {/* <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.7 }} className="hidden lg:block">
+          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.7 }} className="hidden lg:block">
             <Link
               href="/register"
               className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-6 py-2 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
             >
               Register Now
             </Link>
-          </motion.div> */}
+          </motion.div>
         </div>
       </motion.div>
 
@@ -183,7 +183,7 @@ const Navbar = () => {
               ))}
 
               {/* Register Now Mobile - Hidden */}
-              {/* <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.3, duration: 0.3 }}>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.3, duration: 0.3 }}>
                 <Link
                   href="/register"
                   onClick={() => setOpen(false)}
@@ -191,7 +191,7 @@ const Navbar = () => {
                 >
                   Register Now
                 </Link>
-              </motion.div> */}
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>

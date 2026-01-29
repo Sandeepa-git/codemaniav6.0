@@ -16,13 +16,14 @@ interface EventPageProps {
     status: string;
     date: string;
     takeaways: { title: string; description: string }[];
+    showContacts?: boolean;
 }
 
-const EventTemplate = ({ title, tagline, intro, status, date, takeaways }: EventPageProps) => {
+const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true }: EventPageProps) => {
     const contacts = [
         { name: "Ravishka Rathnayake", role: "Co-Chair" },
-        { name: "Sandeep Vimukthi", role: "Co-Chair" },
-        { name: "Tishan Arunalu", role: "Treasurer" },
+        { name: "Sandeepa Wimalasiri", role: "Co-Chair" },
+        { name: "Tishan Arunalu", role: "Industry Outreach Team Head" },
         { name: "Saneth Rasanjana", role: "Delegate Handling" }
     ];
 
@@ -89,24 +90,26 @@ const EventTemplate = ({ title, tagline, intro, status, date, takeaways }: Event
                         </AnimationContainer>
 
                         {/* Contacts Card */}
-                        <AnimationContainer animation="fadeLeft" delay={0.6}>
-                            <div className="p-8 rounded-3xl bg-white/[0.03] border border-white/[0.08]">
-                                <h4 className="text-xl font-bold mb-6 text-white">Contact Section</h4>
-                                <div className="space-y-4">
-                                    {contacts.map((contact, idx) => (
-                                        <div key={idx} className="flex items-center gap-4 group">
-                                            <div className="size-10 rounded-full bg-neutral-800 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors">
-                                                <User className="size-5" />
+                        {showContacts && (
+                            <AnimationContainer animation="fadeLeft" delay={0.6}>
+                                <div className="p-8 rounded-3xl bg-white/[0.03] border border-white/[0.08]">
+                                    <h4 className="text-xl font-bold mb-6 text-white">Contact Section</h4>
+                                    <div className="space-y-4">
+                                        {contacts.map((contact, idx) => (
+                                            <div key={idx} className="flex items-center gap-4 group">
+                                                <div className="size-10 rounded-full bg-neutral-800 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                                                    <User className="size-5" />
+                                                </div>
+                                                <div>
+                                                    <p className="font-bold text-sm">{contact.name}</p>
+                                                    <p className="text-xs text-gray-500 uppercase">{contact.role}</p>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <p className="font-bold text-sm">{contact.name}</p>
-                                                <p className="text-xs text-gray-500 uppercase">{contact.role}</p>
-                                            </div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        </AnimationContainer>
+                            </AnimationContainer>
+                        )}
                     </div>
                 </div>
             </Wrapper>

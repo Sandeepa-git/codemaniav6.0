@@ -26,6 +26,7 @@ export default function Workshop02Page() {
                     description: "Learn to approach datathon challenges with clarity and structured methodology."
                 }
             ]}
+            showContacts={false}
         />
     );
 }

@@ -15,12 +15,12 @@ const Contact = () => {
         },
         {
             role: "PROJECT CO-CHAIRPERSON",
-            name: "Sandeepa Vimukthi",
+            name: "Sandeepa Wimalasiri",
             phone: "0750445861",
             email: "cit-24-01-0110@sltc.ac.lk"
         },
         {
-            role: "PROJECT TREASURER",
+            role: "Industry Outreach Team Head",
             name: "Tishan Arunalu",
             phone: "071-5520046",
             email: "cit-24-01-0563@sltc.ac.lk"
