@@ -52,12 +52,12 @@ const ABOUT = () => {
 
         <div className="flex flex-col items-center justify-center w-full z-30">
           <AnimationContainer animation="fadeUp" delay={0.3}>
-            <SectionBadge title="About Codemania v6.0" />
+            <SectionBadge title="What is Codemania v6.0" />
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.4}>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">
-              About Codemania v6.0
+              What is Codemania v6.0
             </h2>
           </AnimationContainer>
 
