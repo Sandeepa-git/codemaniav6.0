@@ -374,7 +374,7 @@ export default function RegisterPage() {
                     </Link>
 
                     <header className="mb-8 md:mb-10 text-center md:text-left">
-                        <h1 className="text-[2.5rem] leading-tight sm:text-4xl md:text-6xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-100 to-orange-500 tracking-tighter">
+                        <h1 className="text-[2.5rem] leading-snug sm:text-4xl md:text-5xl font-heading font-black mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-100 to-orange-500 tracking-tighter">
                             Registrations
                         </h1>
                         <p className="text-orange-500 text-base sm:text-lg md:text-xl font-bold mb-4 md:mb-6">
@@ -390,13 +390,13 @@ export default function RegisterPage() {
 
 
                                 {/* Content */}
-                                <div className="p-6 md:p-8 flex flex-col justify-center items-start flex-1">
+                                <div className="p-6 md:p-8 flex flex-col justify-center items-start text-left flex-1">
                                     <div className="flex items-center gap-2 text-orange-500 mb-3 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">
                                         <Book size={14} />
                                         <span className="text-[10px] font-extrabold uppercase tracking-widest">Official Resource</span>
                                     </div>
-                                    <h3 className="text-white font-black text-2xl md:text-3xl mb-2 group-hover:text-orange-200 transition-colors">Delegate Handbook</h3>
-                                    <p className="text-gray-400 text-sm mb-6 max-w-sm">Essential guide for all participants. Contains rules, schedules, and datathon details.</p>
+                                    <h3 className="text-white font-heading font-black text-2xl md:text-3xl mb-2 group-hover:text-orange-200 transition-colors">Delegate Handbook</h3>
+                                    <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-md">Essential guide for all participants. Contains rules, schedules, and datathon details.</p>
 
                                     <a href="/codemania-v6-delegate-handbook.pdf" download="Codemania_V6_Delegate_Handbook.pdf" className="w-full sm:w-auto">
                                         <Button className="w-full sm:w-auto bg-orange-600 hover:bg-orange-500 text-white font-bold py-6 px-8 rounded-xl text-base shadow-lg shadow-orange-900/20 transition-all group-hover:translate-x-1">
