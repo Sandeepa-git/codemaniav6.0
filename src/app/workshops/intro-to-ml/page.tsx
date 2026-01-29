@@ -7,7 +7,7 @@ export default function Workshop02Page() {
             tagline="Turn Data Into Insight"
             intro="Workshop 02 builds on the first session by introducing machine learning concepts and data-driven thinking. Participants will learn how to apply models to problem statements, evaluate performance, and optimize solutions."
             status="Scheduled"
-            date="February 11"
+            date="February 16"
             takeaways={[
                 {
                     title: "Core ML Concepts",
