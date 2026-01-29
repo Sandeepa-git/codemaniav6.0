@@ -24,7 +24,7 @@ export default function ThankYouPage() {
                 </h1>
 
                 <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed">
-                    Your registration for <span className="text-orange-500 font-bold">Codemania 2025</span> has been received successfully.
+                    Your registration for <span className="text-orange-500 font-bold">Codemania v6.0</span> has been received successfully.
                     We've sent a confirmation email to the team leader. Stay tuned for further updates!
                 </p>
 

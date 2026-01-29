@@ -47,7 +47,7 @@ import Footer from "@/components/footer";
 
 // Firebase imports
 import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, query, orderBy, limit, getDocs, runTransaction, doc } from "firebase/firestore";
 
 // Schemas
 const memberSchema = z.object({
@@ -317,8 +317,12 @@ export default function RegisterPage() {
     const onSubmit = async (values: FormValues) => {
         setIsSubmitting(true);
         try {
+            // Generate Token Number
+            const tokenNumber = await generateTokenNumber();
+
             // Prepare Final Data
             const finalData = {
+                tokenNumber,
                 teamName: values.teamName,
                 university: values.university === "Other" ? values.otherUniversity : values.university,
                 createdAt: serverTimestamp(),
@@ -339,6 +343,27 @@ export default function RegisterPage() {
         } finally {
             setIsSubmitting(false);
         }
+    };
+
+    // Function to generate token number
+    const generateTokenNumber = async (): Promise<string> => {
+        const counterRef = doc(db, "counters", "teamTokenCounter");
+
+        return await runTransaction(db, async (transaction) => {
+            const counterDoc = await transaction.get(counterRef);
+
+            let nextNumber = 100; // Start from CM0100
+
+            if (counterDoc.exists()) {
+                nextNumber = counterDoc.data().currentNumber + 1;
+            }
+
+            // Update counter
+            transaction.set(counterRef, { currentNumber: nextNumber }, { merge: true });
+
+            // Format token: CM0100, CM0101, etc.
+            return `CM${String(nextNumber).padStart(4, '0')}`;
+        });
     };
 
     const nextStep = async () => {
