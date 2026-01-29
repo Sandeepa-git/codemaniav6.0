@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Wrapper from "@/components/global/wrapper";
@@ -7,7 +8,7 @@ import AnimationContainer from "@/components/global/animation-container";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowLeft, Calendar, CheckCircle2, User } from "lucide-react";
+import { ArrowLeft, Calendar, CheckCircle2, User, Lock } from "lucide-react";
 import Image from "next/image";
 
 interface EventPageProps {
@@ -21,6 +22,19 @@ interface EventPageProps {
 }
 
 const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true }: EventPageProps) => {
+    const [isLocked, setIsLocked] = useState(true);
+
+    useEffect(() => {
+        const checkLock = () => {
+            const now = new Date();
+            const unlockDate = new Date("2026-01-30T19:00:00");
+            setIsLocked(now < unlockDate);
+        };
+        checkLock();
+        const interval = setInterval(checkLock, 1000);
+        return () => clearInterval(interval);
+    }, []);
+
     const contacts = [
         { name: "Ravishka Rathnayake", role: "Co-Chair", img: "/images/ravishka.jpg" },
         { name: "Sandeepa Wimalasiri", role: "Co-Chair", img: "/images/sandeepa.jpg" },
@@ -84,11 +98,18 @@ const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showCon
                                 <h4 className="text-3xl font-black mb-2">{status}</h4>
                                 <p className="text-orange-50 opacity-90 text-lg font-medium">{date}</p>
 
-                                <Link href="/register">
-                                    <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-bold rounded-xl py-6 text-lg">
-                                        Register Now
+                                {isLocked ? (
+                                    <Button disabled className="w-full mt-8 bg-white/20 text-white cursor-not-allowed font-bold rounded-xl py-6 text-lg border border-white/10 hover:bg-white/20">
+                                        <Lock className="w-5 h-5 mr-2" />
+                                        Opening Soon
                                     </Button>
-                                </Link>
+                                ) : (
+                                    <Link href="/register">
+                                        <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-bold rounded-xl py-6 text-lg">
+                                            Register Now
+                                        </Button>
+                                    </Link>
+                                )}
                             </div>
                         </AnimationContainer>
 
