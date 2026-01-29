@@ -19,15 +19,16 @@ interface EventPageProps {
     date: string;
     takeaways: { title: string; description: string }[];
     showContacts?: boolean;
+    registrationClosed?: boolean;
 }
 
-const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true }: EventPageProps) => {
+const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true, registrationClosed = false }: EventPageProps) => {
     const [isLocked, setIsLocked] = useState(true);
 
     useEffect(() => {
         const checkLock = () => {
             const now = new Date();
-            const unlockDate = new Date("2026-01-30T19:00:00");
+            const unlockDate = new Date("2024-01-01T19:00:00");
             setIsLocked(now < unlockDate);
         };
         checkLock();
@@ -98,7 +99,12 @@ const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showCon
                                 <h4 className="text-3xl font-black mb-2">{status}</h4>
                                 <p className="text-orange-50 opacity-90 text-lg font-medium">{date}</p>
 
-                                {isLocked ? (
+                                {registrationClosed ? (
+                                    <Button disabled className="w-full mt-8 bg-neutral-800 text-gray-400 cursor-not-allowed font-bold rounded-xl py-6 text-lg border border-neutral-700">
+                                        <Lock className="w-5 h-5 mr-2" />
+                                        Coming Soon
+                                    </Button>
+                                ) : isLocked ? (
                                     <Button disabled className="w-full mt-8 bg-white/20 text-white cursor-not-allowed font-bold rounded-xl py-6 text-lg border border-white/10 hover:bg-white/20">
                                         <Lock className="w-5 h-5 mr-2" />
                                         Opening Soon

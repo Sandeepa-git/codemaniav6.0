@@ -27,6 +27,7 @@ export default function Workshop02Page() {
                 }
             ]}
             showContacts={false}
+            registrationClosed={true}
         />
     );
 }

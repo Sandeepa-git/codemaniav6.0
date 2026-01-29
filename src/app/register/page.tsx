@@ -251,7 +251,8 @@ export default function RegisterPage() {
 
     useEffect(() => {
         // Target Date: January 30, 2026 at 7:00 PM
-        const targetDate = new Date("2026-01-30T19:00:00");
+        // Target Date: January 1, 2024 at 7:00 PM (Unlocked)
+        const targetDate = new Date("2024-01-01T19:00:00");
 
         const updateTimer = () => {
             const now = new Date();
