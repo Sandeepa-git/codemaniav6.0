@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, UseFormReturn } from "react-hook-form";
 import * as z from "zod";
@@ -61,7 +61,7 @@ const memberSchema = z.object({
 });
 
 const formSchema = z.object({
-    teamName: z.string().min(2, "Team name is required"),
+    teamName: z.string().min(2, "Team name is required").regex(/^[a-zA-Z\s]+$/, "Team name should only contain letters"),
     university: z.string().min(2, "University is required"),
     otherUniversity: z.string().optional(),
     member1: memberSchema,
@@ -244,6 +244,7 @@ export default function RegisterPage() {
     const [step, setStep] = useState(1);
     const totalSteps = 5;
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const formRef = useRef<HTMLDivElement>(null);
 
     // Registration Lock Logic
     const [timeRemaining, setTimeRemaining] = useState<{ days: number, hours: number, minutes: number, seconds: number } | null>(null);
@@ -376,13 +377,15 @@ export default function RegisterPage() {
         const isValid = await form.trigger(fieldsToValidate);
         if (isValid) {
             setStep(s => Math.min(s + 1, totalSteps));
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            // Scroll to form card instead of top of page
+            formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
 
     const prevStep = () => {
         setStep(s => Math.max(s - 1, 1));
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        // Scroll to form card instead of top of page
+        formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
     return (
@@ -528,7 +531,7 @@ export default function RegisterPage() {
                             )}
                         </div>
                     ) : (
-                        <Card className="bg-neutral-900/40 border-neutral-800 backdrop-blur-xl shadow-2xl rounded-2xl md:rounded-3xl overflow-hidden mt-8 md:mt-12 border">
+                        <Card ref={formRef} className="bg-neutral-900/40 border-neutral-800 backdrop-blur-xl shadow-2xl rounded-2xl md:rounded-3xl overflow-hidden mt-8 md:mt-12 border">
                             <CardContent className="p-4 sm:p-6 md:p-10">
                                 <Form {...form}>
                                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 md:space-y-8 w-full">
