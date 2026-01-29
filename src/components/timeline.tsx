@@ -71,23 +71,23 @@ const TIMELINE = () => {
                                 {/* Card Side */}
                                 <div className={cn(
                                     "w-1/2 flex items-center",
-                                    index % 2 === 0 ? "justify-end pr-6 sm:pr-8 md:pr-16" : "justify-start pl-6 sm:pl-8 md:pl-16"
+                                    index % 2 === 0 ? "justify-end pr-3 xs:pr-6 sm:pr-8 md:pr-16" : "justify-start pl-3 xs:pl-6 sm:pl-8 md:pl-16"
                                 )}>
                                     <div className={cn(
-                                        "bg-neutral-900/40 border border-white/5 backdrop-blur-2xl rounded-[1.5rem] sm:rounded-[2.5rem] p-4 sm:p-8 md:p-10 w-full max-w-sm shadow-2xl transition-all duration-500 hover:border-orange-500/40 hover:-translate-y-2 group relative overflow-hidden",
+                                        "bg-neutral-900/40 border border-white/5 backdrop-blur-2xl rounded-[1rem] xs:rounded-[1.5rem] sm:rounded-[2.5rem] p-3 xs:p-4 sm:p-8 md:p-10 w-full max-w-sm shadow-2xl transition-all duration-500 hover:border-orange-500/40 hover:-translate-y-2 group relative overflow-hidden",
                                         index % 2 === 0 ? "text-right" : "text-left"
                                     )}>
-                                        <div className="absolute -inset-px bg-gradient-to-br from-orange-500/10 to-transparent rounded-[1.5rem] sm:rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <div className="absolute -inset-px bg-gradient-to-br from-orange-500/10 to-transparent rounded-[1rem] xs:rounded-[1.5rem] sm:rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                                        <span className="text-orange-500 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-4 block">{item.phase}</span>
-                                        <h3 className="text-lg sm:text-xl lg:text-2xl font-medium text-white group-hover:text-orange-400 transition-colors leading-tight">
+                                        <span className="text-orange-500 text-[8px] xs:text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.1em] xs:tracking-[0.2em] mb-1 xs:mb-2 sm:mb-4 block">{item.phase}</span>
+                                        <h3 className="text-sm xs:text-base sm:text-xl lg:text-2xl font-medium text-white group-hover:text-orange-400 transition-colors leading-tight break-words hyphens-auto">
                                             {item.title}
                                         </h3>
                                         <div className={cn(
-                                            "h-px w-6 sm:w-10 bg-orange-500/20 my-3 sm:my-5 transition-all group-hover:w-16",
+                                            "h-px w-4 xs:w-6 sm:w-10 bg-orange-500/20 my-2 xs:my-3 sm:my-5 transition-all group-hover:w-8 xs:group-hover:w-16",
                                             index % 2 === 0 ? "ml-auto" : "mr-auto"
                                         )} />
-                                        <p className="text-[10px] sm:text-sm md:text-base text-gray-400 font-medium tracking-tight bg-white/5 inline-block px-3 sm:px-4 py-1 sm:py-1.5 rounded-full">{item.date}</p>
+                                        <p className="text-[9px] xs:text-[10px] sm:text-sm md:text-base text-gray-400 font-medium tracking-tight bg-white/5 inline-block px-2 xs:px-3 sm:px-4 py-0.5 xs:py-1 sm:py-1.5 rounded-full whitespace-nowrap">{item.date}</p>
                                     </div>
 
                                     {/* Connecting Line (Branch - Static) */}
@@ -101,13 +101,13 @@ const TIMELINE = () => {
 
                                 {/* Central Node - Static Glow */}
                                 <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-30">
-                                    <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-neutral-950 border border-orange-500/60 flex items-center justify-center shadow-[0_0_40px_rgba(249,115,22,0.4)] transition-all duration-500 group-hover:scale-125 relative">
+                                    <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12 rounded-full bg-neutral-950 border border-orange-500/60 flex items-center justify-center shadow-[0_0_40px_rgba(249,115,22,0.4)] transition-all duration-500 group-hover:scale-125 relative">
                                         {/* Outer Glow Aura (Static) */}
                                         <div className="absolute inset-[-8px] rounded-full bg-orange-600/10 blur-xl" />
                                     </div>
 
                                     {/* Core glowing dot */}
-                                    <div className="absolute w-3 h-3 md:w-5 md:h-5 rounded-full bg-orange-500 shadow-[0_0_20px_#f97316,0_0_40px_rgba(249,115,22,0.6)] z-40" />
+                                    <div className="absolute w-2 h-2 sm:w-3 sm:h-3 md:w-5 md:h-5 rounded-full bg-orange-500 shadow-[0_0_20px_#f97316,0_0_40px_rgba(249,115,22,0.6)] z-40" />
                                 </div>
 
                                 {/* Empty Side Spacer */}
