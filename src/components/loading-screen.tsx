@@ -73,7 +73,7 @@ const LoadingScreen = () => {
                 >
                     <div className="relative max-w-[90vw] text-center">
                         <motion.h1
-                            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl tracking-widest font-light text-orange-500 leading-tight"
+                            className="text-lg sm:text-3xl md:text-5xl lg:text-6xl tracking-wide sm:tracking-widest font-light text-orange-500 leading-tight whitespace-pre-wrap break-words"
                         >
                             {displayedText}
                             <motion.span
