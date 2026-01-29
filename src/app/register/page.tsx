@@ -114,7 +114,7 @@ const UNIVERSITIES = [
     "Other",
 ];
 
-const ACADEMIC_YEARS = ["Year 1", "Year 2", "Year 3", "Year 4 / Final"];
+const ACADEMIC_YEARS = ["Year 1", "Year 2", "Year 3", "Year 4"];
 
 // Extracted MemberForm component
 interface MemberFormProps {
