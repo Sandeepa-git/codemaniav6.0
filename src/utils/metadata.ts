@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const generateMetadata = ({
-    title = `${process.env.NEXT_PUBLIC_APP_NAME} | Home`,
+    title = `${process.env.NEXT_PUBLIC_APP_NAME || "Codemania v6.0"} | Home`,
     description = `Manage your real estate properties with ease.`,
     image = "/thumbnail.png",
     icons = [

@@ -5,9 +5,10 @@ import AnimationContainer from './global/animation-container';
 import Wrapper from "./global/wrapper";
 import SectionBadge from './ui/section-badge';
 import Image from "next/image";
-import { ArrowRight, ShoppingBag, Check, Lock } from "lucide-react";
+import { ArrowLeft, ArrowRight, ShoppingBag, Check, Lock } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface Product {
   name: string;
@@ -68,6 +69,13 @@ const SHOP = () => {
   if (isLocked) {
     return (
       <Wrapper className="min-h-[70vh] flex flex-col items-center justify-center text-center py-20 relative overflow-hidden">
+        <div className="absolute top-6 left-6 md:top-10 md:left-10 z-50">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-500 transition-colors group px-1 text-sm md:text-base">
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </Link>
+        </div>
+
         {/* Background Effects */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
 

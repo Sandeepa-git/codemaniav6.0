@@ -3,7 +3,8 @@
 import AnimationContainer from './global/animation-container';
 import Wrapper from "./global/wrapper";
 import SectionBadge from './ui/section-badge';
-import { Trophy, Medal, Timer, Award } from "lucide-react";
+import { Trophy, Medal, Timer, Award, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 const LEADERBOARD_SKELETON = [
     { rank: 1, team: "Team Name", uni: "University Name", score: "---", status: "Winner" },
@@ -14,8 +15,15 @@ const LEADERBOARD_SKELETON = [
 const Leaderboard = () => {
     return (
         <Wrapper className="py-24 lg:py-40">
+            <div className="max-w-5xl mx-auto w-full mb-8">
+                <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-500 transition-colors group px-1 text-sm md:text-base">
+                    <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                    Back to Home
+                </Link>
+            </div>
+
             {/* Header Section */}
-            <div className="flex flex-col items-center text-center gap-6 mb-24">
+            <div className="flex flex-col items-center text-center gap-6 mb-16 md:mb-24">
                 <AnimationContainer animation="fadeUp" delay={0.2}>
                     <SectionBadge title="Rankings" />
                 </AnimationContainer>
@@ -31,7 +39,7 @@ const Leaderboard = () => {
             </div>
 
             {/* Standings Table Area */}
-            <div className="max-w-5xl mx-auto relative group">
+            <div className="max-w-5xl mx-auto relative group overflow-hidden pl-4 pr-4 rounded-[2rem]">
 
                 {/* Coming Soon Overlay */}
                 <div className="absolute inset-0 z-50 flex items-center justify-center p-8 backdrop-blur-[6px] rounded-[3.5rem] bg-black/40 border border-white/5 group-hover:bg-black/20 transition-all duration-700">
@@ -52,16 +60,16 @@ const Leaderboard = () => {
                 {/* Background Skeleton Design */}
                 <div className="opacity-20 space-y-4">
                     {LEADERBOARD_SKELETON.map((item, idx) => (
-                        <div key={idx} className="flex items-center gap-6 p-6 sm:p-10 rounded-3xl bg-neutral-900/50 border border-white/5">
-                            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-xl font-bold text-gray-500">
+                        <div key={idx} className="flex items-center gap-3 sm:gap-6 p-4 sm:p-10 rounded-3xl bg-neutral-900/50 border border-white/5">
+                            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-xl font-bold text-gray-500 shrink-0">
                                 {item.rank}
                             </div>
-                            <div className="flex-1">
-                                <div className="h-6 w-48 bg-white/10 rounded-lg mb-2" />
-                                <div className="h-4 w-32 bg-white/5 rounded-lg" />
+                            <div className="flex-1 min-w-0">
+                                <div className="h-6 w-32 sm:w-48 bg-white/10 rounded-lg mb-2" />
+                                <div className="h-4 w-20 sm:w-32 bg-white/5 rounded-lg" />
                             </div>
-                            <div className="text-right">
-                                <div className="h-8 w-20 bg-white/10 rounded-lg" />
+                            <div className="text-right shrink-0">
+                                <div className="h-8 w-16 sm:w-20 bg-white/10 rounded-lg" />
                             </div>
                         </div>
                     ))}

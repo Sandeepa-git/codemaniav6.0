@@ -45,9 +45,9 @@ export default function HomePage() {
         <Prizes />
       </section>
 
-      <section id="partners">
+      {/* <section id="partners">
         <Partners />
-      </section>
+      </section> */}
 
       <section id="portals">
         <Portals />
