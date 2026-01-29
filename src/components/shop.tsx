@@ -1,10 +1,13 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import AnimationContainer from './global/animation-container';
 import Wrapper from "./global/wrapper";
 import SectionBadge from './ui/section-badge';
 import Image from "next/image";
-import { ArrowRight, ShoppingBag, Check } from "lucide-react";
+import { ArrowRight, ShoppingBag, Check, Lock } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 interface Product {
   name: string;
@@ -29,6 +32,93 @@ const PRODUCTS: Product[] = [
 ];
 
 const SHOP = () => {
+  // Countdown State
+  const [timeRemaining, setTimeRemaining] = useState<{ days: number, hours: number, minutes: number, seconds: number } | null>(null);
+  const [isLocked, setIsLocked] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Target Date: February 20, 2026, 12:00 AM (00:00:00)
+    const targetDate = new Date("2026-02-20T00:00:00");
+
+    const updateTimer = () => {
+      const now = new Date();
+      const diff = targetDate.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        setIsLocked(false);
+        setTimeRemaining(null);
+        setIsModalOpen(false); // Close modal if it was open
+      } else {
+        setIsLocked(true);
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        setTimeRemaining({ days, hours, minutes, seconds });
+      }
+    };
+
+    const timerId = setInterval(updateTimer, 1000);
+    updateTimer(); // Initial check
+
+    return () => clearInterval(timerId);
+  }, []);
+
+  if (isLocked) {
+    return (
+      <Wrapper className="min-h-[70vh] flex flex-col items-center justify-center text-center py-20 relative overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
+
+        <div className="flex flex-col items-center gap-8 z-10">
+          <div className="size-24 rounded-full bg-orange-500/10 flex items-center justify-center border border-orange-500/20 animate-pulse shadow-[0_0_30px_rgba(234,88,12,0.2)]">
+            <ShoppingBag className="size-10 text-orange-500" />
+          </div>
+
+          <div>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-folkra font-medium text-white mb-6 tracking-tight">
+              Dropping <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">Soon</span>
+            </h1>
+            <p className="text-gray-400 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed">
+              The exclusive Codemania v6.0 merchandise collection unlocks on <br /> <span className="text-white font-bold">February 20, 2026</span>.
+            </p>
+          </div>
+
+          {timeRemaining && (
+            <div className="grid grid-cols-4 gap-4 md:gap-8 mt-8">
+              {[
+                { label: "DAYS", value: timeRemaining.days },
+                { label: "HOURS", value: timeRemaining.hours },
+                { label: "MINS", value: timeRemaining.minutes },
+                { label: "SECS", value: timeRemaining.seconds }
+              ].map((item, i) => (
+                <div key={i} className="flex flex-col items-center group">
+                  <div className="text-4xl md:text-7xl font-black text-white bg-neutral-900/80 border border-white/10 rounded-3xl p-6 md:p-8 min-w-[90px] md:min-w-[160px] shadow-2xl backdrop-blur-xl group-hover:border-orange-500/30 transition-colors">
+                    {String(item.value).padStart(2, '0')}
+                  </div>
+                  <span className="text-[10px] md:text-sm font-bold text-gray-500 group-hover:text-orange-500 uppercase tracking-[0.3em] mt-6 transition-colors">{item.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-12 flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 backdrop-blur-md">
+            <Lock className="w-4 h-4" />
+            <span>Store is currently locked</span>
+          </div>
+        </div>
+      </Wrapper>
+    );
+  }
+
+  const handleOrderClick = (e: React.MouseEvent) => {
+    if (isLocked) {
+      e.preventDefault();
+      setIsModalOpen(true);
+    }
+  };
+
   return (
     <Wrapper className="py-24 lg:py-40">
       {/* Header Section */}
@@ -128,15 +218,26 @@ const SHOP = () => {
                       </div>
                     </div>
 
-                    <a
-                      href={product.orderLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/order flex items-center justify-center gap-4 w-full bg-white text-black py-5 rounded-[2rem] font-black text-lg hover:bg-orange-500 hover:text-white transition-all duration-500 shadow-xl"
+                    <button
+                      onClick={(e) => {
+                        if (isLocked) {
+                          setIsModalOpen(true);
+                        } else {
+                          window.open(product.orderLink, '_blank');
+                        }
+                      }}
+                      className={`group/order flex items-center justify-center gap-4 w-full py-5 rounded-[2rem] font-black text-lg transition-all duration-500 shadow-xl ${isLocked
+                        ? "bg-neutral-800 text-gray-400 cursor-not-allowed border border-white/10 hover:border-orange-500/50"
+                        : "bg-white text-black hover:bg-orange-500 hover:text-white"
+                        }`}
                     >
-                      Process Order
-                      <ArrowRight className="size-6 group-hover/order:translate-x-2 transition-transform" />
-                    </a>
+                      {isLocked ? "Dropping Soon" : "Process Order"}
+                      {isLocked ? (
+                        <Lock className="size-6" />
+                      ) : (
+                        <ArrowRight className="size-6 group-hover/order:translate-x-2 transition-transform" />
+                      )}
+                    </button>
                   </div>
                 </div>
               </AnimationContainer>
@@ -145,6 +246,50 @@ const SHOP = () => {
           </div>
         ))}
       </div>
+
+      {/* Dropout Countdown Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="bg-neutral-900/95 border border-white/10 backdrop-blur-xl sm:rounded-[2rem] max-w-md p-8 shadow-2xl">
+          <DialogHeader className="flex flex-col items-center text-center space-y-4">
+            <div className="size-16 rounded-full bg-orange-500/10 flex items-center justify-center border border-orange-500/20 mb-2">
+              <ShoppingBag className="size-8 text-orange-500" />
+            </div>
+            <DialogTitle className="text-3xl font-black text-white font-folkra leading-tight">
+              Merchandise Dropping Soon <span className="text-orange-500">🚀</span>
+            </DialogTitle>
+            <DialogDescription className="text-gray-400 text-base">
+              Our merch officially drops on <span className="text-white font-bold">February 20</span>. <br /> Get ready to grab yours!
+            </DialogDescription>
+          </DialogHeader>
+
+          {timeRemaining && (
+            <div className="grid grid-cols-4 gap-2 sm:gap-4 mt-8 w-full">
+              {[
+                { label: "DAYS", value: timeRemaining.days },
+                { label: "HRS", value: timeRemaining.hours },
+                { label: "MINS", value: timeRemaining.minutes },
+                { label: "SECS", value: timeRemaining.seconds }
+              ].map((item, i) => (
+                <div key={i} className="flex flex-col items-center p-3 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="text-2xl sm:text-3xl font-black text-white mb-1">
+                    {String(item.value).padStart(2, '0')}
+                  </div>
+                  <span className="text-[8px] sm:text-[10px] font-bold text-gray-500 uppercase tracking-widest">{item.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-8 w-full">
+            <Button
+              onClick={() => setIsModalOpen(false)}
+              className="w-full bg-white text-black hover:bg-gray-200 font-bold rounded-xl py-6 text-base"
+            >
+              Got it, I'll be ready!
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Wrapper>
   );
 };

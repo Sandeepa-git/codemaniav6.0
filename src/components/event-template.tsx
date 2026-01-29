@@ -8,6 +8,7 @@ import AnimationContainer from "@/components/global/animation-container";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, CheckCircle2, User } from "lucide-react";
+import Image from "next/image";
 
 interface EventPageProps {
     title: string;
@@ -21,10 +22,10 @@ interface EventPageProps {
 
 const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true }: EventPageProps) => {
     const contacts = [
-        { name: "Ravishka Rathnayake", role: "Co-Chair" },
-        { name: "Sandeepa Wimalasiri", role: "Co-Chair" },
-        { name: "Tishan Arunalu", role: "Industry Outreach Team Head" },
-        { name: "Saneth Rasanjana", role: "Delegate Handling" }
+        { name: "Ravishka Rathnayake", role: "Co-Chair", img: "/images/ravishka.jpg" },
+        { name: "Sandeepa Wimalasiri", role: "Co-Chair", img: "/images/sandeepa.jpg" },
+        { name: "Chanupa Niduwara", role: "Industry Outreach Team Head", img: "/images/chanupa.jpg" },
+        { name: "Saneth Rasanjana", role: "Delegate Handling", img: "/images/saneth.jpg" }
     ];
 
     return (
@@ -83,9 +84,11 @@ const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showCon
                                 <h4 className="text-3xl font-black mb-2">{status}</h4>
                                 <p className="text-orange-50 opacity-90 text-lg font-medium">{date}</p>
 
-                                <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-bold rounded-xl py-6 text-lg">
-                                    Register Now
-                                </Button>
+                                <Link href="/register">
+                                    <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-bold rounded-xl py-6 text-lg">
+                                        Register Now
+                                    </Button>
+                                </Link>
                             </div>
                         </AnimationContainer>
 
@@ -97,8 +100,13 @@ const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showCon
                                     <div className="space-y-4">
                                         {contacts.map((contact, idx) => (
                                             <div key={idx} className="flex items-center gap-4 group">
-                                                <div className="size-10 rounded-full bg-neutral-800 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors">
-                                                    <User className="size-5" />
+                                                <div className="relative size-12 rounded-full overflow-hidden border border-white/10 group-hover:border-orange-500 transition-colors">
+                                                    <Image
+                                                        src={contact.img}
+                                                        alt={contact.name}
+                                                        fill
+                                                        className="object-cover object-top"
+                                                    />
                                                 </div>
                                                 <div>
                                                     <p className="font-bold text-sm">{contact.name}</p>

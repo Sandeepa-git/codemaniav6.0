@@ -40,9 +40,11 @@ const Workshops = () => {
                     </h2>
                 </AnimationContainer>
 
+
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 w-full max-w-5xl">
                     {workshops.map((workshop, index) => (
-                        <AnimationContainer key={index} animation="fadeUp" delay={0.4 + index * 0.1}>
+                        <AnimationContainer key={index} animation="fadeUp" delay={0.5 + index * 0.1}>
                             <div className="p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm hover:bg-white/[0.05] transition-all duration-300 text-left flex flex-col h-full group">
                                 <div className="p-4 rounded-2xl bg-orange-500/10 w-fit mb-6 group-hover:scale-110 transition-transform duration-300">
                                     {workshop.icon}
@@ -60,6 +62,15 @@ const Workshops = () => {
                         </AnimationContainer>
                     ))}
                 </div>
+
+                <AnimationContainer animation="fadeUp" delay={0.6}>
+                    <Link href="/register">
+                        <Button size="lg" className="mt-8 px-8 py-6 rounded-full bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white font-bold text-lg shadow-[0_0_20px_rgba(234,88,12,0.4)] hover:shadow-[0_0_40px_rgba(234,88,12,0.6)] hover:scale-105 transition-all duration-300">
+                            Register Now
+                            <ArrowRight className="size-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                    </Link>
+                </AnimationContainer>
             </div>
         </Wrapper>
     );

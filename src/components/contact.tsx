@@ -4,32 +4,37 @@ import AnimationContainer from "./global/animation-container";
 import Wrapper from "./global/wrapper";
 import SectionBadge from "./ui/section-badge";
 import { Mail, Phone, User } from "lucide-react";
+import Image from "next/image";
 
 const Contact = () => {
     const contacts = [
         {
             role: "PROJECT CO-CHAIRPERSON",
             name: "Ravishka Rathnayake",
-            phone: "0713581934",
-            email: "cit-24-01-0251@sltc.ac.lk"
+            phone: "+94 71 358 1934",
+            email: "ravishkarathnayaka.v@gmail.com",
+            img: "/images/ravishka.jpg"
         },
         {
             role: "PROJECT CO-CHAIRPERSON",
             name: "Sandeepa Wimalasiri",
-            phone: "0750445861",
-            email: "cit-24-01-0110@sltc.ac.lk"
+            phone: "+94 75 099 7715",
+            email: "agsvwimalasiri@gmail.com",
+            img: "/images/sandeepa.jpg"
         },
         {
             role: "Industry Outreach Team Head",
-            name: "Tishan Arunalu",
-            phone: "071-5520046",
-            email: "cit-24-01-0563@sltc.ac.lk"
+            name: "Chanupa Niduwara",
+            phone: "+94 76 243 5704",
+            email: "niduwara2000@gmail.com",
+            img: "/images/chanupa.jpg"
         },
         {
             role: "DELEGATE HANDLING HEAD",
             name: "Saneth Rasanjana",
-            phone: "0722281161",
-            email: "cit-24-01-0238@sltc.ac.lk"
+            phone: "+94 72 228 1161",
+            email: "Sanithrasanjana@gmail.com",
+            img: "/images/saneth.jpg"
         }
     ];
 
@@ -49,19 +54,24 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 w-full">
                     {contacts.map((contact, index) => (
                         <AnimationContainer key={index} animation="fadeUp" delay={0.4 + index * 0.1}>
-                            <div className="p-8 rounded-3xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm text-left hover:border-orange-500/50 transition-all duration-300">
-                                <div className="p-3 rounded-xl bg-orange-500/10 w-fit mb-6">
-                                    <User className="size-6 text-orange-500" />
+                            <div className="p-6 rounded-3xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm text-left hover:border-orange-500/50 transition-all duration-300 group h-full flex flex-col items-center text-center">
+                                <div className="relative w-24 h-24 mb-6 rounded-full overflow-hidden bg-neutral-900 border-2 border-orange-500/20">
+                                    <Image
+                                        src={contact.img}
+                                        alt={contact.name}
+                                        fill
+                                        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                                    />
                                 </div>
                                 <span className="text-orange-500 text-xs font-bold uppercase tracking-tight block mb-2">{contact.role}</span>
                                 <h3 className="text-xl font-bold text-white mb-6">{contact.name}</h3>
 
-                                <div className="space-y-4">
-                                    <a href={`tel:${contact.phone}`} className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors text-sm">
+                                <div className="space-y-4 w-full">
+                                    <a href={`tel:${contact.phone}`} className="flex items-center justify-center gap-3 text-gray-400 hover:text-white transition-colors text-sm">
                                         <Phone className="size-4 text-orange-500/60" />
                                         {contact.phone}
                                     </a>
-                                    <a href={`mailto:${contact.email}`} className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors text-sm break-all">
+                                    <a href={`mailto:${contact.email}`} className="flex items-center justify-center gap-3 text-gray-400 hover:text-white transition-colors text-sm break-all">
                                         <Mail className="size-4 text-orange-500/60" />
                                         {contact.email}
                                     </a>

@@ -97,14 +97,7 @@ const ABOUT = () => {
             </div>
           </AnimationContainer>
 
-          <AnimationContainer animation="fadeUp" delay={1}>
-            <Link href="/register">
-              <Button size="lg" className="mt-6 flex items-center justify-center gap-2 rounded-xl bg-orange-600 hover:bg-orange-700">
-                Register Now
-                <ArrowRightIcon className="size-4" />
-              </Button>
-            </Link>
-          </AnimationContainer>
+
         </div>
       </div>
     </Wrapper>
