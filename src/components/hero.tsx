@@ -119,22 +119,35 @@ const Hero = () => {
 
   return (
     <Wrapper className="pt-20 lg:pt-32 relative min-h-screen w-full flex-1 overflow-hidden bg-[#101010]">
-      <div className="flex flex-col lg:flex-row w-full h-full px-4 sm:px-6 lg:px-0 items-center justify-between">
+      <div className="flex flex-col lg:flex-row w-full h-full px-4 sm:px-6 lg:px-0 items-center justify-between relative min-h-[60vh] lg:min-h-0">
 
-        {/* Left Content */}
-        <div className="flex flex-col items-center lg:items-start justify-center text-center lg:text-left gap-6 sm:gap-8 py-10 lg:py-16 w-full lg:w-3/5 z-10">
+        {/* Mobile-Only Background Image Layer */}
+        <div className="absolute inset-0 z-0 w-full h-full overflow-hidden lg:hidden">
+          <div className="absolute inset-0 bg-[#101010]/60 z-10" />
+          <Image
+            src="/images/owl.png"
+            alt="Owl Background"
+            fill
+            priority
+            className="object-cover object-center opacity-50 mix-blend-screen"
+          />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-orange-600/10 blur-[80px] rounded-full animate-pulse z-0"></div>
+        </div>
+
+        {/* Content Section */}
+        <div className="flex flex-col items-center lg:items-start justify-center text-center lg:text-left gap-6 sm:gap-8 py-10 lg:py-16 w-full lg:w-3/5 z-20 lg:z-10 relative">
           <AnimationContainer animation="fadeUp" delay={0.2}>
             <SectionBadge title="Codemania v6.0" />
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.4}>
-            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-folkra font-normal leading-tight text-gray-300 tracking-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-folkra font-normal leading-tight text-white lg:text-gray-300 tracking-tight drop-shadow-xl lg:drop-shadow-none">
               Decode the Data. <br /> Dominate the Challenge.
             </h1>
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.6}>
-            <p className="text-sm sm:text-lg text-gray-400 max-w-xl leading-relaxed">
+            <p className="text-sm sm:text-lg text-gray-300 lg:text-gray-400 max-w-xl leading-relaxed drop-shadow-md lg:drop-shadow-none">
               Codemania v6.0: Where Data Meets Competition. The ultimate island-wide datathon for undergraduate innovators across Sri Lanka.
             </p>
           </AnimationContainer>
@@ -142,12 +155,10 @@ const Hero = () => {
           <AnimationContainer animation="fadeUp" delay={0.8}>
             <Countdown />
           </AnimationContainer>
-
-
         </div>
 
-        {/* Right Design (Image) */}
-        <div className="flex w-full lg:w-2/5 justify-center lg:justify-end relative h-[350px] sm:h-[450px] lg:h-[600px] mt-12 lg:mt-0">
+        {/* Desktop-Only Right Image */}
+        <div className="hidden lg:flex w-full lg:w-2/5 justify-center lg:justify-end relative h-[350px] sm:h-[450px] lg:h-[600px] mt-12 lg:mt-0">
           <AnimationContainer animation="fadeUp" delay={0.5} className="w-full h-full relative">
             <div className="absolute inset-0 bg-gradient-to-r from-[#101010] via-transparent to-transparent z-20 w-1/3 hidden lg:block"></div>
             <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#101010] to-transparent z-20"></div>
@@ -162,6 +173,7 @@ const Hero = () => {
             <div className="absolute top-[40%] right-[30%] w-32 h-32 bg-orange-600/20 blur-[80px] rounded-full animate-pulse"></div>
           </AnimationContainer>
         </div>
+
       </div>
 
       {/* Value Propositions - now wider and slightly smaller text */}

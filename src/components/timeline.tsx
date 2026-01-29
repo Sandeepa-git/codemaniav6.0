@@ -54,7 +54,7 @@ const TIMELINE = () => {
             <div className="relative max-w-5xl mx-auto px-4">
 
                 {/* Central Vertical Line (Desktop/Mobile) */}
-                <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-600/0 via-orange-500 to-orange-400/0 -translate-x-1/2 -z-10 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+                <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-600/0 via-orange-500 to-orange-400/0 -translate-x-1/2 -z-10 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.2)]">
                     <div className="absolute inset-0 bg-white/10 animate-pulse rounded-full" />
                 </div>
 
@@ -66,16 +66,16 @@ const TIMELINE = () => {
                         >
                             <div className={cn(
                                 "flex items-center justify-center w-full relative",
-                                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                                index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                             )}>
                                 {/* Card Side */}
                                 <div className={cn(
-                                    "w-full md:w-1/2 flex items-center pl-16 md:pl-0",
-                                    index % 2 === 0 ? "md:justify-end md:pr-16" : "md:justify-start md:pl-16"
+                                    "w-1/2 flex items-center",
+                                    index % 2 === 0 ? "justify-end pr-6 sm:pr-8 md:pr-16" : "justify-start pl-6 sm:pl-8 md:pl-16"
                                 )}>
                                     <div className={cn(
-                                        "bg-neutral-900/40 border border-white/5 backdrop-blur-2xl rounded-[1.5rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10 w-full max-w-sm shadow-2xl transition-all duration-500 hover:border-orange-500/40 hover:-translate-y-2 group relative overflow-hidden",
-                                        index % 2 === 0 ? "md:text-right text-left" : "text-left"
+                                        "bg-neutral-900/40 border border-white/5 backdrop-blur-2xl rounded-[1.5rem] sm:rounded-[2.5rem] p-4 sm:p-8 md:p-10 w-full max-w-sm shadow-2xl transition-all duration-500 hover:border-orange-500/40 hover:-translate-y-2 group relative overflow-hidden",
+                                        index % 2 === 0 ? "text-right" : "text-left"
                                     )}>
                                         <div className="absolute -inset-px bg-gradient-to-br from-orange-500/10 to-transparent rounded-[1.5rem] sm:rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity" />
 
@@ -85,7 +85,7 @@ const TIMELINE = () => {
                                         </h3>
                                         <div className={cn(
                                             "h-px w-6 sm:w-10 bg-orange-500/20 my-3 sm:my-5 transition-all group-hover:w-16",
-                                            index % 2 === 0 ? "md:ml-auto mr-auto" : "mr-auto"
+                                            index % 2 === 0 ? "ml-auto" : "mr-auto"
                                         )} />
                                         <p className="text-[10px] sm:text-sm md:text-base text-gray-400 font-medium tracking-tight bg-white/5 inline-block px-3 sm:px-4 py-1 sm:py-1.5 rounded-full">{item.date}</p>
                                     </div>
@@ -97,12 +97,10 @@ const TIMELINE = () => {
                                             ? "right-[50%] left-[calc(100%-8rem)] sm:left-[calc(100%-10rem)]"
                                             : "left-[50%] right-[calc(100%-8rem)] sm:right-[calc(100%-10rem)]"
                                     )} />
-                                    {/* Mobile Connecting Line */}
-                                    <div className="absolute top-1/2 left-8 h-px w-8 bg-orange-500 md:hidden" />
                                 </div>
 
                                 {/* Central Node - Static Glow */}
-                                <div className="absolute left-8 md:left-1/2 -translate-x-1/2 flex items-center justify-center z-30">
+                                <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-30">
                                     <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-neutral-950 border border-orange-500/60 flex items-center justify-center shadow-[0_0_40px_rgba(249,115,22,0.4)] transition-all duration-500 group-hover:scale-125 relative">
                                         {/* Outer Glow Aura (Static) */}
                                         <div className="absolute inset-[-8px] rounded-full bg-orange-600/10 blur-xl" />
@@ -113,7 +111,7 @@ const TIMELINE = () => {
                                 </div>
 
                                 {/* Empty Side Spacer */}
-                                <div className="hidden md:block md:w-1/2" />
+                                <div className="block w-1/2" />
                             </div>
                         </div>
                     ))}

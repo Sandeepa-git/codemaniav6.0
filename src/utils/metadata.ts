@@ -7,13 +7,11 @@ export const generateMetadata = ({
     icons = [
         {
             rel: "apple-touch-icon",
-            sizes: "32x32",
-            url: "/icons/icon.svg"
+            url: "/icons/favicon.png"
         },
         {
             rel: "icon",
-            sizes: "32x32",
-            url: "/icons/icon.svg"
+            url: "/icons/favicon.png"
         },
     ],
     noIndex = false
