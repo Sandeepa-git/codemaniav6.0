@@ -51,10 +51,10 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 // Schemas
 const memberSchema = z.object({
-    fullName: z.string().min(2, "Full name is required"),
+    fullName: z.string().min(2, "Full name is required").regex(/^[a-zA-Z\s]+$/, "Full name should only contain letters"),
     nicPassport: z.string().min(5, "NIC/Passport is required"),
     uniRegNo: z.string().min(2, "University registration number is required"),
-    degree: z.string().min(2, "Degree programme is required"),
+    degree: z.string().min(2, "Degree programme is required").regex(/^[a-zA-Z\s]+$/, "Degree programme should only contain letters"),
     academicYear: z.string().min(1, "Academic year is required"),
     contact: z.string().min(10, "Valid contact number is required"),
     email: z.string().email("Invalid email address"),
