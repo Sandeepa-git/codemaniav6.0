@@ -52,7 +52,7 @@ const ABOUT = () => {
 
         <div className="flex flex-col items-center justify-center w-full z-30">
           <AnimationContainer animation="fadeUp" delay={0.3}>
-            <SectionBadge title="What is Codemania v6.0" />
+            <SectionBadge title="About Codemania" />
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.4}>
