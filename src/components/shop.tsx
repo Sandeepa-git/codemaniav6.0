@@ -89,27 +89,11 @@ const SHOP = () => {
               Dropping <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">Soon</span>
             </h1>
             <p className="text-gray-400 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed">
-              The exclusive Codemania v6.0 merchandise collection unlocks on <br /> <span className="text-white font-bold">February 20, 2026</span>.
+              The exclusive Codemania v6.0 merchandise collection is coming soon.
             </p>
           </div>
 
-          {timeRemaining && (
-            <div className="grid grid-cols-4 gap-4 md:gap-8 mt-8">
-              {[
-                { label: "DAYS", value: timeRemaining.days },
-                { label: "HOURS", value: timeRemaining.hours },
-                { label: "MINS", value: timeRemaining.minutes },
-                { label: "SECS", value: timeRemaining.seconds }
-              ].map((item, i) => (
-                <div key={i} className="flex flex-col items-center group">
-                  <div className="text-4xl md:text-7xl font-black text-white bg-neutral-900/80 border border-white/10 rounded-3xl p-6 md:p-8 min-w-[90px] md:min-w-[160px] shadow-2xl backdrop-blur-xl group-hover:border-orange-500/30 transition-colors">
-                    {String(item.value).padStart(2, '0')}
-                  </div>
-                  <span className="text-[10px] md:text-sm font-bold text-gray-500 group-hover:text-orange-500 uppercase tracking-[0.3em] mt-6 transition-colors">{item.label}</span>
-                </div>
-              ))}
-            </div>
-          )}
+
 
           <div className="mt-12 flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 backdrop-blur-md">
             <Lock className="w-4 h-4" />
@@ -130,6 +114,13 @@ const SHOP = () => {
   return (
     <Wrapper className="py-24 lg:py-40">
       {/* Header Section */}
+      <div className="max-w-5xl mx-auto w-full mb-8">
+        <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-500 transition-colors group px-1 text-sm md:text-base">
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          Back to Home
+        </Link>
+      </div>
+
       <div className="flex flex-col items-center text-center gap-6 mb-24">
         <AnimationContainer animation="fadeUp" delay={0.2}>
           <SectionBadge title="Official Gear" />
