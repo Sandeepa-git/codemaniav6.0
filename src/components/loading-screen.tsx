@@ -13,10 +13,10 @@ const LoadingScreen = () => {
 
     // Using simple Space for separation for now, but we can handle the visual split in the render
     const fullTextSequence = [
-        ...Array.from("𝚃𝙷𝙸𝙽𝙺 𝚃𝚆𝙸𝙲𝙴"),
+        ...Array.from("THINK TWICE"),
         "PAUSE", "PAUSE", "PAUSE", "PAUSE", // 4 pauses * 100ms = 400ms
         ...Array.from(" "), // Space between phrase
-        ...Array.from("𝙲𝙾𝙳𝙴 𝙾𝙽𝙲𝙴")
+        ...Array.from("CODE ONCE")
     ];
 
     // Effect 1: Handle Body Overflow (Scroll Locking) separately
@@ -37,14 +37,14 @@ const LoadingScreen = () => {
     // Effect 2: Handle Typing Animation (Run Once per session)
     useEffect(() => {
         // Check if we've already shown the loading screen this session
-        const hasShown = sessionStorage.getItem("hasShownLoading");
-        if (hasShown) {
-            setLoading(false);
-            return;
-        }
+        // const hasShown = sessionStorage.getItem("hasShownLoading");
+        // if (hasShown) {
+        //     setLoading(false);
+        //     return;
+        // }
 
         // Mark as shown for future visits
-        sessionStorage.setItem("hasShownLoading", "true");
+        // sessionStorage.setItem("hasShownLoading", "true");
 
         let currentIndex = 0;
         const interval = setInterval(() => {
@@ -73,29 +73,26 @@ const LoadingScreen = () => {
 
     return (
         <AnimatePresence>
-            {loading && (
-                <motion.div
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
-                    className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050505] cursor-default select-none"
-                // Add pointer-events-none during exit to allow clicking through?
-                // No, usually loading screen blocks clicks.
-                >
-                    <div className="relative max-w-[90vw] text-center">
-                        <motion.h1
-                            className="text-lg sm:text-3xl md:text-5xl lg:text-6xl tracking-wide sm:tracking-widest font-light text-orange-500 leading-tight whitespace-pre-wrap break-words"
-                        >
-                            {displayedText}
-                            <motion.span
-                                animate={{ opacity: [0, 1, 0] }}
-                                transition={{ repeat: Infinity, duration: 0.8 }}
-                                className="inline-block w-1.5 h-[1.1em] bg-orange-500 ml-1 align-bottom"
-                            />
-                        </motion.h1>
-                    </div>
-                </motion.div>
-            )}
-        </AnimatePresence>
+            {loading && <motion.div
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
+                className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#050505] cursor-default select-none"
+            >
+                <div className="relative max-w-[90vw] text-center">
+                    <motion.h1
+                        className="text-lg sm:text-3xl md:text-5xl lg:text-6xl tracking-wide sm:tracking-widest font-bold font-mono text-orange-500 leading-tight whitespace-pre-wrap break-words"
+                    >
+                        {displayedText}
+                        <motion.span
+                            animate={{ opacity: [0, 1, 0] }}
+                            transition={{ repeat: Infinity, duration: 0.8 }}
+                            className="inline-block w-1.5 h-[1.1em] bg-orange-500 ml-1 align-bottom"
+                        />
+                    </motion.h1>
+                </div>
+            </motion.div>
+            }
+        </AnimatePresence >
     );
 };
 
