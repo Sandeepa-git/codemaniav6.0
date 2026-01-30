@@ -10,28 +10,33 @@ const TIMELINE = () => {
     const timelineData = [
         {
             title: "Registrations & Promotions",
-            date: "January 30",
-            phase: "Phase 01"
+            date: "January 30, 2026",
+            phase: "Checkpoint 01"
         },
         {
-            title: "Training Workshops",
-            date: "February 11",
-            phase: "Phase 02"
+            title: "DATA PREPROCESSING & AUGMENTATION",
+            date: "February 11, 2026",
+            phase: "Workshops 01"
         },
         {
-            title: "Virtual Datathon (Qualifier)",
-            date: "February 21",
-            phase: "Phase 03"
+            title: "INTRODUCTION TO MACHINE LEARNING & DATA-DRIVEN THINKING",
+            date: "February 16, 2026",
+            phase: "Workshops 02"
         },
         {
-            title: "Physical Grand Finale",
-            date: "Feb 28 – Mar 1",
-            phase: "Phase 04"
+            title: "VIRTUAL DATATHON (QUALIFIER)",
+            date: "February 21, 2026",
+            phase: "Checkpoint 04"
         },
         {
-            title: "Award Ceremony",
-            date: "March 1",
-            phase: "Phase 05"
+            title: "12-HOUR PHYSICAL GRAND FINALE DATATHON",
+            date: "Feb 28, 2026 - Mar 01, 2026",
+            phase: "Checkpoint 05"
+        },
+        {
+            title: "AWARD CEREMONY",
+            date: "Mar 01, 2026",
+            phase: "Checkpoint 06"
         }
     ];
 

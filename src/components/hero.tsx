@@ -93,6 +93,13 @@ const Countdown = () => {
 // HERO SECTION
 // ------------------------------------------------------
 const Hero = () => {
+  const [gifKey, setGifKey] = useState("");
+
+  useEffect(() => {
+    // Generate a unique key on mount to force GIF restart
+    setGifKey(`?t=${Date.now()}`);
+  }, []);
+
   const companies = [
     Images.comp1,
     Images.comp2,
@@ -108,7 +115,7 @@ const Hero = () => {
       description: "Gain hands-on experience in data preprocessing, machine learning, and analytical problem solving through structured workshops and competitive challenges."
     },
     {
-      title: "Compete in a National Datathon",
+      title: "Compete in a Island-wide Datathon",
       description: "Battle against top undergraduate teams from universities across Sri Lanka in a two-phase competition — virtual qualifiers and a 12-hour physical grand finale."
     },
     {
@@ -125,12 +132,14 @@ const Hero = () => {
         <div className="absolute inset-0 z-0 w-full h-full overflow-hidden lg:hidden">
           <div className="absolute inset-0 bg-[#101010]/60 z-10" />
           <Image
-            src="/images/owl.png"
+            src={`/owl-play-once.gif${gifKey}`}
             alt="Owl Background"
             fill
             priority
+            unoptimized
             className="object-cover object-center opacity-50 mix-blend-screen"
           />
+          <div className="absolute inset-y-0 right-0 bg-gradient-to-l from-[#101010] to-transparent z-20 w-1/4"></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-orange-600/10 blur-[80px] rounded-full animate-pulse z-0"></div>
         </div>
 
@@ -161,12 +170,14 @@ const Hero = () => {
         <div className="hidden lg:flex w-full lg:w-2/5 justify-center lg:justify-end relative h-[350px] sm:h-[450px] lg:h-[600px] mt-12 lg:mt-0">
           <AnimationContainer animation="fadeUp" delay={0.5} className="w-full h-full relative">
             <div className="absolute inset-0 bg-gradient-to-r from-[#101010] via-transparent to-transparent z-20 w-1/3 hidden lg:block"></div>
+            <div className="absolute inset-y-0 right-0 bg-gradient-to-l from-[#101010] to-transparent z-20 w-1/3 hidden lg:block"></div>
             <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#101010] to-transparent z-20"></div>
             <Image
-              src="/images/owl.png"
+              src={`/owl-play-once.gif${gifKey}`}
               alt="Owl"
               fill
               priority
+              unoptimized
               className="object-cover rounded-3xl opacity-30 sm:opacity-50 mix-blend-screen"
             />
             {/* Glowing effect following owl eyes theme */}
