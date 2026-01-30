@@ -61,7 +61,7 @@ const Leaderboard = () => {
                 <div className="opacity-20 space-y-4">
                     {LEADERBOARD_SKELETON.map((item, idx) => (
                         <div key={idx} className="flex items-center gap-3 sm:gap-6 p-4 sm:p-10 rounded-3xl bg-neutral-900/50 border border-white/5">
-                            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-xl font-bold text-gray-500 shrink-0">
+                            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-xl font-semibold text-gray-500 shrink-0">
                                 {item.rank}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -75,7 +75,7 @@ const Leaderboard = () => {
                     ))}
                     {[4, 5, 6].map((i) => (
                         <div key={i} className="flex items-center gap-6 p-4 px-10 rounded-2xl bg-neutral-900/30 border border-white/5">
-                            <div className="w-8 h-8 text-gray-700 font-bold">{i}</div>
+                            <div className="w-8 h-8 text-gray-700 font-semibold">{i}</div>
                             <div className="flex-1 h-4 bg-white/5 rounded-md max-w-[200px]" />
                             <div className="h-4 bg-white/5 rounded-md w-16" />
                         </div>
@@ -98,7 +98,7 @@ const Leaderboard = () => {
                         <div className="p-4 rounded-2xl bg-yellow-500/10 mb-6">
                             <Medal className="size-8 text-yellow-500" />
                         </div>
-                        <h4 className="text-xl font-bold text-white mb-2">Champion</h4>
+                        <h4 className="text-xl font-semibold text-white mb-2">Champion</h4>
                         <p className="text-gray-500 text-sm">Most Innovative & Efficient Solution</p>
                     </div>
                 </AnimationContainer>
@@ -108,7 +108,7 @@ const Leaderboard = () => {
                         <div className="p-4 rounded-2xl bg-gray-300/10 mb-6">
                             <Medal className="size-8 text-gray-300" />
                         </div>
-                        <h4 className="text-xl font-bold text-white mb-2">Runner Up</h4>
+                        <h4 className="text-xl font-semibold text-white mb-2">Runner Up</h4>
                         <p className="text-gray-500 text-sm">Exceptional Analytical Performance</p>
                     </div>
                 </AnimationContainer>
@@ -118,7 +118,7 @@ const Leaderboard = () => {
                         <div className="p-4 rounded-2xl bg-orange-800/20 mb-6">
                             <Medal className="size-8 text-orange-700" />
                         </div>
-                        <h4 className="text-xl font-bold text-white mb-2">2nd Runner Up</h4>
+                        <h4 className="text-xl font-semibold text-white mb-2">2nd Runner Up</h4>
                         <p className="text-gray-500 text-sm">Strategic Data Visualization Expert</p>
                     </div>
                 </AnimationContainer>

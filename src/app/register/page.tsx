@@ -130,7 +130,7 @@ const MemberForm = ({ title, prefix, form }: MemberFormProps) => {
                 <div className="p-2 bg-orange-500/20 rounded-lg">
                     <User className="w-5 h-5 md:w-6 md:h-6 text-orange-500" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-white">{title}</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-white">{title}</h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
@@ -389,7 +389,7 @@ export default function RegisterPage() {
                     </Link>
 
                     <header className="mb-8 md:mb-10 text-center md:text-left">
-                        <h1 className="text-[2.5rem] leading-snug sm:text-4xl md:text-5xl font-heading font-black mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-100 to-orange-500 tracking-tighter">
+                        <h1 className="text-[2.5rem] leading-snug sm:text-4xl md:text-5xl font-heading font-bold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-100 to-orange-500 tracking-tighter">
                             Registrations
                         </h1>
                         <p className="text-orange-500 text-base sm:text-lg md:text-xl font-bold mb-4 md:mb-6">
@@ -408,13 +408,13 @@ export default function RegisterPage() {
                                 <div className="p-6 md:p-8 flex flex-col justify-center items-start text-left flex-1">
                                     <div className="flex items-center gap-2 text-orange-500 mb-3 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">
                                         <Book size={14} />
-                                        <span className="text-[10px] font-extrabold uppercase tracking-widest">Official Resource</span>
+                                        <span className="text-[10px] font-bold uppercase tracking-widest">Official Resource</span>
                                     </div>
-                                    <h3 className="text-white font-heading font-black text-2xl md:text-3xl mb-2 group-hover:text-orange-200 transition-colors">Delegate Handbook</h3>
+                                    <h3 className="text-white font-heading font-bold text-2xl md:text-3xl mb-2 group-hover:text-orange-200 transition-colors">Delegate Handbook</h3>
                                     <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-md">Essential guide for all participants. Contains rules, schedules, and datathon details.</p>
 
                                     <a href="/codemania-v6-delegate-handbook.pdf" download="Codemania_V6_Delegate_Handbook.pdf" className="w-full sm:w-auto">
-                                        <Button className="w-full sm:w-auto bg-orange-600 hover:bg-orange-500 text-white font-bold py-6 px-8 rounded-xl text-base shadow-lg shadow-orange-900/20 transition-all group-hover:translate-x-1">
+                                        <Button className="w-full sm:w-auto bg-orange-600 hover:bg-orange-500 text-white font-semibold py-6 px-8 rounded-xl text-base shadow-lg shadow-orange-900/20 transition-all group-hover:translate-x-1">
                                             <Download className="mr-2 h-5 w-5" />
                                             Download PDF
                                         </Button>
@@ -437,7 +437,7 @@ export default function RegisterPage() {
                                         )}
                                     </div>
                                     <h4 className="text-orange-500 font-bold uppercase text-xs tracking-widest mb-1">Registration Status</h4>
-                                    <p className="text-white text-2xl font-black mb-1">{isRegistrationOpen ? "OPEN" : "LOCKED"}</p>
+                                    <p className="text-white text-2xl font-bold mb-1">{isRegistrationOpen ? "OPEN" : "LOCKED"}</p>
                                     <p className="text-gray-400 font-medium text-xs">Jan 30 – Feb 10</p>
                                 </div>
 
@@ -479,7 +479,7 @@ export default function RegisterPage() {
                                 <Lock className="size-8 text-orange-500 relative z-10" />
                                 <div className="absolute inset-0 bg-orange-500/20 blur-xl rounded-full" />
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Registration Coming Soon</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Registration Coming Soon</h2>
                             <p className="text-gray-400 max-w-lg">
                                 Registration for Codemania v6.0 will open soon. Stay tuned!
                             </p>
@@ -502,7 +502,7 @@ export default function RegisterPage() {
                                                         <div className="p-2 bg-orange-500/20 rounded-lg">
                                                             <Users className="w-5 h-5 md:w-6 md:h-6 text-orange-500" />
                                                         </div>
-                                                        <h3 className="text-lg md:text-xl font-bold text-white">Team Information</h3>
+                                                        <h3 className="text-lg md:text-xl font-semibold text-white">Team Information</h3>
                                                     </div>
 
                                                     <FormField
@@ -590,7 +590,7 @@ export default function RegisterPage() {
                                                         <div className="p-2 bg-orange-500/20 rounded-lg">
                                                             <ShieldCheck className="w-5 h-5 md:w-6 md:h-6 text-orange-500" />
                                                         </div>
-                                                        <h3 className="text-lg md:text-xl font-bold text-white">Declaration & Consent</h3>
+                                                        <h3 className="text-lg md:text-xl font-semibold text-white">Declaration & Consent</h3>
                                                     </div>
 
                                                     <div className="bg-neutral-950/50 p-4 md:p-6 rounded-2xl border border-neutral-800 text-gray-300 text-xs md:text-sm leading-relaxed space-y-3 md:space-y-4 shadow-inner">

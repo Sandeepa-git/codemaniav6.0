@@ -152,7 +152,7 @@ const SHOP = () => {
                     fill
                     className="object-contain p-8 scale-90 group-hover:scale-100 transition-transform duration-700"
                   />
-                  <div className="absolute top-6 left-6 py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-white/60 uppercase tracking-widest font-bold">
+                  <div className="absolute top-6 left-6 py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-white/60 uppercase tracking-widest font-medium">
                     Front View
                   </div>
                 </div>
@@ -167,7 +167,7 @@ const SHOP = () => {
                     fill
                     className="object-contain p-8 scale-90 group-hover:scale-100 transition-transform duration-700"
                   />
-                  <div className="absolute top-6 left-6 py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-white/60 uppercase tracking-widest font-bold">
+                  <div className="absolute top-6 left-6 py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-white/60 uppercase tracking-widest font-medium">
                     Back View
                   </div>
                 </div>
@@ -186,7 +186,7 @@ const SHOP = () => {
                     {product.name}
                   </h3>
 
-                  <div className="text-4xl font-bold text-orange-500 mb-8 font-folkra">
+                  <div className="text-4xl font-semibold text-orange-500 mb-8 font-folkra">
                     {product.price}
                   </div>
 
@@ -196,10 +196,10 @@ const SHOP = () => {
 
                   <div className="space-y-8">
                     <div>
-                      <p className="text-sm font-bold text-white uppercase tracking-[3px] mb-4">Available Sizes</p>
+                      <p className="text-sm font-semibold text-white uppercase tracking-[3px] mb-4">Available Sizes</p>
                       <div className="flex gap-3 flex-wrap">
                         {product.availableSizes.map((size) => (
-                          <div key={size} className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-sm font-bold text-gray-400 hover:bg-orange-500 hover:text-white hover:border-orange-500 cursor-default transition-all duration-300">
+                          <div key={size} className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-sm font-medium text-gray-400 hover:bg-orange-500 hover:text-white hover:border-orange-500 cursor-default transition-all duration-300">
                             {size}
                           </div>
                         ))}
@@ -225,7 +225,7 @@ const SHOP = () => {
                           window.open(product.orderLink, '_blank');
                         }
                       }}
-                      className={`group/order flex items-center justify-center gap-4 w-full py-5 rounded-[2rem] font-black text-lg transition-all duration-500 shadow-xl ${isLocked
+                      className={`group/order flex items-center justify-center gap-4 w-full py-5 rounded-[2rem] font-bold text-lg transition-all duration-500 shadow-xl ${isLocked
                         ? "bg-neutral-800 text-gray-400 cursor-not-allowed border border-white/10 hover:border-orange-500/50"
                         : "bg-white text-black hover:bg-orange-500 hover:text-white"
                         }`}
@@ -253,7 +253,7 @@ const SHOP = () => {
             <div className="size-16 rounded-full bg-orange-500/10 flex items-center justify-center border border-orange-500/20 mb-2">
               <ShoppingBag className="size-8 text-orange-500" />
             </div>
-            <DialogTitle className="text-3xl font-black text-white font-folkra leading-tight">
+            <DialogTitle className="text-3xl font-bold text-white font-folkra leading-tight">
               Merchandise Dropping Soon <span className="text-orange-500">🚀</span>
             </DialogTitle>
             <DialogDescription className="text-gray-400 text-base">
@@ -270,10 +270,10 @@ const SHOP = () => {
                 { label: "SECS", value: timeRemaining.seconds }
               ].map((item, i) => (
                 <div key={i} className="flex flex-col items-center p-3 rounded-2xl bg-white/5 border border-white/10">
-                  <div className="text-2xl sm:text-3xl font-black text-white mb-1">
+                  <div className="text-2xl sm:text-3xl font-bold text-white mb-1">
                     {String(item.value).padStart(2, '0')}
                   </div>
-                  <span className="text-[8px] sm:text-[10px] font-bold text-gray-500 uppercase tracking-widest">{item.label}</span>
+                  <span className="text-[8px] sm:text-[10px] font-medium text-gray-500 uppercase tracking-widest">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -282,7 +282,7 @@ const SHOP = () => {
           <div className="mt-8 w-full">
             <Button
               onClick={() => setIsModalOpen(false)}
-              className="w-full bg-white text-black hover:bg-gray-200 font-bold rounded-xl py-6 text-base"
+              className="w-full bg-white text-black hover:bg-gray-200 font-semibold rounded-xl py-6 text-base"
             >
               Got it, I'll be ready!
             </Button>

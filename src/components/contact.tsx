@@ -17,7 +17,7 @@ const Contact = () => {
         },
         {
             role: "PROJECT CO-CHAIRPERSON",
-            name: "Sandeepa Wimalasiri",
+            name: "Sandeepa Vimukthi",
             phone: "+94 75 099 7715",
             email: "agsvwimalasiri@gmail.com",
             img: "/images/sandeepa.jpg"
