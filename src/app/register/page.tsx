@@ -16,11 +16,8 @@ import {
     Loader2,
     Book,
     Download,
-    Shirt,
-    Timer,
     Lock
 } from "lucide-react";
-import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -47,7 +44,7 @@ import Footer from "@/components/footer";
 
 // Firebase imports
 import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp, query, orderBy, limit, getDocs, runTransaction, doc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, runTransaction, doc } from "firebase/firestore";
 
 // Schemas
 const memberSchema = z.object({
@@ -60,14 +57,38 @@ const memberSchema = z.object({
     email: z.string().email("Invalid email address"),
 });
 
-const formSchema = z.object({
+// We'll use a superRefine to conditionally validate members based on teamSize
+const baseSchema = z.object({
+    teamSize: z.string(), // "1", "2", or "3"
     teamName: z.string().min(2, "Team name is required").regex(/^[a-zA-Z\s]+$/, "Team name should only contain letters"),
     university: z.string().min(2, "University is required"),
     otherUniversity: z.string().optional(),
     member1: memberSchema,
-    member2: memberSchema,
-    member3: memberSchema,
+    member2: z.any().optional(),
+    member3: z.any().optional(),
     agree: z.boolean().refine(val => val === true, "You must agree to the declaration"),
+});
+
+const formSchema = baseSchema.superRefine((val, ctx) => {
+    const size = parseInt(val.teamSize);
+
+    if (size >= 2) {
+        const result = memberSchema.safeParse(val.member2);
+        if (!result.success) {
+            result.error.issues.forEach(issue => {
+                ctx.addIssue({ ...issue, path: ["member2", ...issue.path] });
+            });
+        }
+    }
+
+    if (size >= 3) {
+        const result = memberSchema.safeParse(val.member3);
+        if (!result.success) {
+            result.error.issues.forEach(issue => {
+                ctx.addIssue({ ...issue, path: ["member3", ...issue.path] });
+            });
+        }
+    }
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -242,7 +263,7 @@ const MemberForm = ({ title, prefix, form }: MemberFormProps) => {
 export default function RegisterPage() {
     const router = useRouter();
     const [step, setStep] = useState(1);
-    const totalSteps = 5;
+    const totalStepsLabel = 5; // We'll keep the visual steps as 5, but conditionally skip
     const [isSubmitting, setIsSubmitting] = useState(false);
     const formRef = useRef<HTMLDivElement>(null);
 
@@ -267,6 +288,7 @@ export default function RegisterPage() {
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            teamSize: "3", // Default to 3, but user can change
             teamName: "",
             university: "",
             otherUniversity: "",
@@ -301,6 +323,9 @@ export default function RegisterPage() {
         },
     });
 
+    const teamSizeStr = form.watch("teamSize");
+    const teamSize = parseInt(teamSizeStr || "3");
+
     const onSubmit = async (values: FormValues) => {
         setIsSubmitting(true);
         try {
@@ -308,15 +333,21 @@ export default function RegisterPage() {
             const tokenNumber = await generateTokenNumber();
 
             // Prepare Final Data
-            const finalData = {
+            const finalData: any = {
                 tokenNumber,
                 teamName: values.teamName,
+                teamSize: values.teamSize,
                 university: values.university === "Other" ? values.otherUniversity : values.university,
                 createdAt: serverTimestamp(),
                 member1: values.member1,
-                member2: values.member2,
-                member3: values.member3,
             };
+
+            if (teamSize >= 2) {
+                finalData.member2 = values.member2;
+            }
+            if (teamSize >= 3) {
+                finalData.member3 = values.member3;
+            }
 
             // Save to Firestore
             console.log("Submitting Team Data:", finalData);
@@ -355,23 +386,60 @@ export default function RegisterPage() {
 
     const nextStep = async () => {
         let fieldsToValidate: (keyof FormValues)[] = [];
-        if (step === 1) fieldsToValidate = ["teamName", "university", "otherUniversity"];
-        if (step === 2) fieldsToValidate = ["member1"];
-        if (step === 3) fieldsToValidate = ["member2"];
-        if (step === 4) fieldsToValidate = ["member3"];
+        let nextStepIndex = step + 1;
+
+        if (step === 1) {
+            fieldsToValidate = ["teamName", "university", "otherUniversity", "teamSize"];
+            nextStepIndex = 2; // Always go to Member 1
+        }
+        else if (step === 2) { // Logic after Member 1
+            fieldsToValidate = ["member1"];
+            if (teamSize === 1) nextStepIndex = 5; // Jump to Review
+            else nextStepIndex = 3; // Go to Member 2
+        }
+        else if (step === 3) { // Logic after Member 2
+            // Only validate if we are actually at this step (which implies teamSize >= 2)
+            fieldsToValidate = ["member2"];
+            if (teamSize === 2) nextStepIndex = 5; // Jump to Review
+            else nextStepIndex = 4; // Go to Member 3
+        }
+        else if (step === 4) { // Logic after Member 3
+            fieldsToValidate = ["member3"];
+            nextStepIndex = 5;
+        }
 
         const isValid = await form.trigger(fieldsToValidate);
         if (isValid) {
-            setStep(s => Math.min(s + 1, totalSteps));
+            setStep(nextStepIndex);
             // Scroll to form card instead of top of page
             formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
 
     const prevStep = () => {
-        setStep(s => Math.max(s - 1, 1));
-        // Scroll to form card instead of top of page
+        let prevStepIndex = step - 1;
+
+        if (step === 5) {
+            if (teamSize === 1) prevStepIndex = 2; // Back to Member 1
+            else if (teamSize === 2) prevStepIndex = 3; // Back to Member 2
+            else prevStepIndex = 4; // Back to Member 3
+        } else if (step === 4) {
+            prevStepIndex = 3;
+        } else if (step === 3) {
+            prevStepIndex = 2;
+        } else if (step === 2) {
+            prevStepIndex = 1;
+        }
+
+        setStep(prevStepIndex);
         formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    // Helper to determine if a step circle should be shown
+    const isStepVisible = (s: number) => {
+        if (s === 3 && teamSize < 2) return false;
+        if (s === 4 && teamSize < 3) return false;
+        return true;
     };
 
     return (
@@ -453,7 +521,7 @@ export default function RegisterPage() {
                             <div className="absolute top-[15px] md:top-5 left-2 right-2 h-[2px] bg-neutral-800 -z-10 rounded-full" />
 
                             <div className="flex justify-between items-start w-full relative">
-                                {[1, 2, 3, 4, 5].map((s) => (
+                                {[1, 2, 3, 4, 5].filter(isStepVisible).map((s) => (
                                     <div key={s} className="flex flex-col items-center gap-2 relative z-10 w-12 md:w-auto">
                                         <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-xs md:text-sm border-2 transition-all duration-300 ${step >= s ? "bg-orange-600 border-orange-600 text-white shadow-[0_0_15px_rgba(234,88,12,0.4)]" : "bg-[#101010] border-neutral-800 text-gray-500"
                                             }`}>
@@ -461,7 +529,7 @@ export default function RegisterPage() {
                                         </div>
                                         <span className={`text-[9px] md:text-xs font-medium text-center whitespace-nowrap transition-colors absolute top-10 md:top-12 left-1/2 -translate-x-1/2 ${step === s ? "opacity-100" : "opacity-0 md:opacity-100"
                                             } ${step >= s ? "text-orange-500" : "text-gray-600"}`}>
-                                            {s === 1 && "Team Info"}
+                                            {s === 1 && "Start"}
                                             {s === 2 && "Leader"}
                                             {s === 3 && "Member 2"}
                                             {s === 4 && "Member 3"}
@@ -504,6 +572,30 @@ export default function RegisterPage() {
                                                         </div>
                                                         <h3 className="text-lg md:text-xl font-semibold text-white">Team Information</h3>
                                                     </div>
+
+                                                    {/* Team Size Selection */}
+                                                    <FormField
+                                                        control={form.control}
+                                                        name="teamSize"
+                                                        render={({ field }) => (
+                                                            <FormItem>
+                                                                <FormLabel>Team Size (Including Leader)</FormLabel>
+                                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                                    <FormControl>
+                                                                        <SelectTrigger className="bg-neutral-950 border-neutral-800 h-11 md:h-12 rounded-xl w-full">
+                                                                            <SelectValue placeholder="Select team size" />
+                                                                        </SelectTrigger>
+                                                                    </FormControl>
+                                                                    <SelectContent className="bg-neutral-900 border-neutral-800 text-white">
+                                                                        <SelectItem value="1">1 Member (Individual)</SelectItem>
+                                                                        <SelectItem value="2">2 Members</SelectItem>
+                                                                        <SelectItem value="3">3 Members</SelectItem>
+                                                                    </SelectContent>
+                                                                </Select>
+                                                                <FormMessage />
+                                                            </FormItem>
+                                                        )}
+                                                    />
 
                                                     <FormField
                                                         control={form.control}
@@ -594,7 +686,7 @@ export default function RegisterPage() {
                                                     </div>
 
                                                     <div className="bg-neutral-950/50 p-4 md:p-6 rounded-2xl border border-neutral-800 text-gray-300 text-xs md:text-sm leading-relaxed space-y-3 md:space-y-4 shadow-inner">
-                                                        <p><strong>Registration Process:</strong> Teams of 2–3 members register through the official portal. All participants must provide valid information and agree to event rules.</p>
+                                                        <p><strong>Registration Process:</strong> Teams of 1–3 members register through the official portal. All participants must provide valid information and agree to event rules.</p>
                                                         <p><strong>Eligibility Criteria:</strong> Open to all undergraduate students from Sri Lankan universities. One student cannot be part of more than one team.</p>
                                                         <p><strong>Registration Timeline:</strong> Opens January 30 and closes February 10. Late or incomplete entries will not be accepted.</p>
                                                         <p><strong>Confirmation & Onboarding:</strong> Confirmed teams receive emails with datathon guidelines, resources, and workshop schedules.</p>
@@ -631,6 +723,10 @@ export default function RegisterPage() {
                                                             <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider mb-1 font-medium">University</p>
                                                             <p className="text-white font-bold text-lg md:text-xl break-words">{form.getValues("university") === "Other" ? form.getValues("otherUniversity") : form.getValues("university")}</p>
                                                         </div>
+                                                        <div className="bg-neutral-950/50 p-4 md:p-5 rounded-2xl border border-neutral-800 border-l-green-500 border-l-4 shadow-lg md:col-span-2">
+                                                            <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider mb-1 font-medium">Team Size</p>
+                                                            <p className="text-white font-bold text-lg md:text-xl break-words">{form.getValues("teamSize")} Member(s)</p>
+                                                        </div>
                                                     </div>
                                                 </motion.div>
                                             )}
@@ -647,7 +743,7 @@ export default function RegisterPage() {
                                                 Previous
                                             </Button>
 
-                                            {step < totalSteps ? (
+                                            {step < 5 ? (
                                                 <Button
                                                     type="button"
                                                     onClick={nextStep}
