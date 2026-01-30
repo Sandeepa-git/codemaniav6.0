@@ -34,8 +34,18 @@ const LoadingScreen = () => {
         };
     }, [loading]);
 
-    // Effect 2: Handle Typing Animation (Run Once)
+    // Effect 2: Handle Typing Animation (Run Once per session)
     useEffect(() => {
+        // Check if we've already shown the loading screen this session
+        const hasShown = sessionStorage.getItem("hasShownLoading");
+        if (hasShown) {
+            setLoading(false);
+            return;
+        }
+
+        // Mark as shown for future visits
+        sessionStorage.setItem("hasShownLoading", "true");
+
         let currentIndex = 0;
         const interval = setInterval(() => {
             if (currentIndex >= fullTextSequence.length) {

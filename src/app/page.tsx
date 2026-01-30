@@ -1,5 +1,4 @@
 import LoadingScreen from "@/components/loading-screen";
-import Navbar from "@/components/navbar";
 import Hero from "@/components/hero";
 import ABOUT from "@/components/about";
 import TIMELINE from "@/components/timeline";
@@ -22,7 +21,6 @@ export default function HomePage() {
   return (
     <main className="w-full min-h-screen bg-[#101010] text-white overflow-x-hidden">
       <LoadingScreen />
-      <Navbar />
 
       <section id="hero">
         <Hero />

@@ -5,6 +5,7 @@ import { cn } from "@/lib";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { MenuIcon, XIcon } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import Wrapper from "./global/wrapper";
 import Image from "next/image";
@@ -27,6 +28,7 @@ const Navbar = () => {
     if (open) setOpen(false);
   });
 
+  const pathname = usePathname();
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -36,9 +38,13 @@ const Navbar = () => {
   // Smooth scroll function
   const handleScroll = (link: string) => {
     if (link.startsWith("#")) {
-      const el = document.querySelector(link);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+      if (pathname === "/") {
+        const el = document.querySelector(link);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        window.location.href = "/" + link;
       }
     } else {
       // For full page navigation ("/" etc.)
@@ -84,39 +90,43 @@ const Navbar = () => {
           </motion.div>
 
           {/* Desktop Links */}
-          <div className={cn(
-            "hidden lg:flex flex-row items-center justify-center gap-x-2 text-sm text-muted-foreground font-medium",
-            !visible && "flex-1 absolute inset-0 w-max mx-auto"
-          )}>
-            <AnimatePresence>
-              {NAV_LINKS.map((link, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ delay: 0.1 * index, duration: 0.4, ease: "easeInOut" }}
-                >
-                  <button
-                    onClick={() => handleScroll(link.link)}
-                    className="hover:text-foreground transition-all duration-300 hover:bg-accent rounded-md px-4 py-2"
+          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && (
+            <div className={cn(
+              "hidden lg:flex flex-row items-center justify-center gap-x-2 text-sm text-muted-foreground font-medium",
+              !visible && "flex-1 absolute inset-0 w-max mx-auto"
+            )}>
+              <AnimatePresence>
+                {NAV_LINKS.map((link, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ delay: 0.1 * index, duration: 0.4, ease: "easeInOut" }}
                   >
-                    {link.name}
-                  </button>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+                    <button
+                      onClick={() => handleScroll(link.link)}
+                      className="hover:text-foreground transition-all duration-300 hover:bg-accent rounded-md px-4 py-2"
+                    >
+                      {link.name}
+                    </button>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+          )}
 
           {/* Register Button - Hidden */}
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.7 }} className="hidden lg:block">
-            <Link
-              href="/register"
-              className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-6 py-2 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
-            >
-              Register Now
-            </Link>
-          </motion.div>
+          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && (
+            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.7 }} className="hidden lg:block">
+              <Link
+                href="/register"
+                className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-6 py-2 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
+              >
+                Register Now
+              </Link>
+            </motion.div>
+          )}
         </div>
       </motion.div>
 
@@ -145,13 +155,15 @@ const Navbar = () => {
           </motion.div>
 
           {/* Hamburger Menu */}
-          <div className="flex items-center justify-center gap-x-4">
-            {open ? (
-              <XIcon className="text-black dark:text-white cursor-pointer" onClick={() => setOpen(false)} />
-            ) : (
-              <MenuIcon className="text-black dark:text-white cursor-pointer" onClick={() => setOpen(true)} />
-            )}
-          </div>
+          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && (
+            <div className="flex items-center justify-center gap-x-4">
+              {open ? (
+                <XIcon className="text-black dark:text-white cursor-pointer" onClick={() => setOpen(false)} />
+              ) : (
+                <MenuIcon className="text-black dark:text-white cursor-pointer" onClick={() => setOpen(true)} />
+              )}
+            </div>
+          )}
         </Wrapper>
 
         {/* Mobile Links */}

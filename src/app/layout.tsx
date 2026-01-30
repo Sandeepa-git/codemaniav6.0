@@ -4,6 +4,8 @@ import { cn } from "@/lib";
 import "@/styles/globals.css";
 import { generateMetadata } from "@/utils";
 
+import Navbar from "@/components/navbar";
+
 export const metadata = generateMetadata();
 
 export default function RootLayout({
@@ -23,6 +25,7 @@ export default function RootLayout({
           heading.variable
         )}
       >
+        <Navbar />
         <Toaster richColors theme="dark" position="bottom-center" />
         {children}
       </body>
