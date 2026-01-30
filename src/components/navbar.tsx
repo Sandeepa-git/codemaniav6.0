@@ -157,6 +157,12 @@ const Navbar = () => {
           {/* Hamburger Menu */}
           {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && (
             <div className="flex items-center justify-center gap-x-4">
+              <Link
+                href="/register"
+                className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-4 py-1.5 text-xs font-semibold shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300"
+              >
+                Register Now
+              </Link>
               {open ? (
                 <XIcon className="text-black dark:text-white cursor-pointer" onClick={() => setOpen(false)} />
               ) : (
