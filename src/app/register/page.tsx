@@ -722,7 +722,7 @@ export default function RegisterPage() {
                                                         </div>
                                                         <div className="bg-neutral-950/50 p-4 md:p-5 rounded-2xl border border-neutral-800 border-l-green-500 border-l-4 shadow-lg md:col-span-2">
                                                             <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider mb-1 font-medium">Team Size</p>
-                                                            <p className="text-white font-bold text-lg md:text-xl break-words">{form.getValues("teamSize")} Member(s)</p>
+                                                            <p className="text-white font-bold text-lg md:text-xl break-words">{form.getValues("teamSize")} Members</p>
                                                         </div>
                                                     </div>
                                                 </motion.div>
