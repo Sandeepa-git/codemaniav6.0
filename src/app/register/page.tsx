@@ -59,7 +59,7 @@ const memberSchema = z.object({
 
 // We'll use a superRefine to conditionally validate members based on teamSize
 const baseSchema = z.object({
-    teamSize: z.string(), // "1", "2", or "3"
+    teamSize: z.string(), // "2" or "3"
     teamName: z.string().min(2, "Team name is required").regex(/^[a-zA-Z\s]+$/, "Team name should only contain letters"),
     university: z.string().min(2, "University is required"),
     otherUniversity: z.string().optional(),
@@ -394,8 +394,7 @@ export default function RegisterPage() {
         }
         else if (step === 2) { // Logic after Member 1
             fieldsToValidate = ["member1"];
-            if (teamSize === 1) nextStepIndex = 5; // Jump to Review
-            else nextStepIndex = 3; // Go to Member 2
+            nextStepIndex = 3; // Go to Member 2
         }
         else if (step === 3) { // Logic after Member 2
             // Only validate if we are actually at this step (which implies teamSize >= 2)
@@ -420,8 +419,7 @@ export default function RegisterPage() {
         let prevStepIndex = step - 1;
 
         if (step === 5) {
-            if (teamSize === 1) prevStepIndex = 2; // Back to Member 1
-            else if (teamSize === 2) prevStepIndex = 3; // Back to Member 2
+            if (teamSize === 2) prevStepIndex = 3; // Back to Member 2
             else prevStepIndex = 4; // Back to Member 3
         } else if (step === 4) {
             prevStepIndex = 3;
@@ -437,7 +435,6 @@ export default function RegisterPage() {
 
     // Helper to determine if a step circle should be shown
     const isStepVisible = (s: number) => {
-        if (s === 3 && teamSize < 2) return false;
         if (s === 4 && teamSize < 3) return false;
         return true;
     };
@@ -587,7 +584,7 @@ export default function RegisterPage() {
                                                                         </SelectTrigger>
                                                                     </FormControl>
                                                                     <SelectContent className="bg-neutral-900 border-neutral-800 text-white">
-                                                                        <SelectItem value="1">1 Member (Individual)</SelectItem>
+
                                                                         <SelectItem value="2">2 Members</SelectItem>
                                                                         <SelectItem value="3">3 Members</SelectItem>
                                                                     </SelectContent>
@@ -686,7 +683,7 @@ export default function RegisterPage() {
                                                     </div>
 
                                                     <div className="bg-neutral-950/50 p-4 md:p-6 rounded-2xl border border-neutral-800 text-gray-300 text-xs md:text-sm leading-relaxed space-y-3 md:space-y-4 shadow-inner">
-                                                        <p><strong>Registration Process:</strong> Teams of 1–3 members register through the official portal. All participants must provide valid information and agree to event rules.</p>
+                                                        <p><strong>Registration Process:</strong> Teams of 2–3 members register through the official portal. All participants must provide valid information and agree to event rules.</p>
                                                         <p><strong>Eligibility Criteria:</strong> Open to all undergraduate students from Sri Lankan universities. One student cannot be part of more than one team.</p>
                                                         <p><strong>Registration Timeline:</strong> Opens January 30 and closes February 10. Late or incomplete entries will not be accepted.</p>
                                                         <p><strong>Confirmation & Onboarding:</strong> Confirmed teams receive emails with datathon guidelines, resources, and workshop schedules.</p>
