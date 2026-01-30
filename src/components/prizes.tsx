@@ -22,6 +22,9 @@ const Prizes = () => {
                     />
                     {/* Overlay for depth */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+                    {/* Flickering Lamp Light Overlay (Desktop) */}
+                    <div className="absolute top-[45%] right-[15%] w-24 h-24 bg-orange-500/30 rounded-full blur-[40px] mix-blend-screen animate-flicker pointer-events-none" />
                 </AnimationContainer>
 
                 {/* Content Section (Right) */}
@@ -37,6 +40,9 @@ const Prizes = () => {
                             className="object-cover object-top opacity-60"
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-[#101010]/80 via-[#101010]/60 to-[#101010]/90" />
+
+                        {/* Flickering Lamp Light Overlay (Mobile) */}
+                        <div className="absolute top-[30%] right-[10%] w-32 h-32 bg-orange-500/20 rounded-full blur-[50px] mix-blend-screen animate-flicker pointer-events-none opacity-60" />
                     </div>
 
                     <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left gap-6">

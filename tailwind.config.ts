@@ -100,12 +100,19 @@ const config: Config = {
                     from: { transform: "translateY(0)" },
                     to: { transform: "translateY(calc(-100% - var(--gap)))" },
                 },
+                flicker: {
+                    "0%, 100%": { opacity: "0.8", transform: "scale(1)" },
+                    "50%": { opacity: "0.6", transform: "scale(0.95)" },
+                    "25%": { opacity: "0.9", transform: "scale(1.05)" },
+                    "75%": { opacity: "0.7", transform: "scale(0.98)" },
+                },
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
                 marquee: "marquee var(--duration) linear infinite",
                 "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+                flicker: "flicker 3s infinite alternate",
             },
             spacing: {
                 "1/8": "12.5%",
