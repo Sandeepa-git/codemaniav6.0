@@ -150,7 +150,7 @@ const Navbar = () => {
           {/* Logo */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
             <Link href="/">
-              <Image src="/images/Logo 01.png" alt="Codemania Logo" width={140} height={58} className="object-contain" />
+              <Image src="/images/Logo 01.png" alt="Codemania Logo" width={140} height={58} className="object-contain w-28 md:w-[140px] h-auto" />
             </Link>
           </motion.div>
 
@@ -159,7 +159,7 @@ const Navbar = () => {
             <div className="flex items-center justify-center gap-x-4">
               <Link
                 href="/register"
-                className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-4 py-1.5 text-xs font-semibold shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300"
+                className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-3 py-2 text-sm font-semibold shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
               >
                 Register Now
               </Link>

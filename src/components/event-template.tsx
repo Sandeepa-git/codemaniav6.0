@@ -100,18 +100,18 @@ const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showCon
                                 <p className="text-orange-50 opacity-90 text-lg font-medium">{date}</p>
 
                                 {registrationClosed ? (
-                                    <Button disabled className="w-full mt-8 bg-neutral-800 text-gray-400 cursor-not-allowed font-semibold rounded-xl py-6 text-lg border border-neutral-700">
+                                    <Button disabled className="w-full mt-8 bg-neutral-800 text-gray-400 cursor-not-allowed font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg border border-neutral-700">
                                         <Lock className="w-5 h-5 mr-2" />
                                         Coming Soon
                                     </Button>
                                 ) : isLocked ? (
-                                    <Button disabled className="w-full mt-8 bg-white/20 text-white cursor-not-allowed font-semibold rounded-xl py-6 text-lg border border-white/10 hover:bg-white/20">
+                                    <Button disabled className="w-full mt-8 bg-white/20 text-white cursor-not-allowed font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg border border-white/10 hover:bg-white/20">
                                         <Lock className="w-5 h-5 mr-2" />
                                         Opening Soon
                                     </Button>
                                 ) : (
                                     <Link href="/register">
-                                        <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-semibold rounded-xl py-6 text-lg">
+                                        <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg">
                                             Register Now
                                         </Button>
                                     </Link>
