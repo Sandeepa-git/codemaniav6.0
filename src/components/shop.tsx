@@ -200,18 +200,19 @@ const SHOP = () => {
                                   View Size Chart
                                 </button>
                               </DialogTrigger>
-                              <DialogContent className="max-w-4xl bg-neutral-900 border border-white/10 max-h-[90vh] overflow-y-auto">
-                                <DialogHeader>
+                              <DialogContent className="w-[95vw] max-w-4xl bg-neutral-900 border border-white/10 max-h-[85vh] overflow-y-auto p-4 md:p-6 text-white">
+                                <DialogHeader className="mb-2">
                                   <DialogTitle>Size Chart</DialogTitle>
                                 </DialogHeader>
-                                <div className="grid grid-cols-1 gap-4 mt-4">
+                                <div className="flex flex-col gap-6">
                                   {product.sizeChartImages.map((img, i) => (
-                                    <div key={i} className="relative aspect-[16/9] w-full">
+                                    <div key={i} className="w-full">
                                       <Image
                                         src={img}
                                         alt={`Size Chart ${i + 1}`}
-                                        fill
-                                        className="object-contain"
+                                        width={1200}
+                                        height={1200}
+                                        className="w-full h-auto rounded-lg border border-white/5"
                                       />
                                     </div>
                                   ))}
