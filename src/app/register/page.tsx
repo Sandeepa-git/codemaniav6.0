@@ -44,6 +44,7 @@ import Footer from "@/components/footer";
 
 // Firebase imports
 import { db } from "@/lib/firebase";
+import { REGISTRATION_DEADLINE } from "@/constants";
 import { collection, addDoc, serverTimestamp, runTransaction, doc } from "firebase/firestore";
 
 // Schemas
@@ -268,15 +269,22 @@ export default function RegisterPage() {
     const formRef = useRef<HTMLDivElement>(null);
 
     // Registration Lock Logic
-    const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
+    const [registrationStatus, setRegistrationStatus] = useState<'upcoming' | 'open' | 'closed'>('upcoming');
+    const isRegistrationOpen = registrationStatus === 'open';
 
     useEffect(() => {
         // Target Date: January 30, 2026 at 5:00 PM
-        const targetDate = new Date("2026-01-30T17:00:00");
+        const startDate = new Date("2026-01-30T17:00:00");
 
         const checkRegistrationStatus = () => {
             const now = new Date();
-            setIsRegistrationOpen(now >= targetDate);
+            if (now < startDate) {
+                setRegistrationStatus('upcoming');
+            } else if (now >= REGISTRATION_DEADLINE) {
+                setRegistrationStatus('closed');
+            } else {
+                setRegistrationStatus('open');
+            }
         };
 
         const timerId = setInterval(checkRegistrationStatus, 60000); // Check every minute
@@ -495,14 +503,18 @@ export default function RegisterPage() {
                                         <div className="size-10 rounded-2xl bg-orange-500/10 flex items-center justify-center text-orange-500 border border-orange-500/20">
                                             <Users className="size-5" />
                                         </div>
-                                        {isRegistrationOpen ? (
+                                        {registrationStatus === 'open' ? (
                                             <span className="px-2 py-1 rounded bg-green-500/20 text-green-500 text-[10px] font-bold uppercase tracking-wider border border-green-500/20">Active</span>
+                                        ) : registrationStatus === 'closed' ? (
+                                            <span className="px-2 py-1 rounded bg-red-500/20 text-red-500 text-[10px] font-bold uppercase tracking-wider border border-red-500/20">Closed</span>
                                         ) : (
-                                            <span className="px-2 py-1 rounded bg-red-500/20 text-red-500 text-[10px] font-bold uppercase tracking-wider border border-red-500/20">Locked</span>
+                                            <span className="px-2 py-1 rounded bg-yellow-500/20 text-yellow-500 text-[10px] font-bold uppercase tracking-wider border border-yellow-500/20">Upcoming</span>
                                         )}
                                     </div>
                                     <h4 className="text-orange-500 font-bold uppercase text-xs tracking-widest mb-1">Registration Status</h4>
-                                    <p className="text-white text-2xl font-bold mb-1">{isRegistrationOpen ? "OPEN" : "LOCKED"}</p>
+                                    <p className="text-white text-2xl font-bold mb-1">
+                                        {registrationStatus === 'open' ? "OPEN" : registrationStatus === 'closed' ? "CLOSED" : "LOCKED"}
+                                    </p>
                                     <p className="text-gray-400 font-medium text-xs">Jan 30 – Feb 10</p>
                                 </div>
 
@@ -544,9 +556,13 @@ export default function RegisterPage() {
                                 <Lock className="size-8 text-orange-500 relative z-10" />
                                 <div className="absolute inset-0 bg-orange-500/20 blur-xl rounded-full" />
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Registration Coming Soon</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                                {registrationStatus === 'closed' ? "Registrations Closed" : "Registration Coming Soon"}
+                            </h2>
                             <p className="text-gray-400 max-w-lg">
-                                Registration for Codemania v6.0 will open soon. Stay tuned!
+                                {registrationStatus === 'closed'
+                                    ? "Registration for Codemania v6.0 has officially closed. Thank you for your interest!"
+                                    : "Registration for Codemania v6.0 will open soon. Stay tuned!"}
                             </p>
                         </div>
                     ) : (

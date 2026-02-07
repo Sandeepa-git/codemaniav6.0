@@ -16,4 +16,6 @@ export {
     PRICING_PLANS,
     METRICS,
     FAQS
- };
+};
+
+export * from "./deadlines";
