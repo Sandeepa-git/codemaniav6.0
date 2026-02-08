@@ -11,6 +11,8 @@ import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 
 
+import MerchPopup from "@/components/merch-popup";
+
 export const metadata = {
   title: "Codemania v6.0 - Island-wide Datathon",
   description: "Decode the Data. Dominate the Challenge. Join Codemania v6.0, the ultimate datathon for undergraduates in Sri Lanka.",
@@ -21,6 +23,7 @@ export default function HomePage() {
   return (
     <main className="w-full min-h-screen bg-[#101010] text-white overflow-x-hidden">
       <LoadingScreen />
+      <MerchPopup />
 
       <section id="hero">
         <Hero />

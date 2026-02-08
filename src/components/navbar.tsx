@@ -30,7 +30,8 @@ const Navbar = () => {
     // Check registration status
     const checkStatus = () => {
       const now = new Date();
-      setIsRegOpen(now < REGISTRATION_DEADLINE);
+      // setIsRegOpen(now < REGISTRATION_DEADLINE);
+      setIsRegOpen(false);
     };
 
     checkStatus();

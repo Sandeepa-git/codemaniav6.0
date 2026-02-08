@@ -63,14 +63,14 @@ const Workshops = () => {
                     ))}
                 </div>
 
-                <AnimationContainer animation="fadeUp" delay={0.6}>
+                {/* <AnimationContainer animation="fadeUp" delay={0.6}>
                     <Link href="/register">
                         <Button size="lg" className="mt-8 px-6 py-4 md:px-8 md:py-6 rounded-full bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white font-bold text-base md:text-lg shadow-[0_0_20px_rgba(234,88,12,0.4)] hover:shadow-[0_0_40px_rgba(234,88,12,0.6)] hover:scale-105 transition-all duration-300">
                             Register Now
                             <ArrowRight className="size-5 ml-2 group-hover:translate-x-1 transition-transform" />
                         </Button>
                     </Link>
-                </AnimationContainer>
+                </AnimationContainer> */}
             </div>
         </Wrapper>
     );

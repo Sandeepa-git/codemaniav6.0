@@ -110,11 +110,15 @@ const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showCon
                                         Opening Soon
                                     </Button>
                                 ) : (
-                                    <Link href="/register">
-                                        <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg">
-                                            Register Now
-                                        </Button>
-                                    </Link>
+                                    // <Link href="/register">
+                                    //     <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg">
+                                    //         Register Now
+                                    //     </Button>
+                                    // </Link>
+                                    <Button disabled className="w-full mt-8 bg-neutral-800 text-gray-400 cursor-not-allowed font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg border border-neutral-700">
+                                        <Lock className="w-5 h-5 mr-2" />
+                                        Registration Closed
+                                    </Button>
                                 )}
                             </div>
                         </AnimationContainer>

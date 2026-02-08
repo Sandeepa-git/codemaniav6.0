@@ -8,6 +8,7 @@ import Marquee from "./ui/marquee";
 import Link from "next/link";
 import Image from "next/image";
 import SectionBadge from "./ui/section-badge";
+import { ShoppingBag, ArrowRight } from "lucide-react";
 
 import NumberFlow from "@number-flow/react";
 
@@ -163,6 +164,17 @@ const Hero = () => {
 
           <AnimationContainer animation="fadeUp" delay={0.8}>
             <Countdown />
+          </AnimationContainer>
+
+          <AnimationContainer animation="fadeUp" delay={1.0} className="relative z-30">
+            <Link
+              href="/merchandise"
+              className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-full transition-all duration-300 shadow-[0_10px_30px_rgba(249,115,22,0.3)] hover:shadow-[0_10px_40px_rgba(249,115,22,0.5)] hover:-translate-y-1 hover:brightness-110"
+            >
+              <ShoppingBag className="w-5 h-5" />
+              <span className="font-semibold text-lg tracking-wide">Get Official Merch</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
           </AnimationContainer>
         </div>
 
