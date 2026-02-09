@@ -29,8 +29,8 @@ const Navbar = () => {
   useEffect(() => {
     // Check registration status
     const checkStatus = () => {
-      // setIsRegOpen(now < REGISTRATION_DEADLINE);
-      setIsRegOpen(true);
+      const now = new Date();
+      setIsRegOpen(now < REGISTRATION_DEADLINE);
     };
 
     checkStatus();
@@ -143,8 +143,8 @@ const Navbar = () => {
             </motion.div>
           )}
 
-          {/* New Button Desktop */}
-          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && (
+          {/* New Button Desktop - Shown only when registration is closed */}
+          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !isRegOpen && (
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.8 }} className="hidden lg:block ml-4">
               <Link
                 href="/workshops/data-preprocessing"
@@ -197,7 +197,7 @@ const Navbar = () => {
           {/* Hamburger Menu */}
           {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && (
             <div className="flex items-center justify-center gap-x-4">
-              {isRegOpen && (
+              {isRegOpen && !open && (
                 <Link
                   href="https://docs.google.com/forms/d/e/1FAIpQLSfwv5V42VQzaj7DBuRCRL8LRDnpHNKpHbORPVCSFJXIa3hoZQ/viewform"
                   target="_blank"
@@ -215,7 +215,7 @@ const Navbar = () => {
           )}
 
           {/* Workshop Mobile Header - Registration Button */}
-          {pathname === "/workshops/data-preprocessing" && (
+          {pathname === "/workshops/data-preprocessing" && !open && (
             <div className="flex items-center justify-center gap-x-4">
               <Link
                 href="https://forms.gle/1HA4FjYAuWD5bFct7"
@@ -271,16 +271,18 @@ const Navbar = () => {
                 </motion.div>
               )}
 
-              {/* New Button Mobile */}
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.4, duration: 0.3 }}>
-                <Link
-                  href="/workshops/data-preprocessing"
-                  onClick={() => setOpen(false)}
-                  className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-4 py-1.5 text-sm w-full text-center mt-4 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 block"
-                >
-                  Workshop 01
-                </Link>
-              </motion.div>
+              {/* New Button Mobile - Shown only when registration is closed and not on workshop/etc pages */}
+              {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !isRegOpen && (
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.4, duration: 0.3 }}>
+                  <Link
+                    href="/workshops/data-preprocessing"
+                    onClick={() => setOpen(false)}
+                    className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-4 py-1.5 text-sm w-full text-center mt-4 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 block"
+                  >
+                    Workshop 01
+                  </Link>
+                </motion.div>
+              )}
 
               {/* Workshop Registration Button - Workshop Pages Only */}
               {pathname === "/workshops/data-preprocessing" && (
