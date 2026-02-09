@@ -29,9 +29,8 @@ const Navbar = () => {
   useEffect(() => {
     // Check registration status
     const checkStatus = () => {
-      const now = new Date();
       // setIsRegOpen(now < REGISTRATION_DEADLINE);
-      setIsRegOpen(false);
+      setIsRegOpen(true);
     };
 
     checkStatus();
@@ -135,7 +134,8 @@ const Navbar = () => {
           {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && isRegOpen && (
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.7 }} className="hidden lg:block">
               <Link
-                href="/register"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfwv5V42VQzaj7DBuRCRL8LRDnpHNKpHbORPVCSFJXIa3hoZQ/viewform"
+                target="_blank"
                 className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-6 py-2 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
               >
                 Register Now
@@ -199,7 +199,8 @@ const Navbar = () => {
             <div className="flex items-center justify-center gap-x-4">
               {isRegOpen && (
                 <Link
-                  href="/register"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfwv5V42VQzaj7DBuRCRL8LRDnpHNKpHbORPVCSFJXIa3hoZQ/viewform"
+                  target="_blank"
                   className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-3 py-2 text-sm font-semibold shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
                 >
                   Register Now
@@ -260,7 +261,8 @@ const Navbar = () => {
               {isRegOpen && (
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.3, duration: 0.3 }}>
                   <Link
-                    href="/register"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfwv5V42VQzaj7DBuRCRL8LRDnpHNKpHbORPVCSFJXIa3hoZQ/viewform"
+                    target="_blank"
                     onClick={() => setOpen(false)}
                     className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-4 py-1.5 text-sm w-full text-center mt-4 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300"
                   >

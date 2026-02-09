@@ -11,18 +11,11 @@ const MerchPopup = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        // Check if popup has been shown in this session
-        // Check if popup has been shown in this session
-        const hasShown = sessionStorage.getItem("merchPopupShown_v2");
+        const timer = setTimeout(() => {
+            setIsOpen(true);
+        }, 1000); // Show after 1 second
 
-        if (!hasShown) {
-            const timer = setTimeout(() => {
-                setIsOpen(true);
-                sessionStorage.setItem("merchPopupShown_v2", "true");
-            }, 1000); // Show after 1 second
-
-            return () => clearTimeout(timer);
-        }
+        return () => clearTimeout(timer);
     }, []);
 
     const handleClose = () => {

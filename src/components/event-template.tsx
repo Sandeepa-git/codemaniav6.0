@@ -20,9 +20,11 @@ interface EventPageProps {
     takeaways: { title: string; description: string }[];
     showContacts?: boolean;
     registrationClosed?: boolean;
+    hideStatus?: boolean;
+    regLink?: string;
 }
 
-const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true, registrationClosed = false }: EventPageProps) => {
+const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true, registrationClosed = false, hideStatus = false, regLink }: EventPageProps) => {
     const [isLocked, setIsLocked] = useState(true);
 
     useEffect(() => {
@@ -90,38 +92,46 @@ const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showCon
 
                     <div className="space-y-8">
                         {/* Status Card */}
-                        <AnimationContainer animation="fadeLeft" delay={0.5}>
-                            <div className="p-8 rounded-3xl bg-gradient-to-br from-orange-600 to-orange-400 text-white shadow-xl shadow-orange-600/20">
-                                <div className="flex items-center gap-3 mb-6">
-                                    <Calendar className="size-6" />
-                                    <span className="font-semibold uppercase tracking-widest text-sm">Status</span>
-                                </div>
-                                <h4 className="text-3xl font-bold mb-2">{status}</h4>
-                                <p className="text-orange-50 opacity-90 text-lg font-medium">{date}</p>
+                        {!hideStatus && (
+                            <AnimationContainer animation="fadeLeft" delay={0.5}>
+                                <div className="p-8 rounded-3xl bg-gradient-to-br from-orange-600 to-orange-400 text-white shadow-xl shadow-orange-600/20">
+                                    <div className="flex items-center gap-3 mb-6">
+                                        <Calendar className="size-6" />
+                                        <span className="font-semibold uppercase tracking-widest text-sm">Status</span>
+                                    </div>
+                                    <h4 className="text-3xl font-bold mb-2">{status}</h4>
+                                    <p className="text-orange-50 opacity-90 text-lg font-medium">{date}</p>
 
-                                {registrationClosed ? (
-                                    <Button disabled className="w-full mt-8 bg-neutral-800 text-gray-400 cursor-not-allowed font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg border border-neutral-700">
-                                        <Lock className="w-5 h-5 mr-2" />
-                                        Coming Soon
-                                    </Button>
-                                ) : isLocked ? (
-                                    <Button disabled className="w-full mt-8 bg-white/20 text-white cursor-not-allowed font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg border border-white/10 hover:bg-white/20">
-                                        <Lock className="w-5 h-5 mr-2" />
-                                        Opening Soon
-                                    </Button>
-                                ) : (
-                                    // <Link href="/register">
-                                    //     <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg">
-                                    //         Register Now
-                                    //     </Button>
-                                    // </Link>
-                                    <Button disabled className="w-full mt-8 bg-neutral-800 text-gray-400 cursor-not-allowed font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg border border-neutral-700">
-                                        <Lock className="w-5 h-5 mr-2" />
-                                        Registration Closed
-                                    </Button>
-                                )}
-                            </div>
-                        </AnimationContainer>
+                                    {regLink ? (
+                                        <Link href={regLink} target="_blank">
+                                            <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg">
+                                                Register Now
+                                            </Button>
+                                        </Link>
+                                    ) : registrationClosed ? (
+                                        <Button disabled className="w-full mt-8 bg-neutral-800 text-gray-400 cursor-not-allowed font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg border border-neutral-700">
+                                            <Lock className="w-5 h-5 mr-2" />
+                                            Coming Soon
+                                        </Button>
+                                    ) : isLocked ? (
+                                        <Button disabled className="w-full mt-8 bg-white/20 text-white cursor-not-allowed font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg border border-white/10 hover:bg-white/20">
+                                            <Lock className="w-5 h-5 mr-2" />
+                                            Opening Soon
+                                        </Button>
+                                    ) : (
+                                        // <Link href="/register">
+                                        //     <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg">
+                                        //         Register Now
+                                        //     </Button>
+                                        // </Link>
+                                        <Button disabled className="w-full mt-8 bg-neutral-800 text-gray-400 cursor-not-allowed font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg border border-neutral-700">
+                                            <Lock className="w-5 h-5 mr-2" />
+                                            Registration Closed
+                                        </Button>
+                                    )}
+                                </div>
+                            </AnimationContainer>
+                        )}
 
                         {/* Contacts Card */}
                         {showContacts && (
