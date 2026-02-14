@@ -11,18 +11,19 @@ const Workshops = () => {
     const workshops = [
         {
             id: "01",
-            date: "February 18",
+            date: "February 11",
             title: "Data Preprocessing & Augmentation",
             description: "Learn how to handle raw datasets, clean and transform data, and apply augmentation techniques to prepare data for analysis and modeling.",
-            icon: <Database className="size-8 text-orange-500" />,
+            status: "Completed",
             link: "/workshops/data-preprocessing"
         },
         {
             id: "02",
-            date: "February 16",
+            date: "February 18",
             title: "Introduction to Machine Learning & Data-Driven Thinking",
             description: "Build on the basics by introducing machine learning concepts and data-driven thinking to solve real-world problems.",
             icon: <BrainCircuit className="size-8 text-orange-500" />,
+            status: "Scheduled",
             link: "/workshops/intro-to-ml"
         }
     ];
@@ -49,7 +50,7 @@ const Workshops = () => {
                                 <div className="p-4 rounded-2xl bg-orange-500/10 w-fit mb-6 group-hover:scale-110 transition-transform duration-300">
                                     {workshop.icon}
                                 </div>
-                                <span className="text-orange-500 font-mono font-bold mb-2">Status: Scheduled - {workshop.date}</span>
+                                <span className="text-orange-500 font-mono font-bold mb-2">Status: {workshop.status} - {workshop.date}</span>
                                 <h3 className="text-2xl font-bold text-white mb-4">{workshop.title}</h3>
                                 <p className="text-gray-400 mb-8 flex-1">{workshop.description}</p>
                                 <Link href={workshop.link}>

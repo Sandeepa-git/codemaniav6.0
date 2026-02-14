@@ -15,12 +15,12 @@ const TIMELINE = () => {
         },
         {
             title: "DATA PREPROCESSING & AUGMENTATION",
-            date: "February 18, 2026",
+            date: "February 11, 2026",
             phase: "Workshops 01"
         },
         {
             title: "INTRODUCTION TO MACHINE LEARNING & DATA-DRIVEN THINKING",
-            date: "February 16, 2026",
+            date: "February 18, 2026",
             phase: "Workshops 02"
         },
         {
