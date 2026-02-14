@@ -11,7 +11,7 @@ const Workshops = () => {
     const workshops = [
         {
             id: "01",
-            date: "February 11",
+            date: "February 18",
             title: "Data Preprocessing & Augmentation",
             description: "Learn how to handle raw datasets, clean and transform data, and apply augmentation techniques to prepare data for analysis and modeling.",
             icon: <Database className="size-8 text-orange-500" />,

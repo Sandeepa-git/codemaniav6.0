@@ -7,7 +7,7 @@ export default function Workshop01Page() {
             tagline="Build Clean, Reliable, and Ready-to-Use Datasets"
             intro="This workshop is the first step into Codemania v6.0's data journey. Participants learn how to handle raw datasets, clean and transform data, and apply augmentation techniques to prepare data for analysis and modeling."
             status="Scheduled"
-            date="February 11"
+            date="February 18"
             takeaways={[
                 {
                     title: "Data Cleaning",
@@ -27,9 +27,8 @@ export default function Workshop01Page() {
                 }
             ]}
             showContacts={false}
-            registrationClosed={false}
+            registrationClosed={true}
             hideStatus={false}
-            regLink="https://docs.google.com/forms/d/e/1FAIpQLSfwv5V42VQzaj7DBuRCRL8LRDnpHNKpHbORPVCSFJXIa3hoZQ/viewform"
         />
     );
 }

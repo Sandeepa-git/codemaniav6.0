@@ -155,18 +155,7 @@ const Navbar = () => {
             </motion.div>
           )}
 
-          {/* Workshop Registration Button - Workshop Pages Only */}
-          {pathname === "/workshops/data-preprocessing" && (
-            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.8 }} className="hidden lg:block ml-4">
-              <Link
-                href="https://forms.gle/1HA4FjYAuWD5bFct7"
-                target="_blank"
-                className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-6 py-2 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
-              >
-                Register Now
-              </Link>
-            </motion.div>
-          )}
+
         </div>
       </motion.div>
 
@@ -214,18 +203,7 @@ const Navbar = () => {
             </div>
           )}
 
-          {/* Workshop Mobile Header - Registration Button */}
-          {pathname === "/workshops/data-preprocessing" && !open && (
-            <div className="flex items-center justify-center gap-x-4">
-              <Link
-                href="https://forms.gle/1HA4FjYAuWD5bFct7"
-                target="_blank"
-                className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-3 py-2 text-sm font-semibold shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
-              >
-                Register Now
-              </Link>
-            </div>
-          )}
+
 
         </Wrapper>
 
@@ -284,19 +262,7 @@ const Navbar = () => {
                 </motion.div>
               )}
 
-              {/* Workshop Registration Button - Workshop Pages Only */}
-              {pathname === "/workshops/data-preprocessing" && (
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.4, duration: 0.3 }}>
-                  <Link
-                    href="https://forms.gle/1HA4FjYAuWD5bFct7"
-                    target="_blank"
-                    onClick={() => setOpen(false)}
-                    className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-4 py-1.5 text-sm w-full text-center mt-4 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 block"
-                  >
-                    Register Now
-                  </Link>
-                </motion.div>
-              )}
+
             </motion.div>
           )}
         </AnimatePresence>

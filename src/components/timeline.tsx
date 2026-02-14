@@ -15,7 +15,7 @@ const TIMELINE = () => {
         },
         {
             title: "DATA PREPROCESSING & AUGMENTATION",
-            date: "February 11, 2026",
+            date: "February 18, 2026",
             phase: "Workshops 01"
         },
         {
