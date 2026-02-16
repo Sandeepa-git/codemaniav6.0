@@ -134,7 +134,7 @@ const Navbar = () => {
           {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && isRegOpen && (
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.7 }} className="hidden lg:block">
               <Link
-                href="https://docs.google.com/forms/d/e/1FAIpQLSfwv5V42VQzaj7DBuRCRL8LRDnpHNKpHbORPVCSFJXIa3hoZQ/viewform"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdhBZx9m80a3Ss4jQE5sbdawEbnA59NLwN7G4P66_qldR_YJQ/viewform?usp=header"
                 target="_blank"
                 className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-6 py-2 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
               >
@@ -147,10 +147,10 @@ const Navbar = () => {
           {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !isRegOpen && (
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.8 }} className="hidden lg:block ml-4">
               <Link
-                href="/workshops/data-preprocessing"
+                href="/workshops/intro-to-ml"
                 className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-6 py-2 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
               >
-                Workshop 01
+                Workshop 02
               </Link>
             </motion.div>
           )}
@@ -188,7 +188,7 @@ const Navbar = () => {
             <div className="flex items-center justify-center gap-x-4">
               {isRegOpen && !open && (
                 <Link
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSfwv5V42VQzaj7DBuRCRL8LRDnpHNKpHbORPVCSFJXIa3hoZQ/viewform"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdhBZx9m80a3Ss4jQE5sbdawEbnA59NLwN7G4P66_qldR_YJQ/viewform?usp=header"
                   target="_blank"
                   className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-3 py-2 text-sm font-semibold shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
                 >
@@ -239,7 +239,7 @@ const Navbar = () => {
               {isRegOpen && (
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.3, duration: 0.3 }}>
                   <Link
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSfwv5V42VQzaj7DBuRCRL8LRDnpHNKpHbORPVCSFJXIa3hoZQ/viewform"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSdhBZx9m80a3Ss4jQE5sbdawEbnA59NLwN7G4P66_qldR_YJQ/viewform?usp=header"
                     target="_blank"
                     onClick={() => setOpen(false)}
                     className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-4 py-1.5 text-sm w-full text-center mt-4 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300"
@@ -253,11 +253,11 @@ const Navbar = () => {
               {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !isRegOpen && (
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.4, duration: 0.3 }}>
                   <Link
-                    href="/workshops/data-preprocessing"
+                    href="/workshops/intro-to-ml"
                     onClick={() => setOpen(false)}
                     className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-4 py-1.5 text-sm w-full text-center mt-4 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 block"
                   >
-                    Workshop 01
+                    Workshop 02
                   </Link>
                 </motion.div>
               )}

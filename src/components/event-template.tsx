@@ -22,9 +22,10 @@ interface EventPageProps {
     registrationClosed?: boolean;
     hideStatus?: boolean;
     regLink?: string;
+    hideRegisterButton?: boolean;
 }
 
-const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true, registrationClosed = false, hideStatus = false, regLink }: EventPageProps) => {
+const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true, registrationClosed = false, hideStatus = false, regLink, hideRegisterButton = false }: EventPageProps) => {
     const [isLocked, setIsLocked] = useState(true);
 
     useEffect(() => {
@@ -102,7 +103,7 @@ const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showCon
                                     <h4 className="text-3xl font-bold mb-2">{status}</h4>
                                     <p className="text-orange-50 opacity-90 text-lg font-medium">{date}</p>
 
-                                    {regLink ? (
+                                    {hideRegisterButton ? null : regLink ? (
                                         <Link href={regLink} target="_blank">
                                             <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg">
                                                 Register Now
@@ -119,11 +120,6 @@ const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showCon
                                             Opening Soon
                                         </Button>
                                     ) : (
-                                        // <Link href="/register">
-                                        //     <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg">
-                                        //         Register Now
-                                        //     </Button>
-                                        // </Link>
                                         <Button disabled className="w-full mt-8 bg-neutral-800 text-gray-400 cursor-not-allowed font-semibold rounded-xl py-4 md:py-6 text-base md:text-lg border border-neutral-700">
                                             <Lock className="w-5 h-5 mr-2" />
                                             Registration Closed

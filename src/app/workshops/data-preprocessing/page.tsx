@@ -29,6 +29,7 @@ export default function Workshop01Page() {
             showContacts={false}
             registrationClosed={true}
             hideStatus={false}
+            hideRegisterButton={true}
         />
     );
 }

@@ -27,8 +27,9 @@ export default function Workshop02Page() {
                 }
             ]}
             showContacts={false}
-            registrationClosed={true}
+            registrationClosed={false}
             hideStatus={false}
+            regLink="https://docs.google.com/forms/d/e/1FAIpQLSdhBZx9m80a3Ss4jQE5sbdawEbnA59NLwN7G4P66_qldR_YJQ/viewform?usp=header"
         />
     );
 }
