@@ -47,12 +47,12 @@ const Partners = () => {
                     <div className="absolute top-0 right-0 w-64 h-64 bg-orange-600/10 blur-[100px] -z-10"></div>
 
                     <AnimationContainer animation="fadeUp" delay={0.5}>
-                        <h3 className="text-2xl md:text-4xl font-bold text-white mb-6">Let’s Make Meaningful Impact</h3>
+                        <h3 className="text-2xl md:text-4xl font-medium text-white mb-6">Let’s Make Meaningful Impact</h3>
                         <p className="text-gray-400 text-lg mb-10">
                             Interested in partnering with Codemania v6.0? Let’s collaborate to empower the next generation of data-driven innovators.
                         </p>
                         <Link href="#contact">
-                            <Button size="lg" className="rounded-full px-10 bg-white text-black hover:bg-gray-200 font-bold">
+                            <Button size="lg" className="rounded-full px-10 bg-white text-black hover:bg-gray-200 font-medium">
                                 Contact Us
                             </Button>
                         </Link>

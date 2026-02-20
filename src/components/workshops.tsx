@@ -14,6 +14,7 @@ const Workshops = () => {
             date: "February 11",
             title: "Data Preprocessing & Augmentation",
             description: "Learn how to handle raw datasets, clean and transform data, and apply augmentation techniques to prepare data for analysis and modeling.",
+            icon: <Database className="size-8 text-orange-500" />,
             status: "Completed",
             link: "/workshops/data-preprocessing"
         },
@@ -50,10 +51,10 @@ const Workshops = () => {
                                 <div className="p-4 rounded-2xl bg-orange-500/10 w-fit mb-6 group-hover:scale-110 transition-transform duration-300">
                                     {workshop.icon}
                                 </div>
-                                <span className="text-orange-500 font-mono font-bold mb-2">Status: {workshop.status} - {workshop.date}</span>
-                                <h3 className="text-2xl font-bold text-white mb-4">{workshop.title}</h3>
+                                <span className="text-orange-500 font-mono font-medium mb-2">Status: {workshop.status} - {workshop.date}</span>
+                                <h3 className="text-2xl font-medium text-white mb-4">{workshop.title}</h3>
                                 <p className="text-gray-400 mb-8 flex-1">{workshop.description}</p>
-                                <Link href={workshop.link}>
+                                <Link href={workshop.link} target="_blank">
                                     <Button variant="outline" className="rounded-full border-orange-500/20 hover:bg-orange-500 hover:text-white transition-all group/btn">
                                         Read More
                                         <ArrowRight className="size-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />

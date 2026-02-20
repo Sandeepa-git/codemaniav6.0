@@ -723,7 +723,7 @@ export const TEAMS = [
         "hackerRankUser": "CM0199_MedXHackers",
         "token": "CM0199",
         "teamName": "MedXHackers",
-        "member": "Wanniarachchige Lilendra Pasindu Harsha (Team Leader)",
+        "member": "Wanniarachchige Lilendra Pasindu Harsha",
         "contact": "759876538",
         "email": "pasinduwanniarachchi01@gmail.com"
     },
@@ -731,7 +731,7 @@ export const TEAMS = [
         "hackerRankUser": "CM0200_SmileLabs",
         "token": "CM0200",
         "teamName": "SmileLabs",
-        "member": "Himath Nimpura Dhanapala (Team Leader)",
+        "member": "Himath Nimpura Dhanapala",
         "contact": "755959596",
         "email": "himath.nimpura@gmail.com"
     },
@@ -739,7 +739,7 @@ export const TEAMS = [
         "hackerRankUser": "CM0201_MAKCodes",
         "token": "CM0201",
         "teamName": "MAKCodes",
-        "member": "K.A.S.I. Ranaweera (Team Leader)",
+        "member": "K.A.S.I. Ranaweera",
         "contact": "766875576",
         "email": "ranaweerakasi@gmail.com"
     },
@@ -747,7 +747,7 @@ export const TEAMS = [
         "hackerRankUser": "CM0202_Infinites",
         "token": "CM0202",
         "teamName": "Infinites",
-        "member": "Achintha Chenura Bandara (Team Leader)",
+        "member": "Achintha Chenura Bandara",
         "contact": "713209216",
         "email": "achinthacb@gmail.com"
     },

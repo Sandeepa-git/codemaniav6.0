@@ -56,7 +56,7 @@ const Footer = () => {
 
                     <div className="grid grid-cols-2 gap-8 xl:col-span-2">
                         <div>
-                            <h3 className="text-white font-bold mb-6">Quick Links</h3>
+                            <h3 className="text-white font-medium mb-6">Quick Links</h3>
                             <ul className="space-y-4 text-sm text-gray-400">
                                 {QUICK_LINKS.map((link, index) => (
                                     <li key={index}>
@@ -72,7 +72,7 @@ const Footer = () => {
                         </div>
 
                         <div>
-                            <h3 className="text-white font-bold mb-6">Contact</h3>
+                            <h3 className="text-white font-medium mb-6">Contact</h3>
                             <p className="text-sm text-gray-400">
                                 Have questions?
                                 <br />

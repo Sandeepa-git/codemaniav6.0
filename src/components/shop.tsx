@@ -129,7 +129,7 @@ const SHOP = () => {
           </h2>
           <p className="text-gray-400 text-base md:text-xl mt-4 md:mt-6 max-w-2xl mx-auto">
             Gear up with the exclusive Codemania v6.0 detailed lineup. <br className="hidden md:block" />
-            <span className="text-orange-500 font-bold mt-1 md:mt-2 block">Choose your loadout.</span>
+            <span className="text-orange-500 font-medium mt-1 md:mt-2 block">Choose your loadout.</span>
           </p>
         </AnimationContainer>
 
@@ -200,7 +200,7 @@ const SHOP = () => {
                     {product.tagline}
                   </p>
 
-                  <div className="text-3xl md:text-5xl font-semibold text-white mb-6 md:mb-8 font-folkra tracking-tight">
+                  <div className="text-3xl md:text-5xl font-medium text-white mb-6 md:mb-8 font-folkra tracking-tight">
                     {product.price}
                   </div>
 
@@ -219,7 +219,7 @@ const SHOP = () => {
                     {product.availableSizes && (
                       <div>
                         <div className="flex justify-between items-center mb-3 md:mb-4">
-                          <p className="text-xs md:text-sm font-semibold text-white uppercase tracking-[3px]">Available Sizes</p>
+                          <p className="text-xs md:text-sm font-medium text-white uppercase tracking-[3px]">Available Sizes</p>
                           {product.sizeChartImages && product.sizeChartImages.length > 0 && (
                             <Dialog>
                               <DialogTrigger asChild>

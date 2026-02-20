@@ -58,7 +58,7 @@ const Prizes = () => {
 
                         <AnimationContainer animation="fadeUp" delay={0.4} className="w-full">
                             <div className="flex flex-col gap-4 mt-2">
-                                <h3 className="text-xl sm:text-2xl font-bold text-orange-500 flex items-center justify-center lg:justify-start gap-2">
+                                <h3 className="text-xl sm:text-2xl font-medium text-orange-500 flex items-center justify-center lg:justify-start gap-2">
                                     <Trophy className="w-6 h-6" />
                                     What’s at Stake
                                 </h3>

@@ -23,7 +23,7 @@ const Portals = () => {
                         <div className="absolute inset-0 bg-[url('/images/grid.svg')] bg-center opacity-[0.03] group-hover:opacity-[0.07] transition-opacity" />
 
                         {/* Decorative Badge */}
-                        <div className="absolute top-6 sm:top-10 left-6 sm:left-10 py-1 sm:py-1.5 px-3 sm:px-4 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em]">
+                        <div className="absolute top-6 sm:top-10 left-6 sm:left-10 py-1 sm:py-1.5 px-3 sm:px-4 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.2em] sm:tracking-[0.3em]">
                             Ranking Portal
                         </div>
 
@@ -35,7 +35,7 @@ const Portals = () => {
                                 Explore the final rankings and top-performing teams of Codemania v6.0.
                             </p>
 
-                            <Link href="/leaderboard" className="group/btn inline-flex items-center gap-2 sm:gap-3 py-3 sm:py-4 px-6 sm:px-8 rounded-full bg-white text-black font-bold text-sm sm:text-base group-hover:bg-orange-500 group-hover:text-white transition-all duration-500">
+                            <Link href="/leaderboard" className="group/btn inline-flex items-center gap-2 sm:gap-3 py-3 sm:py-4 px-6 sm:px-8 rounded-full bg-white text-black font-medium text-sm sm:text-base group-hover:bg-orange-500 group-hover:text-white transition-all duration-500">
                                 View Leaderboard
                                 <ArrowRight className="size-4 sm:size-5 group-hover/btn:translate-x-2 transition-transform" />
                             </Link>
@@ -58,7 +58,7 @@ const Portals = () => {
                         <div className="absolute inset-0 bg-[url('/images/grid.svg')] bg-center opacity-[0.03] group-hover:opacity-[0.07] transition-opacity" />
 
                         {/* Decorative Badge */}
-                        <div className="absolute top-6 sm:top-10 left-6 sm:left-10 py-1 sm:py-1.5 px-3 sm:px-4 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em]">
+                        <div className="absolute top-6 sm:top-10 left-6 sm:left-10 py-1 sm:py-1.5 px-3 sm:px-4 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.2em] sm:tracking-[0.3em]">
                             Official Store
                         </div>
 
@@ -70,7 +70,7 @@ const Portals = () => {
                                 Own exclusive Codemania v6.0 gear designed for competitors.
                             </p>
 
-                            <Link href="/merchandise" className="group/btn inline-flex items-center gap-2 sm:gap-3 py-3 sm:py-4 px-6 sm:px-8 rounded-full bg-white text-black font-bold text-sm sm:text-base group-hover:bg-orange-500 group-hover:text-white transition-all duration-500">
+                            <Link href="/merchandise" className="group/btn inline-flex items-center gap-2 sm:gap-3 py-3 sm:py-4 px-6 sm:px-8 rounded-full bg-white text-black font-medium text-sm sm:text-base group-hover:bg-orange-500 group-hover:text-white transition-all duration-500">
                                 Order Now
                                 <ArrowRight className="size-4 sm:size-5 group-hover/btn:translate-x-2 transition-transform" />
                             </Link>

@@ -19,12 +19,12 @@ export default function ThankYouPage() {
                     <CheckCircle2 className="w-14 h-14 text-green-500" />
                 </div>
 
-                <h1 className="text-4xl md:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                <h1 className="text-4xl md:text-6xl font-medium mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
                     Thank You for Registering!
                 </h1>
 
                 <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed">
-                    Your registration for <span className="text-orange-500 font-bold">Codemania v6.0</span> has been received successfully.
+                    Your registration for <span className="text-orange-500 font-medium">Codemania v6.0</span> has been received successfully.
                     We've sent a confirmation email to the team leader. Stay tuned for further updates!
                 </p>
 

@@ -2,10 +2,12 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const LoadingScreen = () => {
     const [loading, setLoading] = useState(true);
     const [displayedText, setDisplayedText] = useState("");
+    const pathname = usePathname();
 
     // We'll treat the text as a sequence of "actions"
     // Each action is a character to append
@@ -36,17 +38,10 @@ const LoadingScreen = () => {
         };
     }, [loading]);
 
-    // Effect 2: Handle Typing Animation (Run Once per session)
+    // Effect 2: Handle Typing Animation (Run on mount and pathname change)
     useEffect(() => {
-        // Check if we've already shown the loading screen this session
-        // const hasShown = sessionStorage.getItem("hasShownLoading");
-        // if (hasShown) {
-        //     setLoading(false);
-        //     return;
-        // }
-
-        // Mark as shown for future visits
-        // sessionStorage.setItem("hasShownLoading", "true");
+        setLoading(true);
+        setDisplayedText("");
 
         let currentIndex = 0;
         const interval = setInterval(() => {
@@ -71,7 +66,7 @@ const LoadingScreen = () => {
         return () => {
             clearInterval(interval);
         };
-    }, []); // Run once on mount
+    }, [pathname]); // Run on pathname change
 
     return (
         <AnimatePresence>
@@ -82,7 +77,7 @@ const LoadingScreen = () => {
             >
                 <div className="relative max-w-[90vw] text-center">
                     <motion.h1
-                        className="text-lg sm:text-3xl md:text-5xl lg:text-6xl tracking-wide sm:tracking-widest font-bold font-mono text-orange-500 leading-tight whitespace-pre-wrap break-words"
+                        className="text-lg sm:text-3xl md:text-5xl lg:text-6xl tracking-wide sm:tracking-widest font-medium font-mono text-orange-500 leading-tight whitespace-pre-wrap break-words"
                     >
                         {displayedText}
                         <motion.span

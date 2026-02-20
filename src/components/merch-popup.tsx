@@ -73,14 +73,14 @@ const MerchPopup = () => {
                             />
 
                             {/* Floating Badge */}
-                            <div className="absolute left-6 top-6 z-10 flex items-center gap-2 rounded-full bg-orange-500/10 px-3 py-1 text-xs font-bold text-orange-500 border border-orange-500/20 backdrop-blur-md">
+                            <div className="absolute left-6 top-6 z-10 flex items-center gap-2 rounded-full bg-orange-500/10 px-3 py-1 text-xs font-medium text-orange-500 border border-orange-500/20 backdrop-blur-md">
                                 <ShoppingBag className="h-3 w-3" />
                                 <span>NEW ARRIVAL</span>
                             </div>
                         </div>
 
                         <div className="p-6 md:p-8">
-                            <h3 className="mb-2 text-2xl font-bold text-white md:text-3xl font-folkra tracking-wide">
+                            <h3 className="mb-2 text-2xl font-medium text-white md:text-3xl font-folkra tracking-wide">
                                 Official <span className="text-orange-500">Merch</span> Drop
                             </h3>
                             <p className="mb-6 text-sm text-gray-400 md:text-base">

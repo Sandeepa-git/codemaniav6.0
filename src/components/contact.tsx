@@ -63,8 +63,8 @@ const Contact = () => {
                                         className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                                     />
                                 </div>
-                                <span className="text-orange-500 text-xs font-bold uppercase tracking-tight block mb-2">{contact.role}</span>
-                                <h3 className="text-xl font-bold text-white mb-6">{contact.name}</h3>
+                                <span className="text-orange-500 text-xs font-medium uppercase tracking-tight block mb-2">{contact.role}</span>
+                                <h3 className="text-xl font-medium text-white mb-6">{contact.name}</h3>
 
                                 <div className="space-y-4 w-full">
                                     <a href={`tel:${contact.phone}`} className="flex items-center justify-center gap-3 text-gray-400 hover:text-white transition-colors text-sm">

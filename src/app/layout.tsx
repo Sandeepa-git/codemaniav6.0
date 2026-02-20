@@ -3,8 +3,8 @@ import { base, heading } from "@/constants/fonts";
 import { cn } from "@/lib";
 import "@/styles/globals.css";
 import { generateMetadata } from "@/utils";
-
 import Navbar from "@/components/navbar";
+import LoadingScreen from "@/components/loading-screen";
 
 export const metadata = generateMetadata();
 
@@ -26,6 +26,7 @@ export default function RootLayout({
         )}
       >
         <Navbar />
+        <LoadingScreen />
         <Toaster richColors theme="dark" position="bottom-center" />
         {children}
       </body>

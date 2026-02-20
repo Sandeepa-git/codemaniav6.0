@@ -152,7 +152,7 @@ const MemberForm = ({ title, prefix, form }: MemberFormProps) => {
                 <div className="p-2 bg-orange-500/20 rounded-lg">
                     <User className="w-5 h-5 md:w-6 md:h-6 text-orange-500" />
                 </div>
-                <h3 className="text-lg md:text-xl font-semibold text-white">{title}</h3>
+                <h3 className="text-lg md:text-xl font-medium text-white">{title}</h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
@@ -462,10 +462,10 @@ export default function RegisterPage() {
                     </Link>
 
                     <header className="mb-8 md:mb-10 text-center md:text-left">
-                        <h1 className="text-[2.5rem] leading-snug sm:text-4xl md:text-5xl font-heading font-bold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-100 to-orange-500 tracking-tighter">
+                        <h1 className="text-[2.5rem] leading-snug sm:text-4xl md:text-5xl font-heading font-medium mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-100 to-orange-500 tracking-tighter">
                             Registrations
                         </h1>
-                        <p className="text-orange-500 text-base sm:text-lg md:text-xl font-bold mb-4 md:mb-6">
+                        <p className="text-orange-500 text-base sm:text-lg md:text-xl font-medium mb-4 md:mb-6">
                             Join the Datathon. Push Your Limits. Analyze. Solve. Conquer.
                         </p>
                         <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-3xl leading-relaxed mx-auto md:mx-0">
@@ -481,13 +481,13 @@ export default function RegisterPage() {
                                 <div className="p-6 md:p-8 flex flex-col justify-center items-start text-left flex-1">
                                     <div className="flex items-center gap-2 text-orange-500 mb-3 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">
                                         <Book size={14} />
-                                        <span className="text-[10px] font-bold uppercase tracking-widest">Official Resource</span>
+                                        <span className="text-[10px] font-medium uppercase tracking-widest">Official Resource</span>
                                     </div>
-                                    <h3 className="text-white font-heading font-bold text-2xl md:text-3xl mb-2 group-hover:text-orange-200 transition-colors">Delegate Handbook</h3>
+                                    <h3 className="text-white font-heading font-medium text-2xl md:text-3xl mb-2 group-hover:text-orange-200 transition-colors">Delegate Handbook</h3>
                                     <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-md">Essential guide for all participants. Contains rules, schedules, and datathon details.</p>
 
                                     <a href="/codemania-v6-delegate-handbook.pdf" download="Codemania_V6_Delegate_Handbook.pdf" className="w-full sm:w-auto">
-                                        <Button className="w-full sm:w-auto bg-orange-600 hover:bg-orange-500 text-white font-semibold py-6 px-8 rounded-xl text-base shadow-lg shadow-orange-900/20 transition-all group-hover:translate-x-1">
+                                        <Button className="w-full sm:w-auto bg-orange-600 hover:bg-orange-500 text-white font-medium py-6 px-8 rounded-xl text-base shadow-lg shadow-orange-900/20 transition-all group-hover:translate-x-1">
                                             <Download className="mr-2 h-5 w-5" />
                                             Download PDF
                                         </Button>
@@ -504,15 +504,15 @@ export default function RegisterPage() {
                                             <Users className="size-5" />
                                         </div>
                                         {registrationStatus === 'open' ? (
-                                            <span className="px-2 py-1 rounded bg-green-500/20 text-green-500 text-[10px] font-bold uppercase tracking-wider border border-green-500/20">Active</span>
+                                            <span className="px-2 py-1 rounded bg-green-500/20 text-green-500 text-[10px] font-medium uppercase tracking-wider border border-green-500/20">Active</span>
                                         ) : registrationStatus === 'closed' ? (
-                                            <span className="px-2 py-1 rounded bg-red-500/20 text-red-500 text-[10px] font-bold uppercase tracking-wider border border-red-500/20">Closed</span>
+                                            <span className="px-2 py-1 rounded bg-red-500/20 text-red-500 text-[10px] font-medium uppercase tracking-wider border border-red-500/20">Closed</span>
                                         ) : (
-                                            <span className="px-2 py-1 rounded bg-yellow-500/20 text-yellow-500 text-[10px] font-bold uppercase tracking-wider border border-yellow-500/20">Upcoming</span>
+                                            <span className="px-2 py-1 rounded bg-yellow-500/20 text-yellow-500 text-[10px] font-medium uppercase tracking-wider border border-yellow-500/20">Upcoming</span>
                                         )}
                                     </div>
-                                    <h4 className="text-orange-500 font-bold uppercase text-xs tracking-widest mb-1">Registration Status</h4>
-                                    <p className="text-white text-2xl font-bold mb-1">
+                                    <h4 className="text-orange-500 font-medium uppercase text-xs tracking-widest mb-1">Registration Status</h4>
+                                    <p className="text-white text-2xl font-medium mb-1">
                                         {registrationStatus === 'open' ? "OPEN" : registrationStatus === 'closed' ? "CLOSED" : "LOCKED"}
                                     </p>
                                     <p className="text-gray-400 font-medium text-xs">Jan 30 – Feb 10</p>
@@ -532,7 +532,7 @@ export default function RegisterPage() {
                             <div className="flex justify-between items-start w-full relative">
                                 {[1, 2, 3, 4, 5].filter(isStepVisible).map((s) => (
                                     <div key={s} className="flex flex-col items-center gap-2 relative z-10 w-12 md:w-auto">
-                                        <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-xs md:text-sm border-2 transition-all duration-300 ${step >= s ? "bg-orange-600 border-orange-600 text-white shadow-[0_0_15px_rgba(234,88,12,0.4)]" : "bg-[#101010] border-neutral-800 text-gray-500"
+                                        <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-medium text-xs md:text-sm border-2 transition-all duration-300 ${step >= s ? "bg-orange-600 border-orange-600 text-white shadow-[0_0_15px_rgba(234,88,12,0.4)]" : "bg-[#101010] border-neutral-800 text-gray-500"
                                             }`}>
                                             {s}
                                         </div>
@@ -556,7 +556,7 @@ export default function RegisterPage() {
                                 <Lock className="size-8 text-orange-500 relative z-10" />
                                 <div className="absolute inset-0 bg-orange-500/20 blur-xl rounded-full" />
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
                                 {registrationStatus === 'closed' ? "Registrations Closed" : "Registration Coming Soon"}
                             </h2>
                             <p className="text-gray-400 max-w-lg">
@@ -583,7 +583,7 @@ export default function RegisterPage() {
                                                         <div className="p-2 bg-orange-500/20 rounded-lg">
                                                             <Users className="w-5 h-5 md:w-6 md:h-6 text-orange-500" />
                                                         </div>
-                                                        <h3 className="text-lg md:text-xl font-semibold text-white">Team Information</h3>
+                                                        <h3 className="text-lg md:text-xl font-medium text-white">Team Information</h3>
                                                     </div>
 
                                                     {/* Team Size Selection */}
@@ -695,7 +695,7 @@ export default function RegisterPage() {
                                                         <div className="p-2 bg-orange-500/20 rounded-lg">
                                                             <ShieldCheck className="w-5 h-5 md:w-6 md:h-6 text-orange-500" />
                                                         </div>
-                                                        <h3 className="text-lg md:text-xl font-semibold text-white">Declaration & Consent</h3>
+                                                        <h3 className="text-lg md:text-xl font-medium text-white">Declaration & Consent</h3>
                                                     </div>
 
                                                     <div className="bg-neutral-950/50 p-4 md:p-6 rounded-2xl border border-neutral-800 text-gray-300 text-xs md:text-sm leading-relaxed space-y-3 md:space-y-4 shadow-inner">
@@ -730,15 +730,15 @@ export default function RegisterPage() {
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                                                         <div className="bg-neutral-950/50 p-4 md:p-5 rounded-2xl border border-neutral-800 border-l-orange-500 border-l-4 shadow-lg">
                                                             <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider mb-1 font-medium">Team Name</p>
-                                                            <p className="text-white font-bold text-lg md:text-xl break-words">{form.getValues("teamName")}</p>
+                                                            <p className="text-white font-medium text-lg md:text-xl break-words">{form.getValues("teamName")}</p>
                                                         </div>
                                                         <div className="bg-neutral-950/50 p-4 md:p-5 rounded-2xl border border-neutral-800 border-l-blue-500 border-l-4 shadow-lg">
                                                             <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider mb-1 font-medium">University</p>
-                                                            <p className="text-white font-bold text-lg md:text-xl break-words">{form.getValues("university") === "Other" ? form.getValues("otherUniversity") : form.getValues("university")}</p>
+                                                            <p className="text-white font-medium text-lg md:text-xl break-words">{form.getValues("university") === "Other" ? form.getValues("otherUniversity") : form.getValues("university")}</p>
                                                         </div>
                                                         <div className="bg-neutral-950/50 p-4 md:p-5 rounded-2xl border border-neutral-800 border-l-green-500 border-l-4 shadow-lg md:col-span-2">
                                                             <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider mb-1 font-medium">Team Size</p>
-                                                            <p className="text-white font-bold text-lg md:text-xl break-words">{form.getValues("teamSize")} Members</p>
+                                                            <p className="text-white font-medium text-lg md:text-xl break-words">{form.getValues("teamSize")} Members</p>
                                                         </div>
                                                     </div>
                                                 </motion.div>
@@ -760,7 +760,7 @@ export default function RegisterPage() {
                                                 <Button
                                                     type="button"
                                                     onClick={nextStep}
-                                                    className="bg-orange-600 hover:bg-orange-700 w-full sm:w-auto px-8 rounded-xl h-11 md:h-12 font-semibold shadow-lg transition-all text-sm md:text-base"
+                                                    className="bg-orange-600 hover:bg-orange-700 w-full sm:w-auto px-8 rounded-xl h-11 md:h-12 font-medium shadow-lg transition-all text-sm md:text-base"
                                                 >
                                                     Next Step
                                                 </Button>
@@ -768,7 +768,7 @@ export default function RegisterPage() {
                                                 <Button
                                                     type="submit"
                                                     disabled={isSubmitting}
-                                                    className="bg-gradient-to-r from-orange-600 to-orange-400 hover:from-orange-700 hover:to-orange-500 w-full sm:w-auto px-10 shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-all duration-300 rounded-xl h-11 md:h-12 min-w-[200px] font-bold text-sm md:text-base"
+                                                    className="bg-gradient-to-r from-orange-600 to-orange-400 hover:from-orange-700 hover:to-orange-500 w-full sm:w-auto px-10 shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-all duration-300 rounded-xl h-11 md:h-12 min-w-[200px] font-medium text-sm md:text-base"
                                                 >
                                                     {isSubmitting ? (
                                                         <span className="flex items-center gap-2 justify-center">

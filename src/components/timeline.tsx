@@ -84,7 +84,7 @@ const TIMELINE = () => {
                                     )}>
                                         <div className="absolute -inset-px bg-gradient-to-br from-orange-500/10 to-transparent rounded-[1rem] xs:rounded-[1.5rem] sm:rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                                        <span className="text-orange-500 text-[8px] xs:text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.1em] xs:tracking-[0.2em] mb-1 xs:mb-2 sm:mb-4 block">{item.phase}</span>
+                                        <span className="text-orange-500 text-[8px] xs:text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.1em] xs:tracking-[0.2em] mb-1 xs:mb-2 sm:mb-4 block">{item.phase}</span>
                                         <h3 className="text-sm xs:text-base sm:text-xl lg:text-2xl font-medium text-white group-hover:text-orange-400 transition-colors leading-tight break-words hyphens-auto">
                                             {item.title}
                                         </h3>
