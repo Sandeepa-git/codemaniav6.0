@@ -11,7 +11,7 @@ export default function GrandFinalePage() {
             takeaways={[
                 {
                     title: "Participation",
-                    description: "Only the top 40 qualified teams from the Virtual Datathon."
+                    description: "Only the top 15 qualified teams from the Virtual Datathon."
                 },
                 {
                     title: "Challenges",

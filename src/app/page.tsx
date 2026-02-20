@@ -5,6 +5,7 @@ import TIMELINE from "@/components/timeline";
 import Stats from "@/components/stats";
 import Prizes from "@/components/prizes";
 import Workshops from "@/components/workshops";
+import Competitions from "@/components/competitions";
 import Partners from "@/components/partners";
 import Portals from "@/components/portals";
 import Contact from "@/components/contact";
@@ -43,6 +44,10 @@ export default function HomePage() {
 
       <section id="workshops">
         <Workshops />
+      </section>
+
+      <section id="competitions">
+        <Competitions />
       </section>
 
       <section id="prizes">

@@ -16,6 +16,7 @@ const NAV_LINKS = [
   { name: "About", link: "#about" },
   { name: "Timeline", link: "#timeline" },
   { name: "Workshops", link: "#workshops" },
+  { name: "Competitions", link: "#competitions" },
   { name: "Prizes", link: "#prizes" },
   { name: "Contact", link: "#contact" },
 ];
@@ -130,27 +131,15 @@ const Navbar = () => {
             </div>
           )}
 
-          {/* Register Button - Hidden */}
-          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && isRegOpen && (
-            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.7 }} className="hidden lg:block">
-              <Link
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdhBZx9m80a3Ss4jQE5sbdawEbnA59NLwN7G4P66_qldR_YJQ/viewform?usp=header"
-                target="_blank"
-                className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-6 py-2 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
-              >
-                Register Now
-              </Link>
-            </motion.div>
-          )}
 
           {/* New Button Desktop - Shown only when registration is closed */}
           {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !isRegOpen && (
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.8 }} className="hidden lg:block ml-4">
               <Link
-                href="/workshops/intro-to-ml"
+                href="/virtual-datathon"
                 className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-6 py-2 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
               >
-                Workshop 02
+                Virtual Datathon
               </Link>
             </motion.div>
           )}
@@ -186,15 +175,6 @@ const Navbar = () => {
           {/* Hamburger Menu */}
           {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && (
             <div className="flex items-center justify-center gap-x-4">
-              {isRegOpen && !open && (
-                <Link
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSdhBZx9m80a3Ss4jQE5sbdawEbnA59NLwN7G4P66_qldR_YJQ/viewform?usp=header"
-                  target="_blank"
-                  className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-3 py-2 text-sm font-semibold shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
-                >
-                  Register Now
-                </Link>
-              )}
               {open ? (
                 <XIcon className="text-black dark:text-white cursor-pointer" onClick={() => setOpen(false)} />
               ) : (
@@ -235,29 +215,16 @@ const Navbar = () => {
                 </motion.div>
               ))}
 
-              {/* Register Now Mobile - Hidden */}
-              {isRegOpen && (
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.3, duration: 0.3 }}>
-                  <Link
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSdhBZx9m80a3Ss4jQE5sbdawEbnA59NLwN7G4P66_qldR_YJQ/viewform?usp=header"
-                    target="_blank"
-                    onClick={() => setOpen(false)}
-                    className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-4 py-1.5 text-sm w-full text-center mt-4 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300"
-                  >
-                    Register Now
-                  </Link>
-                </motion.div>
-              )}
 
               {/* New Button Mobile - Shown only when registration is closed and not on workshop/etc pages */}
               {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !isRegOpen && (
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.4, duration: 0.3 }}>
                   <Link
-                    href="/workshops/intro-to-ml"
+                    href="/virtual-datathon"
                     onClick={() => setOpen(false)}
                     className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-4 py-1.5 text-sm w-full text-center mt-4 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 block"
                   >
-                    Workshop 02
+                    Virtual Datathon
                   </Link>
                 </motion.div>
               )}

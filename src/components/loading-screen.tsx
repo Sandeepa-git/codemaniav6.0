@@ -23,7 +23,9 @@ const LoadingScreen = () => {
     useEffect(() => {
         if (loading) {
             document.body.style.overflow = "hidden";
-            window.scrollTo(0, 0); // Optional: Scroll to top on load
+            if (!window.location.hash) {
+                window.scrollTo(0, 0);
+            }
         } else {
             // Unlock immediately when loading becomes false, 
             // allowing scroll during the exit animation if desired

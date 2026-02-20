@@ -6,7 +6,7 @@ export default function Workshop02Page() {
             title="Workshop 02 – Introduction to Machine Learning & Data-Driven Thinking"
             tagline="Turn Data Into Insight"
             intro="Workshop 02 builds on the first session by introducing machine learning concepts and data-driven thinking. Participants will learn how to apply models to problem statements, evaluate performance, and optimize solutions."
-            status="Scheduled"
+            status="Completed"
             date="February 18"
             takeaways={[
                 {

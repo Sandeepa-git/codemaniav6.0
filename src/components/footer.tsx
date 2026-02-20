@@ -5,10 +5,11 @@ import AnimationContainer from './global/animation-container';
 import Wrapper from "./global/wrapper";
 
 const QUICK_LINKS = [
-    { label: "About", href: "#about" },
-    { label: "Timeline", href: "#timeline" },
-    { label: "Workshops", href: "#workshops" },
-    { label: "Prizes", href: "#prizes" },
+    { label: "About", href: "/#about" },
+    { label: "Timeline", href: "/#timeline" },
+    { label: "Workshops", href: "/#workshops" },
+    { label: "Competitions", href: "/#competitions" },
+    { label: "Prizes", href: "/#prizes" },
 ];
 
 const SOCIAL_LINKS = [

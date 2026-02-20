@@ -17,15 +17,16 @@ interface EventPageProps {
     intro: string;
     status: string;
     date: string;
-    takeaways: { title: string; description: string }[];
+    takeaways?: { title: string; description: string }[];
     showContacts?: boolean;
     registrationClosed?: boolean;
     hideStatus?: boolean;
     regLink?: string;
     hideRegisterButton?: boolean;
+    children?: React.ReactNode;
 }
 
-const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true, registrationClosed = false, hideStatus = false, regLink, hideRegisterButton = false }: EventPageProps) => {
+const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true, registrationClosed = false, hideStatus = false, regLink, hideRegisterButton = true, children }: EventPageProps) => {
     const [isLocked, setIsLocked] = useState(true);
 
     useEffect(() => {
@@ -73,22 +74,26 @@ const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showCon
                             </p>
                         </AnimationContainer>
 
-                        <AnimationContainer animation="fadeUp" delay={0.4}>
-                            <h3 className="text-2xl font-semibold mb-8 text-white">Key Takeaways / Process</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {takeaways.map((item, idx) => (
-                                    <div key={idx} className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-orange-500/30 transition-colors">
-                                        <div className="flex items-start gap-4">
-                                            <CheckCircle2 className="size-6 text-orange-500 shrink-0 mt-1" />
-                                            <div>
-                                                <h4 className="font-semibold text-lg mb-2">{item.title}</h4>
-                                                <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
+                        {takeaways && (
+                            <AnimationContainer animation="fadeUp" delay={0.4}>
+                                <h3 className="text-2xl font-semibold mb-8 text-white">Key Takeaways / Process</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    {takeaways.map((item, idx) => (
+                                        <div key={idx} className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-orange-500/30 transition-colors">
+                                            <div className="flex items-start gap-4">
+                                                <CheckCircle2 className="size-6 text-orange-500 shrink-0 mt-1" />
+                                                <div>
+                                                    <h4 className="font-semibold text-lg mb-2">{item.title}</h4>
+                                                    <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </AnimationContainer>
+                                    ))}
+                                </div>
+                            </AnimationContainer>
+                        )}
+
+                        {children}
                     </div>
 
                     <div className="space-y-8">

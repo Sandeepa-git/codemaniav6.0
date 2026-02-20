@@ -20,6 +20,14 @@ const MerchPopup = () => {
 
     const handleClose = () => {
         setIsOpen(false);
+        // After closing, check if there's a hash and scroll to it
+        if (window.location.hash) {
+            const id = window.location.hash.substring(1);
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
     };
 
     return (
