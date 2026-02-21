@@ -8,21 +8,18 @@ import Link from "next/link";
 const Portals = () => {
     return (
         <Wrapper className="py-16 sm:py-24 lg:py-32">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-7xl mx-auto px-4">
+            <div className="flex justify-center max-w-7xl mx-auto px-4">
 
-                {/* 01. Leaderboard Portal */}
+                {/* 01. Leaderboard Portal - Hidden for now
                 <AnimationContainer animation="fadeRight" delay={0.2}>
                     <div className="group relative p-6 sm:p-8 lg:p-12 rounded-3xl sm:rounded-[3.5rem] bg-neutral-900/60 border border-white/5 backdrop-blur-2xl overflow-hidden min-h-[380px] sm:h-[450px] flex flex-col justify-end transition-all duration-700 hover:border-orange-500/40 shadow-2xl">
 
-                        {/* Background Design Element */}
                         <div className="absolute top-[-15%] sm:top-[-10%] right-[-15%] sm:right-[-10%] text-orange-500/5 rotate-12 transition-all duration-700 group-hover:scale-110 group-hover:text-orange-500/10">
                             <Trophy size={280} className="sm:w-[400px] sm:h-[400px]" strokeWidth={1} />
                         </div>
 
-                        {/* Animated Glow Grid Path */}
                         <div className="absolute inset-0 bg-[url('/images/grid.svg')] bg-center opacity-[0.03] group-hover:opacity-[0.07] transition-opacity" />
 
-                        {/* Decorative Badge */}
                         <div className="absolute top-6 sm:top-10 left-6 sm:left-10 py-1 sm:py-1.5 px-3 sm:px-4 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.2em] sm:tracking-[0.3em]">
                             Ranking Portal
                         </div>
@@ -44,10 +41,11 @@ const Portals = () => {
                         <div className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-transparent via-orange-500/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
                     </div>
                 </AnimationContainer>
+                */}
 
                 {/* 02. Merchandise Portal */}
-                <AnimationContainer animation="fadeLeft" delay={0.3}>
-                    <div className="group relative p-6 sm:p-8 lg:p-12 rounded-3xl sm:rounded-[3.5rem] bg-neutral-900/60 border border-white/5 backdrop-blur-2xl overflow-hidden min-h-[380px] sm:h-[450px] flex flex-col justify-end transition-all duration-700 hover:border-orange-500/40 shadow-2xl">
+                <AnimationContainer animation="fadeUp" delay={0.3} className="w-full max-w-5xl">
+                    <div className="group relative p-6 sm:p-8 lg:p-12 rounded-3xl sm:rounded-[3.5rem] bg-neutral-900/60 border border-white/5 backdrop-blur-2xl overflow-hidden min-h-[380px] sm:h-[450px] w-full flex flex-col items-center justify-center text-center transition-all duration-700 hover:border-orange-500/40 shadow-2xl">
 
                         {/* Background Design Element */}
                         <div className="absolute top-[-15%] sm:top-[-10%] right-[-15%] sm:right-[-10%] text-orange-500/5 -rotate-12 transition-all duration-700 group-hover:scale-110 group-hover:text-orange-500/10">
@@ -62,11 +60,11 @@ const Portals = () => {
                             Official Store
                         </div>
 
-                        <div className="relative z-10">
+                        <div className="relative z-10 flex flex-col items-center">
                             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-folkra font-medium text-white mb-4 sm:mb-6 leading-tight">
-                                Codemania <br /> <span className="text-orange-500">Merchandise</span>
+                                Codemania <span className="text-orange-500">Merchandise</span>
                             </h3>
-                            <p className="text-gray-400 text-base sm:text-lg lg:text-xl font-medium mb-6 sm:mb-10 max-w-md leading-relaxed">
+                            <p className="text-gray-400 text-base sm:text-lg lg:text-xl font-medium mb-6 sm:mb-10 max-w-none leading-relaxed">
                                 Own exclusive Codemania v6.0 gear designed for competitors.
                             </p>
 
