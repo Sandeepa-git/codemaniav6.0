@@ -19,7 +19,7 @@ export default function TeamDetails() {
                         <TableHeader>
                             <TableRow className="border-white/[0.08] hover:bg-white/[0.04]">
                                 <TableHead className="text-gray-400 font-semibold tracking-wider text-xs">Team Name</TableHead>
-                                <TableHead className="text-gray-400 font-semibold tracking-wider text-xs">Team ID</TableHead>
+                                <TableHead className="text-gray-400 font-semibold tracking-wider text-xs whitespace-nowrap">Team ID</TableHead>
                                 <TableHead className="text-gray-400 font-semibold tracking-wider text-xs">Team Head</TableHead>
                                 <TableHead className="text-gray-400 font-semibold tracking-wider text-xs">HackerRank Username</TableHead>
                             </TableRow>

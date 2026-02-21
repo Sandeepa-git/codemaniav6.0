@@ -12,24 +12,6 @@ export default function VirtualDatathonPage() {
             status="Scheduled"
             date="February 21"
             showContacts={false}
-            takeaways={[
-                {
-                    title: "Format",
-                    description: "Online competition within a fixed time window."
-                },
-                {
-                    title: "Problem Statements",
-                    description: "Realistic, data-driven challenges with clear evaluation metrics."
-                },
-                {
-                    title: "Evaluation Criteria",
-                    description: "Accuracy, efficiency, and overall scoring."
-                },
-                {
-                    title: "Advancement",
-                    description: "Top 40 teams progress to the Grand Finale."
-                }
-            ]}
             sidebar={
                 <AnimationContainer animation="fadeLeft" delay={0.6}>
                     <div className="p-8 rounded-3xl bg-white/[0.03] border border-white/[0.08] flex flex-col items-center text-center">
