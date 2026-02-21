@@ -12,7 +12,7 @@ export default function VirtualDatathonPage() {
             status=""
             date="February 21"
             actionButtonText="Log Into the competition"
-            actionButtonLink="https://www.hackerrank.com/tests/a6sich283hi/ad9103ee2307801d896dcf32da1dbd5c?try_test=true&email=codmaniawebteam@glowingsilknl.com"
+            actionButtonLink="https://www.hackerrank.com/virtual-datathon-a-codemania-v6-0"
             lockUntil="2026-02-21T15:50:00"
             showContacts={false}
             sidebar={
