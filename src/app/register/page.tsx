@@ -337,8 +337,8 @@ export default function RegisterPage() {
     const onSubmit = async (values: FormValues) => {
         setIsSubmitting(true);
         try {
-            // Generate Token Number
-            const tokenNumber = await generateTokenNumber();
+            // Generate Team ID
+            const tokenNumber = await generateTeamId();
 
             // Prepare Final Data
             const finalData: any = {
@@ -371,8 +371,8 @@ export default function RegisterPage() {
         }
     };
 
-    // Function to generate token number
-    const generateTokenNumber = async (): Promise<string> => {
+    // Function to generate Team ID
+    const generateTeamId = async (): Promise<string> => {
         const counterRef = doc(db, "counters", "teamTokenCounter");
 
         return await runTransaction(db, async (transaction) => {

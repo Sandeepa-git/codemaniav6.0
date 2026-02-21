@@ -27,7 +27,21 @@ interface EventPageProps {
     children?: React.ReactNode;
 }
 
-const EventTemplate = ({ title, tagline, intro, status, date, takeaways, showContacts = true, registrationClosed = false, hideStatus = false, regLink, hideRegisterButton = true, sidebar, children }: EventPageProps) => {
+const EventTemplate = ({
+    title,
+    tagline,
+    intro,
+    status,
+    date,
+    takeaways,
+    showContacts = true,
+    registrationClosed = false,
+    hideStatus = false,
+    regLink,
+    hideRegisterButton = true,
+    sidebar,
+    children
+}: EventPageProps) => {
     const [isLocked, setIsLocked] = useState(true);
 
     useEffect(() => {
