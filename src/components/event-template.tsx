@@ -23,6 +23,9 @@ interface EventPageProps {
     hideStatus?: boolean;
     regLink?: string;
     hideRegisterButton?: boolean;
+    actionButtonText?: string;
+    actionButtonLink?: string;
+    lockUntil?: string;
     sidebar?: React.ReactNode;
     children?: React.ReactNode;
 }
@@ -39,21 +42,37 @@ const EventTemplate = ({
     hideStatus = false,
     regLink,
     hideRegisterButton = true,
+    actionButtonText,
+    actionButtonLink,
+    lockUntil,
     sidebar,
     children
 }: EventPageProps) => {
     const [isLocked, setIsLocked] = useState(true);
+    const [timeLeft, setTimeLeft] = useState("");
 
     useEffect(() => {
         const checkLock = () => {
             const now = new Date();
-            const unlockDate = new Date("2024-01-01T19:00:00");
-            setIsLocked(now < unlockDate);
+            const unlockDate = lockUntil ? new Date(lockUntil) : new Date("2024-01-01T19:00:00");
+            const diff = unlockDate.getTime() - now.getTime();
+
+            if (diff <= 0) {
+                setIsLocked(false);
+                setTimeLeft("");
+            } else {
+                setIsLocked(true);
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                setTimeLeft(`${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
+            }
         };
         checkLock();
         const interval = setInterval(checkLock, 1000);
         return () => clearInterval(interval);
-    }, []);
+    }, [lockUntil]);
 
     const contacts = [
         { name: "Ravishka Rathnayake", role: "Co-Chair", img: "/images/ravishka.jpg" },
@@ -116,14 +135,40 @@ const EventTemplate = ({
                         {!hideStatus && (
                             <AnimationContainer animation="fadeLeft" delay={0.5}>
                                 <div className="p-8 rounded-3xl bg-gradient-to-br from-orange-600 to-orange-400 text-white shadow-xl shadow-orange-600/20">
-                                    <div className="flex items-center gap-3 mb-6">
-                                        <Calendar className="size-6" />
-                                        <span className="font-medium uppercase tracking-widest text-sm">Status</span>
+                                    <div className="flex items-center justify-between mb-6">
+                                        <div className="flex items-center gap-3">
+                                            <Calendar className="size-6" />
+                                            <span className="font-medium uppercase tracking-widest text-sm">Status</span>
+                                        </div>
+                                        {actionButtonText && (
+                                            <span className="text-orange-50 opacity-90 text-sm font-medium">{date}</span>
+                                        )}
                                     </div>
-                                    <h4 className="text-3xl font-medium mb-2">{status}</h4>
-                                    <p className="text-orange-50 opacity-90 text-lg font-medium">{date}</p>
+                                    {status && <h4 className="text-3xl font-medium mb-2">{status}</h4>}
+                                    {!actionButtonText && (
+                                        <p className="text-orange-50 opacity-90 text-lg font-medium">{date}</p>
+                                    )}
 
-                                    {hideRegisterButton ? null : regLink ? (
+                                    {actionButtonText && actionButtonLink ? (
+                                        isLocked ? (
+                                            <div className="space-y-6 mt-8">
+                                                <div className="text-center space-y-1">
+                                                    <p className="text-orange-100/60 text-xs uppercase tracking-[0.2em] font-medium">Starts In</p>
+                                                    <p className="text-4xl font-bold tabular-nums tracking-tight">{timeLeft}</p>
+                                                </div>
+                                                <Button disabled className="w-full bg-white text-orange-600/50 cursor-not-allowed font-medium rounded-xl py-4 md:py-6 text-base md:text-lg">
+                                                    <Lock className="w-5 h-5 mr-2" />
+                                                    {actionButtonText}
+                                                </Button>
+                                            </div>
+                                        ) : (
+                                            <Link href={actionButtonLink} target="_blank">
+                                                <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-medium rounded-xl py-4 md:py-6 text-base md:text-lg transition-all duration-300">
+                                                    {actionButtonText}
+                                                </Button>
+                                            </Link>
+                                        )
+                                    ) : hideRegisterButton ? null : regLink ? (
                                         <Link href={regLink} target="_blank">
                                             <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-medium rounded-xl py-4 md:py-6 text-base md:text-lg">
                                                 Register Now

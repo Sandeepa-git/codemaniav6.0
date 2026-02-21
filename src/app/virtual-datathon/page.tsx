@@ -9,8 +9,11 @@ export default function VirtualDatathonPage() {
             title="Virtual Datathon"
             tagline="Compete Online. Prove Your Skills. Earn Your Spot."
             intro="The Virtual Datathon is the official qualifier phase for Codemania v6.0. Teams will solve timed, data-centric problems to qualify for the 12-hour physical finale."
-            status="Scheduled"
+            status=""
             date="February 21"
+            actionButtonText="Log Into the competition"
+            actionButtonLink="https://www.hackerrank.com/"
+            lockUntil="2026-02-21T15:50:00"
             showContacts={false}
             sidebar={
                 <AnimationContainer animation="fadeLeft" delay={0.6}>
