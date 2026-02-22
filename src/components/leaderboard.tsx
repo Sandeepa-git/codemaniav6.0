@@ -1,128 +1,153 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import AnimationContainer from './global/animation-container';
 import Wrapper from "./global/wrapper";
 import SectionBadge from './ui/section-badge';
-import { Trophy, Medal, Timer, Award, ArrowLeft } from "lucide-react";
+import { Trophy, Medal, Timer, Award, ArrowLeft, RefreshCw } from "lucide-react";
 import Link from "next/link";
 
-const LEADERBOARD_SKELETON = [
-    { rank: 1, team: "Team Name", uni: "University Name", score: "---", status: "Winner" },
-    { rank: 2, team: "Team Name", uni: "University Name", score: "---", status: "Runner Up" },
-    { rank: 3, team: "Team Name", uni: "University Name", score: "---", status: "2nd Runner Up" },
-];
+interface LeaderboardEntry {
+    rank: number;
+    team: string;
+    teamId: string;
+    handle: string;
+    leader: string;
+    uni: string;
+    score: string;
+    status: string;
+}
 
 const Leaderboard = () => {
+    const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    const fetchLeaderboard = async () => {
+        try {
+            setIsLoading(true);
+            const response = await fetch('/api/leaderboard');
+            if (!response.ok) throw new Error('Failed to fetch data');
+            const data = await response.json();
+            setLeaderboardData(data);
+            setError(null);
+        } catch (err) {
+            setError('Unable to load rankings. Please try again later.');
+            console.error(err);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchLeaderboard();
+    }, []);
+
     return (
-        <Wrapper className="py-24 lg:py-40">
-            <div className="max-w-5xl mx-auto w-full mb-8">
-                <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-500 transition-colors group px-1 text-sm md:text-base">
+        <Wrapper className="py-12 lg:py-20 relative overflow-hidden">
+            <div className="max-w-6xl mx-auto w-full mb-8 flex justify-between items-center">
+                <Link href="/virtual-datathon" className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-500 transition-colors group px-1 text-sm md:text-base">
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    Back to Home
+                    Back to Virtual Datathon
                 </Link>
             </div>
 
             {/* Header Section */}
-            <div className="flex flex-col items-center text-center gap-6 mb-16 md:mb-24">
+            <div className="flex flex-col items-center text-center gap-6 mb-16 md:mb-24 px-4">
                 <AnimationContainer animation="fadeUp" delay={0.2}>
                     <SectionBadge title="Rankings" />
                 </AnimationContainer>
 
                 <AnimationContainer animation="fadeUp" delay={0.3}>
-                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-folkra font-medium !leading-[1.1] text-white">
-                        The Hall of <span className="text-orange-500">Fame</span>
+                    <h2 className="text-4xl md:text-6xl lg:text-6xl font-folkra font-medium !leading-[1.1] text-white">
+                        Top 15 Teams Selected for <span className="text-orange-500">Grand Finale</span>
                     </h2>
                     <p className="text-gray-400 text-lg md:text-xl mt-6 max-w-2xl mx-auto">
-                        Rankings will be dynamically updated as teams compete through the heats and grand finale.
+                        Official results for Codemania v6.0 Virtual Datathon.
                     </p>
                 </AnimationContainer>
             </div>
 
-            {/* Standings Table Area */}
-            <div className="max-w-5xl mx-auto relative group overflow-hidden pl-4 pr-4 rounded-[2rem]">
+            {/* Standings Area */}
+            <div className="max-w-6xl mx-auto px-4">
+                {isLoading && leaderboardData.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-20 gap-4">
+                        <RefreshCw className="size-10 text-orange-500 animate-spin" />
+                        <p className="text-gray-500 animate-pulse">Loading Official Results...</p>
+                    </div>
+                ) : error ? (
+                    <div className="p-10 rounded-3xl bg-red-500/5 border border-red-500/20 text-center">
+                        <p className="text-red-400 mb-4">{error}</p>
+                        <button
+                            onClick={fetchLeaderboard}
+                            className="bg-red-500/10 hover:bg-red-500/20 text-red-400 px-6 py-2 rounded-xl transition-all"
+                        >
+                            Retry Load
+                        </button>
+                    </div>
+                ) : (
+                    <div className="space-y-6">
+                        {leaderboardData.map((item, idx) => (
+                            <AnimationContainer key={`${item.rank}-${idx}`} animation="fadeUp" delay={0.1}>
+                                <div className={`group/card flex flex-col md:flex-row md:items-center gap-6 p-6 md:p-8 rounded-[2rem] border transition-all duration-500 ${item.rank === 1
+                                    ? 'bg-orange-500/10 border-orange-500/30 shadow-2xl shadow-orange-500/10'
+                                    : 'bg-white/[0.02] border-white/5 hover:border-white/10 hover:bg-white/[0.04]'
+                                    }`}>
 
-                {/* Coming Soon Overlay */}
-                <div className="absolute inset-0 z-50 flex items-center justify-center p-8 backdrop-blur-[6px] rounded-[3.5rem] bg-black/40 border border-white/5 group-hover:bg-black/20 transition-all duration-700">
-                    <AnimationContainer animation="scaleUp" delay={0.5}>
-                        <div className="flex flex-col items-center text-center gap-6">
-                            <div className="w-24 h-24 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center justify-center animate-pulse">
-                                <Timer className="size-10 text-orange-500" />
-                            </div>
-                            <h3 className="text-4xl sm:text-5xl font-folkra font-medium text-white">Updating Soon</h3>
-                            <p className="text-gray-400 text-lg max-w-md">
-                                The official rankings of Codemania v6.0 will be published here after the final scores are validated.
-                            </p>
-                            <div className="h-px w-24 bg-gradient-to-r from-transparent via-orange-500 to-transparent" />
-                        </div>
-                    </AnimationContainer>
-                </div>
+                                    {/* Rank & Points Group */}
+                                    <div className="flex items-center justify-between md:justify-start gap-6">
+                                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl font-bold shrink-0 shadow-inner ${item.rank === 1 ? 'bg-orange-500 text-black' : 'bg-white/5 text-gray-400 border border-white/5'
+                                            }`}>
+                                            {item.rank}
+                                        </div>
+                                        <div className="md:hidden text-right">
+                                            <div className="text-orange-500 font-bold text-3xl tabular-nums">{item.score}</div>
+                                        </div>
+                                    </div>
 
-                {/* Background Skeleton Design */}
-                <div className="opacity-20 space-y-4">
-                    {LEADERBOARD_SKELETON.map((item, idx) => (
-                        <div key={idx} className="flex items-center gap-3 sm:gap-6 p-4 sm:p-10 rounded-3xl bg-neutral-900/50 border border-white/5">
-                            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-xl font-semibold text-gray-500 shrink-0">
-                                {item.rank}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <div className="h-6 w-32 sm:w-48 bg-white/10 rounded-lg mb-2" />
-                                <div className="h-4 w-20 sm:w-32 bg-white/5 rounded-lg" />
-                            </div>
-                            <div className="text-right shrink-0">
-                                <div className="h-8 w-16 sm:w-20 bg-white/10 rounded-lg" />
-                            </div>
-                        </div>
-                    ))}
-                    {[4, 5, 6].map((i) => (
-                        <div key={i} className="flex items-center gap-6 p-4 px-10 rounded-2xl bg-neutral-900/30 border border-white/5">
-                            <div className="w-8 h-8 text-gray-700 font-semibold">{i}</div>
-                            <div className="flex-1 h-4 bg-white/5 rounded-md max-w-[200px]" />
-                            <div className="h-4 bg-white/5 rounded-md w-16" />
-                        </div>
-                    ))}
-                </div>
+                                    {/* Team Info Group */}
+                                    <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                                        <div>
+                                            <div className="flex items-center gap-3 mb-1">
+                                                <h4 className="text-xl md:text-2xl font-medium text-white truncate group-hover/card:text-orange-500 transition-colors">{item.team}</h4>
+                                            </div>
+                                            <p className="text-gray-400 text-sm md:text-base font-medium flex items-center gap-2">
+                                                <Trophy className="size-3.5 text-orange-500/50" />
+                                                {item.uni}
+                                            </p>
+                                        </div>
 
-                {/* Decorative Elements */}
-                <div className="absolute -top-12 -right-12 text-orange-500/5 rotate-12 -z-10 group-hover:scale-110 transition-transform duration-700">
-                    <Trophy size={300} />
-                </div>
-                <div className="absolute -bottom-12 -left-12 text-orange-500/5 -rotate-12 -z-10 group-hover:scale-110 transition-transform duration-700">
-                    <Award size={300} />
-                </div>
+                                        <div className="flex flex-col justify-center gap-2 py-2 lg:py-0 border-t border-white/5 lg:border-t-0">
+                                            <div className="flex flex-col">
+                                                <span className="text-[10px] text-gray-600 uppercase tracking-widest mb-0.5">Team Leader</span>
+                                                <span className="text-sm md:text-base text-gray-300 font-medium truncate">{item.leader}</span>
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <span className="text-[10px] text-gray-600 uppercase tracking-widest mb-0.5">Team ID</span>
+                                                <span className="text-sm md:text-base text-orange-500/80 font-mono truncate">{item.teamId}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Desktop Points */}
+                                    <div className="hidden md:block text-right shrink-0 pl-8 border-l border-white/5">
+                                        <div className="text-orange-500 font-bold text-4xl tabular-nums leading-none">{item.score}</div>
+                                    </div>
+                                </div>
+                            </AnimationContainer>
+                        ))}
+                    </div>
+                )}
             </div>
 
-            {/* Prize Quick Links / Teaser */}
-            <div className="mt-40 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <AnimationContainer animation="fadeUp" delay={0.6}>
-                    <div className="p-8 rounded-[2.5rem] bg-white/[0.02] border border-white/5 flex flex-col items-center text-center">
-                        <div className="p-4 rounded-2xl bg-yellow-500/10 mb-6">
-                            <Medal className="size-8 text-yellow-500" />
-                        </div>
-                        <h4 className="text-xl font-semibold text-white mb-2">Champion</h4>
-                        <p className="text-gray-500 text-sm">Most Innovative & Efficient Solution</p>
-                    </div>
-                </AnimationContainer>
-
-                <AnimationContainer animation="fadeUp" delay={0.7}>
-                    <div className="p-8 rounded-[2.5rem] bg-white/[0.02] border border-white/5 flex flex-col items-center text-center">
-                        <div className="p-4 rounded-2xl bg-gray-300/10 mb-6">
-                            <Medal className="size-8 text-gray-300" />
-                        </div>
-                        <h4 className="text-xl font-semibold text-white mb-2">Runner Up</h4>
-                        <p className="text-gray-500 text-sm">Exceptional Analytical Performance</p>
-                    </div>
-                </AnimationContainer>
-
-                <AnimationContainer animation="fadeUp" delay={0.8}>
-                    <div className="p-8 rounded-[2.5rem] bg-white/[0.02] border border-white/5 flex flex-col items-center text-center">
-                        <div className="p-4 rounded-2xl bg-orange-800/20 mb-6">
-                            <Medal className="size-8 text-orange-700" />
-                        </div>
-                        <h4 className="text-xl font-semibold text-white mb-2">2nd Runner Up</h4>
-                        <p className="text-gray-500 text-sm">Strategic Data Visualization Expert</p>
-                    </div>
-                </AnimationContainer>
+            {/* Decorative Elements */}
+            <div className="absolute -top-12 -right-12 text-orange-500/5 rotate-12 -z-10 group-hover:scale-110 transition-transform duration-700">
+                <Trophy size={300} />
             </div>
+            <div className="absolute -bottom-12 -left-12 text-orange-500/5 -rotate-12 -z-10 group-hover:scale-110 transition-transform duration-700">
+                <Award size={300} />
+            </div>
+
         </Wrapper>
     );
 };

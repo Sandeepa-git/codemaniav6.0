@@ -105,7 +105,7 @@ const Navbar = () => {
           </motion.div>
 
           {/* Desktop Links */}
-          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && (
+          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !pathname.startsWith("/grand-finale") && !pathname.startsWith("/virtual-datathon") && (
             <div className={cn(
               "hidden lg:flex flex-row items-center justify-center gap-x-2 text-sm text-muted-foreground font-medium",
               !visible && "flex-1 absolute inset-0 w-max mx-auto"
@@ -133,13 +133,15 @@ const Navbar = () => {
 
 
           {/* New Button Desktop - Shown only when registration is closed */}
-          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !isRegOpen && (
+          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !pathname.startsWith("/grand-finale") && !pathname.startsWith("/virtual-datathon") && !isRegOpen && (
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.8 }} className="hidden lg:block ml-4">
               <Link
-                href="/virtual-datathon"
+                href="/grand-finale"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-6 py-2 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 whitespace-nowrap"
               >
-                Virtual Datathon
+                Grand Finale
               </Link>
             </motion.div>
           )}
@@ -173,7 +175,7 @@ const Navbar = () => {
           </motion.div>
 
           {/* Hamburger Menu */}
-          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && (
+          {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !pathname.startsWith("/grand-finale") && !pathname.startsWith("/virtual-datathon") && (
             <div className="flex items-center justify-center gap-x-4">
               {open ? (
                 <XIcon className="text-black dark:text-white cursor-pointer" onClick={() => setOpen(false)} />
@@ -217,14 +219,16 @@ const Navbar = () => {
 
 
               {/* New Button Mobile - Shown only when registration is closed and not on workshop/etc pages */}
-              {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !isRegOpen && (
+              {!pathname.startsWith("/register") && !pathname.startsWith("/workshops") && !pathname.startsWith("/leaderboard") && !pathname.startsWith("/merchandise") && !pathname.startsWith("/grand-finale") && !pathname.startsWith("/virtual-datathon") && !isRegOpen && (
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ delay: 0.4, duration: 0.3 }}>
                   <Link
-                    href="/virtual-datathon"
+                    href="/grand-finale"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
                     className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 text-white rounded-md px-4 py-1.5 text-sm w-full text-center mt-4 shadow-md hover:from-orange-700 hover:via-orange-600 hover:to-orange-700 transition-all duration-300 block"
                   >
-                    Virtual Datathon
+                    Grand Finale
                   </Link>
                 </motion.div>
               )}

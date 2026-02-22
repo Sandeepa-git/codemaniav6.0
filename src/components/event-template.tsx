@@ -28,6 +28,8 @@ interface EventPageProps {
     lockUntil?: string;
     sidebar?: React.ReactNode;
     children?: React.ReactNode;
+    backLink?: string;
+    backLinkText?: string;
 }
 
 const EventTemplate = ({
@@ -46,7 +48,9 @@ const EventTemplate = ({
     actionButtonLink,
     lockUntil,
     sidebar,
-    children
+    children,
+    backLink = "/",
+    backLinkText = "Back to Home"
 }: EventPageProps) => {
     const [isLocked, setIsLocked] = useState(true);
     const [timeLeft, setTimeLeft] = useState("");
@@ -86,9 +90,9 @@ const EventTemplate = ({
             <Navbar />
 
             <Wrapper className="py-20 flex-1">
-                <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-500 transition-colors mb-12 group">
+                <Link href={backLink} className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-500 transition-colors mb-12 group">
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    Back to Home
+                    {backLinkText}
                 </Link>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
