@@ -21,6 +21,7 @@ export default function SelectedTeamsTable() {
                                 <TableHead className="text-gray-400 font-medium tracking-wider text-xs">Team Name</TableHead>
                                 <TableHead className="text-gray-400 font-medium tracking-wider text-xs whitespace-nowrap">Team ID</TableHead>
                                 <TableHead className="text-gray-400 font-medium tracking-wider text-xs">Team Head</TableHead>
+                                <TableHead className="text-gray-400 font-medium tracking-wider text-xs">University</TableHead>
                                 <TableHead className="text-gray-400 font-medium tracking-wider text-xs">HackerRank Username</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -30,6 +31,7 @@ export default function SelectedTeamsTable() {
                                     <TableCell className="font-medium text-white">{team.teamName}</TableCell>
                                     <TableCell className="text-orange-500 font-mono text-sm">{team.teamId}</TableCell>
                                     <TableCell className="text-gray-300">{team.leader}</TableCell>
+                                    <TableCell className="text-gray-400 text-sm">{team.uni}</TableCell>
                                     <TableCell className="text-gray-500 text-xs font-mono">{team.handle}</TableCell>
                                 </TableRow>
                             ))}
