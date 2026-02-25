@@ -232,14 +232,6 @@ export const TEAMS = [
         "email": "y.rashan22@gmail.com"
     },
     {
-        "hackerRankUser": "CM0135_GMora",
-        "token": "CM0135",
-        "teamName": "GMora",
-        "member": "Chanupa Hansaja",
-        "contact": "717955278",
-        "email": "chanupahansajarcg2003@gmail.com"
-    },
-    {
         "hackerRankUser": "CM0137_Yazhi",
         "token": "CM0137",
         "teamName": "Yazhi",
@@ -342,14 +334,6 @@ export const TEAMS = [
         "member": "Hari Branavan Arulnathan",
         "contact": "719656065",
         "email": "branavan.nathan@gmail.com"
-    },
-    {
-        "hackerRankUser": "CM0150_Trojan Hex",
-        "token": "CM0150",
-        "teamName": "Trojan Hex",
-        "member": "Thejitha Wijayanayake",
-        "contact": "714756551",
-        "email": "thejithamininduw@gmail.com"
     },
     {
         "hackerRankUser": "CM0151_CodeTitans",
