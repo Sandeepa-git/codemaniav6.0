@@ -13,5 +13,5 @@ export const SELECTED_TEAMS = [
     { rank: 12, handle: "CM0199_MedXHackers", uni: "General Sir John Kotelawala Defence University (KDU)", teamId: "CM0199", teamName: "MedXHackers", leader: "Wanniarachchige Lilendra Pasindu Harsha", points: 3084 },
     { rank: 13, handle: "CM0104_Deadlock", uni: "Sabaragamuwa University of Sri Lanka", teamId: "CM0104", teamName: "Deadlock", leader: "Sankajith Jinasena", points: 3060 },
     { rank: 14, handle: "CM0109_Order Board", uni: "Sri Lanka Technology Campus (SLTC)", teamId: "CM0109", teamName: "Order Board", leader: "Sasanka Rajapaksha", points: 3044 },
-    { rank: 15, handle: "CM0200_SmileLabs", uni: "University of Moratuwa", teamId: "CM0200", teamName: "Smile Labs", leader: "Himath Nimpura", points: 3000 }
+    { rank: 15, handle: "CM0156_Ciphered Trio", uni: "Sri Lanka Technology Campus (SLTC)", teamId: "CM0156", teamName: "Ciphered Trio", leader: "Tharuka Karunarathne", points: 2980 }
 ];
