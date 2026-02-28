@@ -24,7 +24,7 @@ const Competitions = () => {
             title: "12-Hour Physical Grand Finale Datathon",
             description: "The ultimate 12-hour on-site challenge at SLTC where top 15 teams compete for glory and prizes.",
             icon: <Trophy className="size-8 text-orange-500" />,
-            status: "Scheduled",
+            status: "Ongoing",
             link: "/grand-finale"
         }
     ];

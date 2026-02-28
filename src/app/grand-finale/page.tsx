@@ -7,7 +7,7 @@ export default function GrandFinalePage() {
             title="Grand Finale"
             tagline="12 Hours. One Team. Maximum Impact."
             intro="The Grand Finale is a 12-hour on-site datathon hosted at Sri Lanka Technology Campus. Top 15 teams from the Virtual Datathon compete to solve advanced, real-world-inspired challenges under live conditions."
-            status="Scheduled"
+            status="Ongoing"
             date="Feb 28 – Mar 1"
             showContacts={false}
         >
