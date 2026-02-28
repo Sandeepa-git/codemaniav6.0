@@ -8,7 +8,8 @@ import Competitions from "@/components/competitions";
 import Portals from "@/components/portals";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
-import MerchPopup from "@/components/merch-popup";
+import HomeLeaderboard from "@/components/home-leaderboard";
+
 
 export const metadata = {
   title: "Codemania v6.0 - Island-wide Datathon",
@@ -18,7 +19,7 @@ export const metadata = {
 export default function HomePage() {
   return (
     <main className="w-full min-h-screen bg-[#101010] text-white overflow-x-hidden">
-      <MerchPopup />
+
 
       <section id="hero">
         <Hero />
@@ -46,6 +47,10 @@ export default function HomePage() {
 
       <section id="prizes">
         <Prizes />
+      </section>
+
+      <section id="leaderboard">
+        <HomeLeaderboard />
       </section>
 
       <section id="portals">

@@ -83,7 +83,7 @@ const Countdown = () => {
         </>
       ) : (
         <div className="text-xl md:text-3xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-orange-300 px-10 py-4">
-          Registrations are Live!
+          Grand Finale is Live! 🔥
         </div>
       )}
     </div>

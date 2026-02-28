@@ -5,13 +5,11 @@ import Wrapper from "./global/wrapper";
 import SectionBadge from './ui/section-badge';
 import Image from "next/image";
 import PhotoshootMarquee from "./photoshoot-marquee";
-import { ArrowLeft, ArrowRight, ShoppingBag, Check, Package, Maximize2 } from "lucide-react";
+import { ArrowLeft, ShoppingBag, Check, Package, Maximize2 } from "lucide-react";
 import Link from "next/link";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 
@@ -216,56 +214,12 @@ const SHOP = () => {
                   </div>
 
                   <div className="space-y-6 md:space-y-8">
-                    {product.availableSizes && (
-                      <div>
-                        <div className="flex justify-between items-center mb-3 md:mb-4">
-                          <p className="text-xs md:text-sm font-medium text-white uppercase tracking-[3px]">Available Sizes</p>
-                          {product.sizeChartImages && product.sizeChartImages.length > 0 && (
-                            <Dialog>
-                              <DialogTrigger asChild>
-                                <button className="text-[10px] md:text-xs text-orange-500 hover:text-orange-400 underline underline-offset-4">
-                                  View Size Chart
-                                </button>
-                              </DialogTrigger>
-                              <DialogContent className="w-[95vw] max-w-4xl bg-neutral-900 border border-white/10 max-h-[85vh] overflow-y-auto p-4 md:p-6 text-white">
-                                <DialogHeader className="mb-2">
-                                  <DialogTitle>Size Chart</DialogTitle>
-                                </DialogHeader>
-                                <div className="flex flex-col gap-6">
-                                  {product.sizeChartImages.map((img, i) => (
-                                    <div key={i} className="w-full">
-                                      <Image
-                                        src={img}
-                                        alt={`Size Chart ${i + 1}`}
-                                        width={1200}
-                                        height={1200}
-                                        className="w-full h-auto rounded-lg border border-white/5"
-                                      />
-                                    </div>
-                                  ))}
-                                </div>
-                              </DialogContent>
-                            </Dialog>
-                          )}
-                        </div>
-                        <div className="flex gap-2 flex-wrap">
-                          {product.availableSizes.map((size) => (
-                            <div key={size} className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[10px] md:text-xs font-medium text-gray-400 hover:bg-orange-500 hover:text-white hover:border-orange-500 cursor-default transition-all duration-300">
-                              {size}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
 
-                    <Link
-                      href={product.orderLink}
-                      target="_blank"
-                      className="group/order flex items-center justify-center gap-3 md:gap-4 w-full py-4 md:py-5 rounded-[1.5rem] md:rounded-[2rem] font-bold text-base md:text-lg transition-all duration-500 shadow-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:shadow-orange-500/25 hover:scale-[1.02]"
+                    <div
+                      className="flex items-center justify-center gap-3 md:gap-4 w-full py-4 md:py-5 rounded-[1.5rem] md:rounded-[2rem] font-bold text-base md:text-lg bg-neutral-700/50 text-gray-400 cursor-not-allowed select-none border border-white/5"
                     >
-                      Order Now
-                      <ArrowRight className="size-5 md:size-6 group-hover/order:translate-x-2 transition-transform" />
-                    </Link>
+                      Order Closed
+                    </div>
                   </div>
                 </div>
               </AnimationContainer>
