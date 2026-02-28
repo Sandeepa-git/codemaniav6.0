@@ -9,7 +9,6 @@ const QUICK_LINKS = [
     { label: "Timeline", href: "/#timeline" },
     { label: "Workshops", href: "/#workshops" },
     { label: "Competitions", href: "/#competitions" },
-    { label: "Prizes", href: "/#prizes" },
 ];
 
 const SOCIAL_LINKS = [

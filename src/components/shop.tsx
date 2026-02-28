@@ -5,7 +5,7 @@ import Wrapper from "./global/wrapper";
 import SectionBadge from './ui/section-badge';
 import Image from "next/image";
 import PhotoshootMarquee from "./photoshoot-marquee";
-import { ArrowLeft, ShoppingBag, Check, Package, Maximize2 } from "lucide-react";
+import { ArrowLeft, Maximize2 } from "lucide-react";
 import Link from "next/link";
 import {
   Dialog,
@@ -136,96 +136,50 @@ const SHOP = () => {
         </AnimationContainer>
       </div>
 
-      {/* Product Showcase */}
-      <div className="space-y-20 lg:space-y-32">
+      {/* Product Showcase - Images Only */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
         {PRODUCTS.map((product, index) => (
-          <div key={index} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20 items-center">
+          <AnimationContainer key={index} animation="fadeUp" delay={0.3 + index * 0.1}>
+            <div className="group">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <div className="relative aspect-square md:aspect-[4/3] rounded-[2rem] md:rounded-[2.5rem] bg-neutral-900 border border-white/5 overflow-hidden group-hover:border-orange-500/30 transition-all duration-700 shadow-2xl cursor-zoom-in">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
 
-            {/* 01. Visual Presentation (Left 7 Columns) */}
-            <div className={`lg:col-span-7 group ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-              <AnimationContainer animation={index % 2 === 1 ? "fadeLeft" : "fadeRight"} delay={0.4}>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <div className="relative aspect-square md:aspect-[4/3] rounded-[2rem] md:rounded-[2.5rem] bg-neutral-900 border border-white/5 overflow-hidden group-hover:border-orange-500/30 transition-all duration-700 shadow-2xl mx-4 lg:mx-0 cursor-zoom-in">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-
-                      {/* Zoom Indicator */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
-                        <div className="bg-black/50 backdrop-blur-sm p-3 rounded-full border border-white/10 text-white">
-                          <Maximize2 className="w-6 h-6" />
-                        </div>
+                    {/* Zoom Indicator */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
+                      <div className="bg-black/50 backdrop-blur-sm p-3 rounded-full border border-white/10 text-white">
+                        <Maximize2 className="w-6 h-6" />
                       </div>
-
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-contain p-4 md:p-8 scale-95 group-hover:scale-100 transition-transform duration-700"
-                      />
-                      {product.isBundle && (
-                        <div className="absolute top-4 left-4 md:top-6 md:left-6 py-1.5 px-3 md:py-2 md:px-4 rounded-full bg-orange-500 text-black text-[10px] md:text-xs font-bold uppercase tracking-widest shadow-lg shadow-orange-500/20 z-20">
-                          Bundle Deal
-                        </div>
-                      )}
                     </div>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-5xl w-full bg-transparent border-none p-0 shadow-none">
-                    <div className="relative w-full h-[80vh] flex items-center justify-center">
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </AnimationContainer>
-            </div>
 
-            {/* 02. Product Specs (Right 5 Columns) */}
-            <div className={`lg:col-span-5 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-              <AnimationContainer animation={index % 2 === 1 ? "fadeRight" : "fadeLeft"} delay={0.5}>
-                <div className="p-6 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl relative overflow-hidden mx-4 lg:mx-0">
-                  <div className="absolute top-0 right-0 p-6 md:p-8 text-orange-500/10 opacity-50">
-                    {product.isBundle ? <Package className="w-16 h-16 md:w-24 md:h-24" /> : <ShoppingBag className="w-16 h-16 md:w-24 md:h-24" />}
-                  </div>
-
-                  <h3 className="text-2xl md:text-4xl font-folkra font-medium text-white mb-2 leading-tight pr-12">
-                    {product.name}
-                  </h3>
-                  <p className="text-orange-400 text-xs md:text-sm uppercase tracking-widest font-bold mb-4 md:mb-6">
-                    {product.tagline}
-                  </p>
-
-                  <div className="text-3xl md:text-5xl font-medium text-white mb-6 md:mb-8 font-folkra tracking-tight">
-                    {product.price}
-                  </div>
-
-                  <div className="space-y-3 md:space-y-4 mb-8 md:mb-10 pb-8 md:pb-10 border-b border-white/5">
-                    {product.features.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-3 text-sm md:text-base text-gray-300">
-                        <div className="p-1 rounded-full bg-orange-500/20 flex-shrink-0">
-                          <Check className="size-2.5 md:size-3 text-orange-500" />
-                        </div>
-                        {feature}
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-contain p-4 md:p-8 scale-95 group-hover:scale-100 transition-transform duration-700"
+                    />
+                    {product.isBundle && (
+                      <div className="absolute top-4 left-4 md:top-6 md:left-6 py-1.5 px-3 md:py-2 md:px-4 rounded-full bg-orange-500 text-black text-[10px] md:text-xs font-bold uppercase tracking-widest shadow-lg shadow-orange-500/20 z-20">
+                        Bundle Deal
                       </div>
-                    ))}
+                    )}
                   </div>
-
-                  <div className="space-y-6 md:space-y-8">
-
-                    <div
-                      className="flex items-center justify-center gap-3 md:gap-4 w-full py-4 md:py-5 rounded-[1.5rem] md:rounded-[2rem] font-bold text-base md:text-lg bg-neutral-700/50 text-gray-400 cursor-not-allowed select-none border border-white/5"
-                    >
-                      Order Closed
-                    </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-5xl w-full bg-transparent border-none p-0 shadow-none">
+                  <div className="relative w-full h-[80vh] flex items-center justify-center">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-contain"
+                    />
                   </div>
-                </div>
-              </AnimationContainer>
+                </DialogContent>
+              </Dialog>
+              <p className="text-center text-white font-medium mt-4 text-lg">{product.name}</p>
             </div>
-
-          </div>
+          </AnimationContainer>
         ))}
       </div>
     </Wrapper >

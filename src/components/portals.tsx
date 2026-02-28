@@ -69,7 +69,7 @@ const Portals = () => {
                             </p>
 
                             <Link href="/merchandise" className="group/btn inline-flex items-center gap-2 sm:gap-3 py-3 sm:py-4 px-6 sm:px-8 rounded-full bg-white text-black font-medium text-sm sm:text-base group-hover:bg-orange-500 group-hover:text-white transition-all duration-500">
-                                Order Now
+                                View Now
                                 <ArrowRight className="size-4 sm:size-5 group-hover/btn:translate-x-2 transition-transform" />
                             </Link>
                         </div>
