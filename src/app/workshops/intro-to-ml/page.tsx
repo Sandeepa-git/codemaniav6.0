@@ -4,7 +4,10 @@ export default function Workshop02Page() {
     return (
         <EventTemplate
             title="Workshop 02 – Introduction to Machine Learning & Data-Driven Thinking"
+            backLink="/#workshops"
             tagline="Turn Data Into Insight"
+            actionButtonText="Watch Workshop 02"
+            actionButtonLink="https://youtu.be/U7aQMSNGhZM"
             intro="Workshop 02 builds on the first session by introducing machine learning concepts and data-driven thinking. Participants will learn how to apply models to problem statements, evaluate performance, and optimize solutions."
             status="Completed"
             date="February 18"

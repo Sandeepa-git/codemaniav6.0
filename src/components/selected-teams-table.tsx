@@ -5,16 +5,12 @@ import { SELECTED_TEAMS } from "@/constants/selected-teams";
 import AnimationContainer from "@/components/global/animation-container";
 
 export default function SelectedTeamsTable() {
-    const remainingTeams = SELECTED_TEAMS.slice(3); // Teams 4-15
-
     return (
         <AnimationContainer animation="fadeUp" delay={0.7}>
             <div className="mt-16">
                 <h3 className="text-2xl font-medium mb-2 text-white">All Qualified Teams</h3>
-                <p className="text-gray-500 text-sm mb-8">Ranked 4th – 15th from the Virtual Datathon</p>
-
                 <div className="space-y-3">
-                    {remainingTeams.map((team, idx) => (
+                    {SELECTED_TEAMS.map((team, idx) => (
                         <div
                             key={team.teamId}
                             className="group/card flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 p-5 md:p-6 rounded-2xl border transition-all duration-500 bg-white/[0.02] border-white/5 hover:border-white/10 hover:bg-white/[0.04]"
@@ -26,19 +22,19 @@ export default function SelectedTeamsTable() {
 
                             {/* Team Info */}
                             <div className="flex-1 min-w-0">
-                                <h4 className="text-lg md:text-xl font-medium text-white truncate group-hover/card:text-orange-500 transition-colors">
+                                <h4 className="text-lg md:text-xl font-medium text-white group-hover/card:text-orange-500 transition-colors">
                                     {team.teamName}
                                 </h4>
                                 <p className="text-gray-400 text-xs md:text-sm flex items-center gap-2 mt-0.5">
                                     <Trophy className="size-3 text-orange-500/50 shrink-0" />
-                                    <span className="truncate">{team.uni}</span>
+                                    <span>{team.uni}</span>
                                 </p>
                             </div>
 
                             {/* Leader */}
-                            <div className="hidden lg:flex flex-col gap-1 min-w-0 max-w-[200px]">
+                            <div className="hidden lg:flex flex-col gap-1 min-w-0 flex-1">
                                 <span className="text-[10px] text-gray-600 uppercase tracking-widest">Team Leader</span>
-                                <span className="text-sm text-gray-300 truncate">{team.leader}</span>
+                                <span className="text-sm text-gray-300">{team.leader}</span>
                             </div>
 
                             {/* Team ID */}

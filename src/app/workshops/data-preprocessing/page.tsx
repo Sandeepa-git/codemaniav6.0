@@ -4,7 +4,10 @@ export default function Workshop01Page() {
     return (
         <EventTemplate
             title="Workshop 01 – Data Preprocessing & Augmentation"
+            backLink="/#workshops"
             tagline="Build Clean, Reliable, and Ready-to-Use Datasets"
+            actionButtonText="Watch Workshop 01"
+            actionButtonLink="https://youtu.be/q43Dv4fd5Xs"
             intro="This workshop is the first step into Codemania v6.0's data journey. Participants learn how to handle raw datasets, clean and transform data, and apply augmentation techniques to prepare data for analysis and modeling."
             status="Completed"
             date="February 11"

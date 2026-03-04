@@ -15,7 +15,7 @@ const Competitions = () => {
             title: "6-Hour Virtual Datathon",
             description: "The official qualifier phase where teams solve timed, data-centric problems to secure their spot in the grand finale.",
             icon: <Code2 className="size-8 text-orange-500" />,
-            status: "Scheduled",
+            status: "Completed",
             link: "/virtual-datathon"
         },
         {
@@ -24,7 +24,7 @@ const Competitions = () => {
             title: "12-Hour Physical Grand Finale Datathon",
             description: "The ultimate 12-hour on-site challenge at SLTC where top 15 teams compete for glory and prizes.",
             icon: <Trophy className="size-8 text-orange-500" />,
-            status: "Ongoing",
+            status: "Completed",
             link: "/grand-finale"
         }
     ];
@@ -52,7 +52,7 @@ const Competitions = () => {
                                 <span className="text-orange-500 font-mono font-medium mb-2">Status: {comp.status} - {comp.date}</span>
                                 <h3 className="text-2xl font-medium text-white mb-4">{comp.title}</h3>
                                 <p className="text-gray-400 mb-8 flex-1">{comp.description}</p>
-                                <Link href={comp.link} target="_blank">
+                                <Link href={comp.link}>
                                     <Button variant="outline" className="rounded-full border-orange-500/20 hover:bg-orange-500 hover:text-white transition-all group/btn">
                                         Read More
                                         <ArrowRight className="size-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />

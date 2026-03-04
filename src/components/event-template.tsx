@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, CheckCircle2, User, Lock } from "lucide-react";
 import Image from "next/image";
+import SectionBadge from "./ui/section-badge";
 
 interface EventPageProps {
     title: string;
@@ -30,6 +31,9 @@ interface EventPageProps {
     children?: React.ReactNode;
     backLink?: string;
     backLinkText?: string;
+    centered?: boolean;
+    badge?: string;
+    highlightedTitle?: string;
 }
 
 const EventTemplate = ({
@@ -50,7 +54,10 @@ const EventTemplate = ({
     sidebar,
     children,
     backLink = "/",
-    backLinkText = "Back to Home"
+    backLinkText = "Back to Home",
+    centered = false,
+    badge,
+    highlightedTitle
 }: EventPageProps) => {
     const [isLocked, setIsLocked] = useState(true);
     const [timeLeft, setTimeLeft] = useState("");
@@ -95,22 +102,33 @@ const EventTemplate = ({
                     {backLinkText}
                 </Link>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-                    <div className="lg:col-span-2">
-                        <AnimationContainer animation="fadeUp" delay={0.2}>
-                            <h1 className="text-4xl md:text-6xl font-medium mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
-                                {title}
-                            </h1>
-                            <p className="text-orange-500 text-xl font-medium mb-8">
-                                {tagline}
-                            </p>
-                        </AnimationContainer>
+                <div className={centered ? "flex flex-col items-center" : "grid grid-cols-1 lg:grid-cols-3 gap-16"}>
+                    <div className={centered ? "w-full flex flex-col items-center" : "lg:col-span-2"}>
+                        <div className={centered ? "flex flex-col items-center text-center gap-6" : ""}>
+                            {badge && (
+                                <AnimationContainer animation="fadeUp" delay={0.1}>
+                                    <SectionBadge title={badge} />
+                                </AnimationContainer>
+                            )}
+                            <AnimationContainer animation="fadeUp" delay={0.2}>
+                                <h1 className={`${centered ? "!leading-[1.1] font-folkra" : ""} text-4xl md:text-6xl font-medium mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500`}>
+                                    {title} {highlightedTitle && <span className="text-orange-500 block md:inline">{highlightedTitle}</span>}
+                                </h1>
+                                {tagline && (
+                                    <p className="text-orange-500 text-xl font-medium mb-8">
+                                        {tagline}
+                                    </p>
+                                )}
+                            </AnimationContainer>
 
-                        <AnimationContainer animation="fadeUp" delay={0.3}>
-                            <p className="text-gray-400 text-lg leading-relaxed mb-12">
-                                {intro}
-                            </p>
-                        </AnimationContainer>
+                            {intro && (
+                                <AnimationContainer animation="fadeUp" delay={0.3}>
+                                    <p className={`text-gray-400 text-lg leading-relaxed mb-12 ${centered ? "max-w-2xl" : ""}`}>
+                                        {intro}
+                                    </p>
+                                </AnimationContainer>
+                            )}
+                        </div>
 
                         {takeaways && (
                             <AnimationContainer animation="fadeUp" delay={0.4}>
@@ -163,14 +181,14 @@ const EventTemplate = ({
                                                     </Button>
                                                 </div>
                                             ) : (
-                                                <Link href={actionButtonLink} target="_blank">
+                                                <Link href={actionButtonLink} target={actionButtonLink.startsWith('http') ? "_blank" : undefined}>
                                                     <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-medium rounded-xl py-4 md:py-6 text-base md:text-lg transition-all duration-300">
                                                         {actionButtonText}
                                                     </Button>
                                                 </Link>
                                             )
                                         ) : hideRegisterButton ? null : regLink ? (
-                                            <Link href={regLink} target="_blank">
+                                            <Link href={regLink} target={regLink.startsWith('http') ? "_blank" : undefined}>
                                                 <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-medium rounded-xl py-4 md:py-6 text-base md:text-lg">
                                                     Register Now
                                                 </Button>
@@ -233,14 +251,14 @@ const EventTemplate = ({
                                                     </Button>
                                                 </div>
                                             ) : (
-                                                <Link href={actionButtonLink} target="_blank">
+                                                <Link href={actionButtonLink} target={actionButtonLink.startsWith('http') ? "_blank" : undefined}>
                                                     <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-medium rounded-xl py-4 md:py-6 text-base md:text-lg transition-all duration-300">
                                                         {actionButtonText}
                                                     </Button>
                                                 </Link>
                                             )
                                         ) : hideRegisterButton ? null : regLink ? (
-                                            <Link href={regLink} target="_blank">
+                                            <Link href={regLink} target={regLink.startsWith('http') ? "_blank" : undefined}>
                                                 <Button className="w-full mt-8 bg-white text-orange-600 hover:bg-orange-50 font-medium rounded-xl py-4 md:py-6 text-base md:text-lg">
                                                     Register Now
                                                 </Button>

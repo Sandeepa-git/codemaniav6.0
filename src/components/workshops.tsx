@@ -54,7 +54,7 @@ const Workshops = () => {
                                 <span className="text-orange-500 font-mono font-medium mb-2">Status: {workshop.status} - {workshop.date}</span>
                                 <h3 className="text-2xl font-medium text-white mb-4">{workshop.title}</h3>
                                 <p className="text-gray-400 mb-8 flex-1">{workshop.description}</p>
-                                <Link href={workshop.link} target="_blank">
+                                <Link href={workshop.link}>
                                     <Button variant="outline" className="rounded-full border-orange-500/20 hover:bg-orange-500 hover:text-white transition-all group/btn">
                                         Read More
                                         <ArrowRight className="size-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />

@@ -9,6 +9,8 @@ import Portals from "@/components/portals";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import HomeLeaderboard from "@/components/home-leaderboard";
+import AnnouncementModal from "@/components/announcement-modal";
+import WinnersPreview from "@/components/winners-preview";
 
 
 export const metadata = {
@@ -19,6 +21,7 @@ export const metadata = {
 export default function HomePage() {
   return (
     <main className="w-full min-h-screen bg-[#101010] text-white overflow-x-hidden">
+      <AnnouncementModal />
 
 
       <section id="hero">
@@ -27,6 +30,10 @@ export default function HomePage() {
 
       <section id="about">
         <ABOUT />
+      </section>
+
+      <section id="winners">
+        <WinnersPreview />
       </section>
 
       <section id="timeline">
@@ -49,9 +56,9 @@ export default function HomePage() {
         <Prizes />
       </section>
 
-      <section id="leaderboard">
+      {/* <section id="leaderboard">
         <HomeLeaderboard />
-      </section>
+      </section> */}
 
       <section id="portals">
         <Portals />
