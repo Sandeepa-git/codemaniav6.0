@@ -1,0 +1,79 @@
+﻿
+> propease@0.1.0 build
+> next build
+
+   Γû▓ Next.js 15.5.9
+
+   Creating an optimized production build ...
+node.exe : 
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE $NPM_CLI_JS 
+$args
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo          
+: N    otSpecified: 
+(:String) [],     
+RemoteException
+    + FullyQualifiedErrorId 
+: N    ativeCommandError
+ 
+[1m[33mwarn[39m[22m - 
+The class `duration-[1.5s]` 
+is ambiguous and matches 
+multiple utilities.
+[1m[33mwarn[39m[22m - 
+If this is content and not 
+a class, replace it with 
+`duration-&lsqb;1.5s&rsqb;` 
+to silence this warning.
+
+[1m[33mwarn[39m[22m - 
+The class 
+`duration-[1500ms]` is 
+ambiguous and matches 
+multiple utilities.
+[1m[33mwarn[39m[22m - 
+If this is content and not 
+a class, replace it with `du
+ration-&lsqb;1500ms&rsqb;` 
+to silence this warning.
+ Γ£ô Compiled successfully in 23.5s
+   Skipping linting
+   Checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/15) ...
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+   Generating static pages (11/15) 
+ Γ£ô Generating static pages (15/15)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+Γöî Γùï /                                    33.7 kB         199 kB
+Γö£ Γùï /_not-found                            990 B         103 kB
+Γö£ ╞Æ /api/leaderboard                       133 B         102 kB
+Γö£ Γùï /award-ceremony                      2.54 kB         166 kB
+Γö£ Γùï /grand-finale                        4.18 kB         167 kB
+Γö£ Γùï /leaderboard                         5.31 kB         164 kB
+Γö£ Γùï /merchandise                         7.75 kB         176 kB
+Γö£ Γùï /register                             139 kB         318 kB
+Γö£ Γùï /thank-you                           1.62 kB         160 kB
+Γö£ Γùï /virtual-datathon                    2.54 kB         166 kB
+Γö£ Γùï /winners                             5.51 kB         169 kB
+Γö£ Γùï /workshops/data-preprocessing        2.54 kB         166 kB
+Γöö Γùï /workshops/intro-to-ml               2.54 kB         166 kB
++ First Load JS shared by all             102 kB
+  Γö£ chunks/255-cb395327542b56ef.js       45.9 kB
+  Γö£ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  Γöö other shared chunks (total)             2 kB
+
+
+╞Æ Middleware                             33.8 kB
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+

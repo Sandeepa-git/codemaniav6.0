@@ -74,15 +74,20 @@ export default function AnnouncementModal() {
                                     <ArrowRight className="ml-2 group-hover/btn:translate-x-2 transition-transform" />
                                 </Button>
                             </Link>
-
-                            <button
-                                onClick={handleClose}
-                                className="text-gray-500 hover:text-gray-300 text-sm font-medium transition-colors flex items-center justify-center gap-2 group/close"
-                            >
-                                Click to dismiss <Sparkles className="size-3 group-hover/close:rotate-12 transition-transform text-orange-500/50" />
-                            </button>
                         </div>
                     </div>
+
+                    {/* Close Button (X) */}
+                    <button
+                        onClick={handleClose}
+                        className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-gray-400 hover:text-white transition-all duration-300 z-50 group/close"
+                        aria-label="Close"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/close:rotate-90 transition-transform duration-300">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
 
                     {/* Decorative Border Glow */}
                     <div className="absolute inset-0 border border-white/5 rounded-[2.5rem] group-hover:border-orange-500/20 transition-colors duration-[1.5s]" />

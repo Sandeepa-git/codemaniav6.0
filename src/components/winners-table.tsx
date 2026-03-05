@@ -18,61 +18,100 @@ export default function WinnersTable() {
             {/* Podium Section */}
             <AnimationContainer animation="fadeUp" delay={0.5}>
                 <div className="flex flex-col items-center">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-end max-w-6xl w-full pt-10 px-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end max-w-5xl w-full pt-32 px-4">
                         {podiumTeams.map((team, idx) => {
                             const isFirst = team.rank === 1;
                             const Icon = isFirst ? Trophy : team.rank === 2 ? Medal : Star;
-                            const cardBg = isFirst ? "bg-[#292211]" : "bg-[#111111]";
-                            const borderColor = isFirst ? "border-[#4a3e1d]" : "border-[#1a1a1a]";
-                            const iconColor = isFirst ? "text-[#facc15]" : team.rank === 2 ? "text-[#9ca3af]" : "text-[#d97706]";
-                            const iconBoxBg = "bg-white/5 border border-white/10";
+
+                            // Interactive colors matching WinnersPreview
+                            const accentColor = isFirst
+                                ? "from-yellow-500/10 to-transparent"
+                                : team.rank === 2
+                                    ? "from-zinc-500/10 to-transparent"
+                                    : "from-orange-900/10 to-transparent";
+
+                            const borderColor = isFirst
+                                ? "border-yellow-500/50"
+                                : team.rank === 2
+                                    ? "border-zinc-500/30"
+                                    : "border-orange-900/40";
+
+                            const iconColor = isFirst
+                                ? "text-yellow-500"
+                                : team.rank === 2
+                                    ? "text-gray-400"
+                                    : "text-orange-700";
 
                             return (
                                 <motion.div
                                     key={team.teamId}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.6 + idx * 0.1 }}
-                                    className={`relative rounded-[2rem] border-2 ${borderColor} ${cardBg} p-8 flex flex-col items-center text-center transition-all duration-500
-                                        ${isFirst ? 'md:scale-[1.08] md:-translate-y-8 z-10 shadow-2xl shadow-black/50' : 'md:scale-95'}`}
+                                    initial={{ opacity: 0, y: 20, scale: 1 }}
+                                    animate={{
+                                        opacity: 1,
+                                        y: isFirst ? -80 : 0,
+                                        scale: isFirst ? 1.05 : 1
+                                    }}
+                                    transition={{ delay: 0.6 + idx * 0.1, duration: 0.5 }}
+                                    className={`group relative rounded-[2.5rem] border ${borderColor} bg-white/[0.02] hover:bg-white/[0.04] flex flex-col items-center transition-all duration-500 overflow-hidden
+                                        ${isFirst ? 'z-10 shadow-2xl shadow-black/50 order-1 md:order-none' : team.rank === 2 ? 'order-2 md:order-none' : 'order-3 md:order-none'}`}
                                 >
-                                    {/* Icon Box */}
-                                    <div className={`mb-8 p-4 rounded-2xl ${iconBoxBg}`}>
-                                        <Icon className={`w-8 h-8 ${iconColor}`} />
-                                    </div>
+                                    {/* Glass Highlight Overlay */}
+                                    <div className={`absolute inset-0 bg-gradient-to-br ${accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-                                    {/* Image Container */}
-                                    <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden mb-8 border border-white/10">
+                                    {/* Image Container - Balanced Rectangle */}
+                                    <div className="relative z-10 w-full aspect-[3/2] overflow-hidden border-b border-white/10 group-hover:border-white/20 transition-colors">
                                         {team.image ? (
                                             <Image
                                                 src={team.image}
                                                 alt={team.teamName}
                                                 fill
-                                                className="object-cover"
+                                                className="object-cover group-hover:scale-110 transition-transform duration-700"
                                             />
                                         ) : (
                                             <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
-                                                <Trophy className="w-12 h-12 text-zinc-800" />
+                                                <Trophy className="w-8 h-8 text-zinc-800" />
                                             </div>
                                         )}
-                                        {/* Rank Label */}
+                                        {/* Rank Label Overlay */}
                                         <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-black uppercase tracking-widest text-white">
                                             Rank {team.rank}
                                         </div>
                                     </div>
 
-                                    {/* Info */}
-                                    <div className="space-y-3">
-                                        <h3 className={`text-3xl font-black transition-colors tracking-tight leading-none ${isFirst ? 'text-orange-500' : 'text-white'}`}>
-                                            {team.teamName}
-                                        </h3>
-                                        <p className="text-gray-500 font-medium text-sm">
-                                            {team.uni}
-                                        </p>
-                                    </div>
+                                    {/* Content Section (Icon + Details) */}
+                                    <div className="flex-1 flex flex-col items-center justify-center p-6 sm:p-8 space-y-4">
+                                        {/* Icon Box */}
+                                        <div className={`relative z-10 p-3 rounded-2xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform duration-500`}>
+                                            <Icon className={`w-6 h-6 ${iconColor}`} />
+                                        </div>
 
-                                    {/* Points - Hidden in the specific card view requested but keeping for data completeness if needed, or removing to match image */}
-                                    {/* I will remove it to match the image exactly */}
+                                        {/* Info */}
+                                        <div className="relative z-10 space-y-2">
+                                            <div className="space-y-0.5">
+                                                <h3 className={`text-2xl font-black transition-colors tracking-tight leading-none text-white group-hover:text-orange-500`}>
+                                                    {team.teamName}
+                                                </h3>
+                                                <p className="text-gray-400 group-hover:text-gray-300 transition-colors font-medium text-[10px]">
+                                                    {team.uni}
+                                                </p>
+                                            </div>
+
+                                            {/* Team ID & Points */}
+                                            <div className="flex flex-col items-center gap-1.5 pt-1">
+                                                <div className="px-2.5 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/20">
+                                                    <span className="text-[9px] font-mono text-orange-500 uppercase tracking-widest">
+                                                        ID: {team.teamId}
+                                                    </span>
+                                                </div>
+                                                <div className="flex items-baseline gap-1">
+                                                    <span className="text-xl font-black text-white tabular-nums">
+                                                        {team.points.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                                    </span>
+                                                    <span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider">Pts</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </motion.div>
                             );
                         })}

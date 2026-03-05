@@ -46,45 +46,47 @@ export default function WinnersPreview() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className={`group relative rounded-3xl border ${borderColor} bg-white/[0.02] overflow-hidden hover:bg-white/[0.04] transition-all duration-500 ${isFirst ? 'md:scale-105 md:-translate-y-12 z-10' : ''}`}
+                                    className={`relative h-full ${isFirst ? 'z-10 order-1 md:order-none' : team.rank === 2 ? 'z-0 order-2 md:order-none' : 'z-0 order-3 md:order-none'}`}
                                 >
-                                    {/* Glass Highlight */}
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                                    <div className={`h-full group relative rounded-[2.5rem] border ${borderColor} bg-white/[0.02] overflow-hidden hover:bg-white/[0.04] transition-all duration-500 ${isFirst ? 'md:scale-105 md:-translate-y-8 shadow-2xl shadow-black/50' : ''}`}>
+                                        {/* Glass Highlight */}
+                                        <div className={`absolute inset-0 bg-gradient-to-br ${accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-                                    <div className="relative p-6 flex flex-col items-center text-center">
-                                        {/* Rank Badge Icon */}
-                                        <div className={`mb-6 p-3 rounded-2xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform duration-500`}>
-                                            <Icon className={`w-8 h-8 ${isFirst ? "text-yellow-500" : team.rank === 2 ? "text-gray-400" : "text-orange-700"}`} />
-                                        </div>
-
-                                        {/* Image Container */}
-                                        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors">
-                                            {team.image ? (
-                                                <Image
-                                                    src={team.image}
-                                                    alt={team.teamName}
-                                                    fill
-                                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                                />
-                                            ) : (
-                                                <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
-                                                    <Trophy className="w-12 h-12 text-zinc-800" />
-                                                </div>
-                                            )}
-                                            {/* Rank Label overlay on image */}
-                                            <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-black uppercase tracking-widest">
-                                                Rank {team.rank}
+                                        <div className="relative p-6 sm:p-8 flex flex-col items-center text-center h-full">
+                                            {/* Rank Badge Icon */}
+                                            <div className={`mb-6 p-3 rounded-2xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform duration-500`}>
+                                                <Icon className={`w-8 h-8 ${isFirst ? "text-yellow-500" : team.rank === 2 ? "text-gray-400" : "text-orange-700"}`} />
                                             </div>
-                                        </div>
 
-                                        {/* Info */}
-                                        <div className="space-y-2">
-                                            <h3 className="text-2xl font-black text-white group-hover:text-orange-500 transition-colors tracking-tight">
-                                                {team.teamName}
-                                            </h3>
-                                            <p className="text-gray-400 font-medium text-sm">
-                                                {team.uni}
-                                            </p>
+                                            {/* Image Container */}
+                                            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors">
+                                                {team.image ? (
+                                                    <Image
+                                                        src={team.image}
+                                                        alt={team.teamName}
+                                                        fill
+                                                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                                    />
+                                                ) : (
+                                                    <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
+                                                        <Trophy className="w-12 h-12 text-zinc-800" />
+                                                    </div>
+                                                )}
+                                                {/* Rank Label overlay on image */}
+                                                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-black uppercase tracking-widest text-white">
+                                                    Rank {team.rank}
+                                                </div>
+                                            </div>
+
+                                            {/* Info */}
+                                            <div className="space-y-2 flex-grow flex flex-col justify-end">
+                                                <h3 className="text-2xl font-black text-white group-hover:text-orange-500 transition-colors tracking-tight">
+                                                    {team.teamName}
+                                                </h3>
+                                                <p className="text-gray-400 font-medium text-sm">
+                                                    {team.uni}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </motion.div>
