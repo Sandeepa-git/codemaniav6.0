@@ -24,7 +24,7 @@ export default function WinnersPreview() {
             <AnimationContainer animation="fadeUp">
                 <div className="max-w-7xl mx-auto px-4 md:px-6">
                     <div className="text-center max-w-3xl mx-auto mb-16">
-                        <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tighter">
+                        <h2 className="text-4xl md:text-5xl font-medium mb-6 uppercase tracking-tighter">
                             Grand Finale <span className="text-orange-500">Winners</span>
                         </h2>
                         <p className="text-gray-400 text-lg">
@@ -36,7 +36,7 @@ export default function WinnersPreview() {
                         {podiumOrder.map((team, idx) => {
                             const isFirst = team.rank === 1;
                             const Icon = isFirst ? Trophy : team.rank === 2 ? Medal : Star;
-                            const accentColor = isFirst ? "from-yellow-400/20 to-orange-500/20" : team.rank === 2 ? "from-gray-300/20 to-gray-500/20" : "from-orange-800/20 to-orange-950/20";
+                            const accentColor = isFirst ? "from-yellow-400/50 to-orange-500/50" : team.rank === 2 ? "from-gray-300/50 to-gray-500/50" : "from-orange-800/50 to-orange-950/50";
                             const borderColor = isFirst ? "border-yellow-500/30" : team.rank === 2 ? "border-gray-400/30" : "border-orange-800/30";
 
                             return (
@@ -72,15 +72,11 @@ export default function WinnersPreview() {
                                                         <Trophy className="w-12 h-12 text-zinc-800" />
                                                     </div>
                                                 )}
-                                                {/* Rank Label overlay on image */}
-                                                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-black uppercase tracking-widest text-white">
-                                                    Rank {team.rank}
-                                                </div>
                                             </div>
 
                                             {/* Info */}
                                             <div className="space-y-2 flex-grow flex flex-col justify-end">
-                                                <h3 className="text-2xl font-black text-white group-hover:text-orange-500 transition-colors tracking-tight">
+                                                <h3 className="text-2xl font-medium text-white group-hover:text-orange-500 transition-colors tracking-tight">
                                                     {team.teamName}
                                                 </h3>
                                                 <p className="text-gray-400 font-medium text-sm">

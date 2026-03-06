@@ -85,7 +85,7 @@ const Portals = () => {
                             <img
                                 src="/images/Codemania Photoshoot/2.jpg"
                                 alt="Codemania Merchandise"
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1500ms] opacity-60 group-hover:opacity-100 transition-opacity"
+                                className="w-full h-full object-cover group-hover:scale-110 opacity-60 group-hover:opacity-100 transition-all duration-[1500ms]"
                             />
                         </div>
 

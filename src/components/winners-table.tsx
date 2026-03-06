@@ -25,10 +25,10 @@ export default function WinnersTable() {
 
                             // Interactive colors matching WinnersPreview
                             const accentColor = isFirst
-                                ? "from-yellow-500/10 to-transparent"
+                                ? "from-yellow-500/50 to-transparent"
                                 : team.rank === 2
-                                    ? "from-zinc-500/10 to-transparent"
-                                    : "from-orange-900/10 to-transparent";
+                                    ? "from-zinc-500/50 to-transparent"
+                                    : "from-orange-900/50 to-transparent";
 
                             const borderColor = isFirst
                                 ? "border-yellow-500/50"
@@ -72,14 +72,10 @@ export default function WinnersTable() {
                                                 <Trophy className="w-8 h-8 text-zinc-800" />
                                             </div>
                                         )}
-                                        {/* Rank Label Overlay */}
-                                        <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-black uppercase tracking-widest text-white">
-                                            Rank {team.rank}
-                                        </div>
                                     </div>
 
                                     {/* Content Section (Icon + Details) */}
-                                    <div className="flex-1 flex flex-col items-center justify-center p-6 sm:p-8 space-y-4">
+                                    <div className="flex-1 flex flex-col items-center text-center justify-center p-6 sm:p-8 space-y-4">
                                         {/* Icon Box */}
                                         <div className={`relative z-10 p-3 rounded-2xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform duration-500`}>
                                             <Icon className={`w-6 h-6 ${iconColor}`} />
@@ -88,7 +84,7 @@ export default function WinnersTable() {
                                         {/* Info */}
                                         <div className="relative z-10 space-y-2">
                                             <div className="space-y-0.5">
-                                                <h3 className={`text-2xl font-black transition-colors tracking-tight leading-none text-white group-hover:text-orange-500`}>
+                                                <h3 className={`text-2xl font-medium transition-colors tracking-tight leading-none text-white group-hover:text-orange-500`}>
                                                     {team.teamName}
                                                 </h3>
                                                 <p className="text-gray-400 group-hover:text-gray-300 transition-colors font-medium text-[10px]">
@@ -135,7 +131,7 @@ export default function WinnersTable() {
 
                                 {/* Team Info */}
                                 <div className="flex-1 min-w-0">
-                                    <h4 className="text-white font-bold text-lg">{team.teamName}</h4>
+                                    <h4 className="text-white font-medium text-lg">{team.teamName}</h4>
                                     <p className="text-gray-500 text-xs mt-0.5">{team.uni}</p>
                                 </div>
 

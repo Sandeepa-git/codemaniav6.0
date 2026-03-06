@@ -4,6 +4,7 @@ import Wrapper from "./global/wrapper";
 import SectionBadge from './ui/section-badge';
 import { ArrowLeft, Maximize2, ChevronLeft, ChevronRight, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Dialog,
   DialogContent,
@@ -100,10 +101,12 @@ const SHOP = () => {
                 </div>
               </div>
 
-              <img
+              <Image
                 src={src}
                 alt={`Codemania Photoshoot ${index + 1}`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
           </AnimationContainer>
@@ -120,10 +123,11 @@ const SHOP = () => {
             <div className="relative w-full h-full flex items-center justify-center p-4 md:p-12">
               {/* Main Image */}
               <div className="relative w-full h-full flex items-center justify-center animate-in fade-in zoom-in duration-300">
-                <img
+                <Image
                   src={IMAGES[selectedIndex]}
                   alt={`Codemania Photoshoot ${selectedIndex + 1}`}
-                  className="max-h-full max-w-full object-contain rounded-lg shadow-2xl shadow-orange-500/10"
+                  fill
+                  className="object-contain rounded-lg shadow-2xl shadow-orange-500/10"
                 />
               </div>
 

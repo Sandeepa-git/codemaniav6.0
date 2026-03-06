@@ -1,4 +1,5 @@
 import Hero from "@/components/hero";
+import SponsorStrip from "@/components/sponsor-strip";
 import ABOUT from "@/components/about";
 import TIMELINE from "@/components/timeline";
 import Stats from "@/components/stats";
@@ -27,6 +28,8 @@ export default function HomePage() {
       <section id="hero">
         <Hero />
       </section>
+
+      <SponsorStrip />
 
       <section id="about">
         <ABOUT />
